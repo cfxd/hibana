@@ -1,9 +1,0 @@
-<div class="HeaderNavigation">
-    <ul class="HeaderNavigationList">
-        {% for link in menu.links %}
-            <li class="HeaderNavigationList__item">
-                <a href="{{ link.url }}" class="HeaderNavigationList__link {% if link.active %}HeaderNavigationList__link--active{% endif %}">{{ link.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
