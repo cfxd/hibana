@@ -1,0 +1,334 @@
+@mixin Font__10-10 {
+    font-size: 10px;
+    line-height: 10px;
+}
+
+@mixin Font__10-18 {
+    font-size: 10px;
+    line-height: 18px;
+}
+
+@mixin Font__10-24 {
+    font-size: 10px;
+    line-height: 24px;
+}
+
+@mixin Font__12-12 {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+@mixin Font__12-18 {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+@mixin Font__12-20 {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+@mixin Font__12-24 {
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@mixin Font__12-28 {
+    font-size: 12px;
+    line-height: 28px;
+}
+
+@mixin Font__14-14 {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+@mixin Font__14-24 {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@mixin Font__15-15 {
+    font-size: 15px;
+    line-height: 15px;
+}
+
+@mixin Font__15-24 {
+    font-size: 15px;
+    line-height: 24px;
+}
+
+@mixin Font__16-16 {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+@mixin Font__16-24 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin Font__16-28 {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+@mixin Font__16-32 {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+@mixin Font__18-18 {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+@mixin Font__18-20 {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+@mixin Font__18-28 {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@mixin Font__20-20 {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+@mixin Font__20-24 {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+@mixin Font__20-28 {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@mixin Font__22-38 {
+    font-size: 22px;
+    line-height: 38px;
+}
+
+@mixin Font__24-24 {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+@mixin Font__24-28 {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@mixin Font__24-32 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin Font__24-40 {
+    font-size: 24px;
+    line-height: 40px;
+}
+
+@mixin Font__30-30 {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+@mixin Font__30-42 {
+    font-size: 30px;
+    line-height: 42px;
+}
+
+@mixin Font__32-24 {
+    font-size: 32px;
+    line-height: 24px;
+}
+
+@mixin Font__32-32 {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+@mixin Font__32-38 {
+    font-size: 32px;
+    line-height: 38px;
+}
+
+@mixin Font__32-48 {
+    font-size: 32px;
+    line-height: 48px;
+}
+
+@mixin Font__38-48 {
+    font-size: 38px;
+    line-height: 48px;
+}
+
+@mixin Font__38-52 {
+    font-size: 38px;
+    line-height: 52px;
+}
+
+@mixin Font__40-48 {
+    font-size: 40px;
+    line-height: 48px;
+}
+
+@mixin Font__40-56 {
+    font-size: 40px;
+    line-height: 56px;
+}
+
+@mixin Font__48-60 {
+    font-size: 48px;
+    line-height: 60px;
+}
+
+@mixin Font__64-72 {
+    font-size: 64px;
+    line-height: 72px;
+}
+
+@mixin Font__72-54 {
+    font-size: 72px;
+    line-height: 54px;
+}
+
+@mixin Font__72-80 {
+    font-size: 72px;
+    line-height: 80px;
+}
+
+strong {
+    font-weight: $font-semi-bold;
+}
+
+.Typeset {
+    font-family: $font-secondary;
+    text-align: left;
+    @include Font__16-32;
+
+    .ProductContent & {
+        @include Font__12-28;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 3rem 0;
+        @media (--sm) {
+            margin: 3rem 0;
+        }
+    }
+
+    img,
+    p,
+    ul,
+    ol,
+    blockquote {
+        margin-bottom: 1.5em;
+    }
+
+    em,
+    i {
+        font-style: italic;
+    }
+
+    strong,
+    b {
+        font-weight: 700;
+    }
+
+    mark {
+        padding: 0.25em;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    ul,
+    ol {
+        margin-left: 1em;
+
+        li {
+            padding-left: 0.25em;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0 0 1rem;
+        font-family: $font-primary;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2,h3,h4,h5,h6 {
+        font-size: 1.5em;
+    }
+
+    a {
+        position: relative;
+        color: inherit;
+        text-decoration: none;
+
+        &::after {
+            position: absolute;
+            bottom: -0.1em;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px solid;
+            content: "";
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+
+    tr {
+        border-top: 1px solid $color-border;
+    }
+
+    td {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        &:first-of-type {
+            font-family: $font-primary;
+            text-transform: uppercase;
+        }
+    }
+}
+
+::selection {
+    color: $color-white;
+    background: $color-primary;
+}
+
+b {
+    font-weight: $font-bold;
+}

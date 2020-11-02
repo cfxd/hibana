@@ -1,0 +1,87 @@
+{%- assign collection_products_count = collection.products_count -%}
+{%- assign description = collection.description -%}
+
+{%- if collection_products_count == 0 -%}
+  <section class="Section">
+    <div class="Section__inner PageContainerFluid">
+      <header class="Section__header">
+        <ul class="Section__columns">
+          <li class="Section__column Section__column--tight">
+            <h2 class="Section__title" data-appear>{{ 'collections.general.no_matches' | t }}</h2>
+
+            {%- if text != blank -%}
+              <p class="Section__text" data-appear>{{ text }}</p>
+            {%- endif -%}
+          </li>
+        </ul>
+
+        {%- if more_link != blank -%}
+          <div class="Section__more">
+            <a href="{{ more_link }}" class="Section__more-link" data-appear>{{ more_link_text }}</a>
+          </div>
+        {%- endif -%}
+      </header>
+
+      <div class="Section__body"></div>
+    </div>
+  </section>
+{%- else -%}
+  {% paginate collection.products by 16 %}
+    <section class="Section">
+      <header class="Section__header">
+        <ul class="Section__columns">
+          <li class="Section__column Section__column--tight">
+            {%- if description != blank -%}
+              <p class="Section__subtitle" data-appear>{{ description }}</p>
+            {%- endif -%}
+
+            <h1 class="Section__title" data-appear>{{ collection.title }}</h1>
+          </li>
+        </ul>
+
+        {%- if more_link != blank -%}
+          <div class="Section__more">
+            <a href="{{ more_link }}" class="Section__more-link" data-appear>{{ more_link_text }}</a>
+          </div>
+        {%- endif -%}
+      </header>
+
+      <div class="Section__inner PageContainerFluid">
+        <div class="Section__body">
+          <ul class="ProductList">
+            {%- for product in collection.products -%}
+              {%- assign standout = false -%}
+              {%- assign product = all_products[block.settings.product] -%}
+              {% capture featured %}
+                {% for tag in product.tags %}
+                  {% if tag contains 'Featured' %}
+                    ProductList__item--featured
+                  {% elsif tag contains 'Standout' %}
+                    {%- assign standout = true -%}
+                    ProductList__item--standout
+                  {% endif %}
+                {% endfor %}
+              {% endcapture %}
+
+              {%- if standout -%}
+                <li class="ProductList__item {{ featured }}" data-appear>
+                  {% include 'product-card-standout' with product:product %}
+                </li>
+              {%- else -%}
+                <li class="ProductList__item {{ featured }}" data-appear>
+                  {% include 'product-card' with product:product %}
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <footer class="Section__footer">
+            {%- include 'pagination' -%}
+          </footer>
+        {%- endif -%}
+      </div>
+    </section>
+  {% endpaginate %}
+{%- endif -%}

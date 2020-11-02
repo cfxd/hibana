@@ -1,0 +1,101 @@
+/*
+|--------------------------------------------------------------------------
+| HeaderNav
+|--------------------------------------------------------------------------
+| @namespace: HeaderNav
+|
+*/
+
+.HeaderNav {
+    @include Font__14-24;
+    @include bp(sm) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.HeaderNav--small {
+    display: block;
+    @include bp(sm) {
+        display: none;
+    }
+}
+
+.HeaderNav--large {
+    display: none;
+    @include bp(sm) {
+        display: block;
+    }
+}
+
+.HeaderNavList {
+    display: flex;
+    align-items: center;
+
+    .MobileMenu & {
+        flex-direction: column;
+    }
+}
+
+.HeaderNavList__item {
+
+    .Svg {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .HeaderNav--tools & {
+
+        .MobileMenu & {
+            @include Font__14-24;
+        }
+    }
+
+    .MobileMenu & {
+        text-transform: uppercase;
+        @include Font__32-32;
+    }
+}
+
+.HeaderNavList__item + .HeaderNavList__item {
+    margin-left: 2rem;
+    @include bp(sm) {
+        margin-left: 3rem;
+    }
+
+    .MobileMenu & {
+        margin-top: 2rem;
+        margin-left: 0;
+    }
+
+    .HeaderNav--tools & {
+
+        .MobileMenu & {
+            margin-top: 1.5rem;
+        }
+    }
+}
+
+.HeaderNav--tools {
+
+    .MobileMenu & {
+        margin-top: 3rem;
+    }
+}
+
+.HeaderNavList__link {
+    font-weight: $font-normal;
+
+    @include LinkUnderline;
+}
+
+.HeaderNavList__link--active {
+    @include LinkUnderlined;
+}
+
+.HeaderNavList__cartquantity {
+    margin-left: 0.25rem;
+    font-family: $font-secondary;
+}

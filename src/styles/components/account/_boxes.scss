@@ -1,0 +1,52 @@
+/*
+|--------------------------------------------------------------------------
+| Account - Boxes
+|--------------------------------------------------------------------------
+| @namespace: AccountBoxes
+|
+*/
+
+.AccountBoxes {
+    @include PageGrid();
+}
+
+.AccountBoxes__item {
+    grid-column: span 4;
+    @include bp(sm) {
+        grid-column: span 6;
+    }
+}
+
+.AccountBoxes__item--image {
+    display: none;
+    @include bp(sm) {
+        display: block;
+        grid-column: span 6;
+    }
+}
+
+.AccountBoxes__item--primary {
+    @include bp(lg) {
+        grid-column: 2 / span 4;
+    }
+}
+
+.AccountBoxes__item--secondary {
+    @include bp(lg) {
+        grid-column: 8 / span 4;
+    }
+}
+
+.AccountBox__header {
+    margin-bottom: 2rem;
+}
+
+.AccountBox__title {
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    @include Font__24-32;
+}
+
+.AccountBox {
+    margin-bottom: 5rem;
+}

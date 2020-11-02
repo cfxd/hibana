@@ -1,0 +1,27 @@
+<section class="Section">
+  <div class="Section__inner PageContainer">
+    <div class="Section__body">
+      <div class="AccountBoxes">
+        <div class="AccountBoxes__item AccountBoxes__item--primary">
+          <div class="AccountBox">
+            <header class="AccountBox__header">
+              <h2 class="AccountBox__title">{{ 'customer.orders.title' | t }}</h2>
+            </header>
+
+            {%- include 'account-order-history' -%}
+          </div>
+        </div>
+
+        <div class="AccountBoxes__item AccountBoxes__item--secondary">
+          <div class="AccountBox">
+            <header class="AccountBox__header">
+              <h2 class="AccountBox__title">{{ 'customer.addresses.title' | t }}</h2>
+            </header>
+
+            {%- include 'account-default-address' -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

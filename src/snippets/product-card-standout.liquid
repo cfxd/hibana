@@ -1,0 +1,47 @@
+{%- assign featured_image = product.featured_image -%}
+{%- assign secondary_image = false -%}
+{%- assign available = false -%}
+{%- if product.images[1].src != blank -%}
+    {%- assign secondary_image = true -%}
+    {%- assign secondary_image_src = product.images[1].src -%}
+{%- endif -%}
+{%- capture product_status -%}
+    {%- if product.available == false -%}
+        Sold
+    {%- else -%}
+        {{ product.price | money }}
+    {%- endif -%}
+{%- endcapture -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<article class="ProductCardStandout {% if secondary_image %} ProductCardStandout--has-secondary{% endif %}">
+    <div class="ProductCardStandout__inner">
+        <div class="ProductCardStandout__upper">
+            {%- if secondary_image -%}
+                <div class="ProductCardStandoutImageFrame ProductCardStandoutImageFrame--has-secondary">
+                    <div class="ProductCardStandoutImage ProductCardStandoutImage--primary">
+                        {% include 'responsive-image' with image: product.featured_image, cover:true %}
+                    </div>
+                    <div class="ProductCardStandoutImage ProductCardStandoutImage--secondary">
+                        {% include 'responsive-image' with image: secondary_image_src, cover:true %}
+                    </div>
+                </div>
+            {%- else -%}
+                <div class="ProductCardStandoutImageFrame">
+                    <div class="ProductCardStandoutImage ProductCardStandoutImage--primary">
+                        {% include 'responsive-image' with image: product.featured_image, cover:true %}
+                    </div>
+                </div>
+            {%- endif -%}
+        </div>
+        <div class="ProductCardStandout__lower">
+            <span class="ProductCardStandout__label">
+                New In
+            </span>
+            <h3 class="ProductCardStandout__title">{{ product.title }}</h3>
+            <span class="ProductCardStandout__status">
+                {{ product_status }}
+            </span>
+        </div>
+    </div>
+    <a class="ProductCardStandout__fauxlink" href="{{ product.url }}" title="{{ product.title }}"></a>
+</article>

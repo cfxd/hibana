@@ -1,0 +1,93 @@
+/*
+|--------------------------------------------------------------------------
+| Product - List
+|--------------------------------------------------------------------------
+| @namespace: ProductList
+|
+*/
+
+.ProductList {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-flow: row dense;
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.5rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include bp(sm) {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+
+.ProductList__item {
+    grid-column: span 2;
+    @include bp(sm) {
+        grid-column: span 4;
+    }
+
+    @include bp(md) {
+        grid-column: span 3;
+    }
+
+    .CartProducts & {
+        @include bp(md) {
+            grid-column: span 6;
+        }
+    }
+}
+
+.ProductList__item--featured {
+    grid-column: span 4;
+
+    @include bp(md) {
+        grid-row: span 2;
+        grid-column: span 6;
+    }
+}
+
+.ProductList__item--standout {
+    grid-column: span 4;
+    @include bp(sm) {
+        grid-column: span 12;
+    }
+}
+
+.ProductListCarousel {
+
+    // .flickity-viewport {
+    //     overflow: visible;
+    // }
+  
+    &:after {
+        display: none; 
+        content: 'flickity';
+    }
+
+    @include bp(sm) {
+        display: grid;
+        grid-auto-flow: row;
+        grid-row-gap: 0.5rem;
+        grid-column-gap: 0.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(12, 1fr);
+
+        &:after {
+            content: '';
+        }
+    }
+}
+
+.ProductListCarousel__item {
+    width: calc(100% - 2rem);
+    margin-right: 0.75rem;
+
+    @include bp(sm) {
+        grid-column: span 4;
+        width: auto;
+        margin-right: 0;
+    }
+
+    @include bp(md) {
+        grid-column: span 3;
+    }
+}

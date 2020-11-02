@@ -1,0 +1,44 @@
+/*
+|--------------------------------------------------------------------------
+| Breadcrumbs
+|--------------------------------------------------------------------------
+| @namespace: Breadcrumbs
+|
+*/
+
+.Breadcrumbs {
+    text-align: center;
+    @include Font__12-12;
+    @include bp(sm) {
+        text-align: left;
+    }
+}
+
+.Breadcrumbs__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.Breadcrumbs__item {
+    display: inline-block;
+}
+
+.Breadcrumbs__item:not(:last-child):after {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.25em;
+    content: "/";
+}
+
+.Breadcrumbs__link {
+    @include LinkUnderline();
+}
+
+.Breadcrumbs__link[aria-current="page"] {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+}

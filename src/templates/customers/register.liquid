@@ -1,0 +1,15 @@
+{%- assign image = section.settings.image -%}
+<section class="Section">
+    <div class="Section__inner PageContainerFluidWide">
+        <div class="Section__body">
+            <div class="AccountBoxes">
+                <div class="AccountBoxes__item AccountBoxes__item--image">
+                    {% include 'responsive-image' with image: image %}
+                </div>
+                <div class="AccountBoxes__item AccountBoxes__item--secondary">
+                    {%- include 'account-register' -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

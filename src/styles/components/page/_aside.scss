@@ -1,0 +1,66 @@
+/*
+|--------------------------------------------------------------------------
+| Page Content - Aside (Sidebar)
+|--------------------------------------------------------------------------
+| @namespace: PageContentAside
+|
+*/
+
+.PageContentAside {
+    position: sticky;
+    top: 2rem;
+    text-transform: uppercase;
+    transition: top $transition;
+
+    .header--pinned & {
+        top: $header-height-large;
+    }
+}
+
+.PageContentAside__list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1rem;
+    overflow-x: scroll;
+    scroll-snap-type: inline;
+    scroll-snap-align: center;
+    @include bp(sm) {
+        display: block;
+        padding-bottom: 0;
+        overflow: initial;
+    }
+}
+
+.PageContentAside__listitem {
+    padding: 0 1rem;
+    white-space: nowrap;
+    @include bp(sm) {
+        padding: 0;
+    }
+}
+
+.PageContentAside__link {
+    display: block;
+    padding-bottom: 0.25rem;
+    font-weight: $font-normal;
+    @include LinkUnderline;
+    @include Font__16-16;
+    
+    &::after {
+        transform-origin: left;
+    }
+
+    .PageContentAside__listitem--active & {
+
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+}
+
+.PageContentAside__listitem + .PageContentAside__listitem {
+    @include bp(sm) {
+        margin-top: 1.5rem;
+    }
+}

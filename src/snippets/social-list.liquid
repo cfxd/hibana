@@ -1,0 +1,20 @@
+{%- assign social_accounts = 'Facebook, Instagram, Pinterest, Vimeo, LinkedIn, YouTube' | split: ', ' -%}
+<div class="SocialList">
+    <ul class="SocialList__items">
+        {%- for social in social_accounts -%}
+            {%- assign social_handle = social | handleize -%}
+            {%- capture social_link -%}social_{{ social_handle }}_link
+            {%- endcapture -%}
+            {%- capture social_text -%}general.social.follow_on.{{ social_handle }}
+            {%- endcapture -%}
+            {%- capture social_icon -%}kk-social-{{ social_handle }}{%- endcapture -%}
+            {%- if settings[social_link] != blank -%}
+                <li class="SocialList__item">
+                    <a class="SocialList__link" href="{{ settings[social_link] }}" title="{{ social_text | t: social:social }}" target="_blank" rel="noopener">
+                        {%- include social_icon -%}
+                    </a>
+                </li>
+            {%- endif -%}
+        {%- endfor -%}
+    </ul>
+</div>

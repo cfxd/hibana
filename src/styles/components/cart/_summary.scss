@@ -1,0 +1,58 @@
+
+/*
+|--------------------------------------------------------------------------
+| Cart - Summary
+|--------------------------------------------------------------------------
+| @namespace: CartFormSummary
+|
+*/
+
+.CartFormSummary__header {
+    margin-bottom: 2rem;
+}
+
+.CartFormSummary__title {
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    @include Font__24-32;
+}
+
+.CartFormSummary {
+    grid-column-start: 1;
+    grid-column-end: 13;
+    @include bp(md) {
+        grid-column-start: 8;
+        grid-column-end: 12;
+    }
+}
+
+.CartSummary {
+    font-family: $font-secondary;
+    @include Font__12-24;
+
+    @include bp(sm) {
+        @include Font__14-24;
+    }
+}
+
+.CartSummary__text + .CartSummary__text {
+    margin-top: 1rem;
+}
+
+.CartSummary__row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    color: $color-black;
+    font-weight: $font-bold;
+    border-top: 2px solid $color-border;
+    @include Font__14-24;
+    @include bp(sm) {
+        @include Font__18-20;
+    }
+}
+
+.CartSummary__action {
+    margin-top: 2rem;
+}

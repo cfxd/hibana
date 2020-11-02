@@ -1,0 +1,26 @@
+/*
+|--------------------------------------------------------------------------
+| HeaderTools
+|--------------------------------------------------------------------------
+| @namespace: HeaderTools
+|
+*/
+
+.HeaderTools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HeaderToolsList {
+    display: flex;
+    align-items: center;
+}
+
+.HeaderToolsList__item + .HeaderToolsList__item {
+    margin-left: 1rem;
+}
+
+.HeaderToolsList__link {
+    @include LinkUnderline;
+}

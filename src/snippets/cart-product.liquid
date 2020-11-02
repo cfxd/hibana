@@ -1,0 +1,37 @@
+{%- assign featured_image = item.image -%}
+{%- assign current_variant = item.selected_or_first_available_variant -%}
+
+<article class="ProductCard">
+  {{ item.description }}
+
+  <div class="ProductCard__inner">
+    <div class="ProductCard__upper">
+      <div class="ProductCardImageFrame">
+        <div class="ProductCardImage ProductCardImage--primary">
+          {% include 'responsive-image' with image: featured_image, cover:true %}
+        </div>
+      </div>
+    </div>
+
+    <div class="ProductCard__lower">
+      <h3 class="ProductCard__title">{{ item.title }} &mdash;
+        <span class="ProductCard__status">
+          {%- if item.compare_at_price > item.price -%}
+            <span class="CartProduct__pricenew">{{ item.price | money }}</span>
+            <span class="CartProduct__pricecompare" data-compare-price>
+              {%- if item.compare_at_price > item.price -%}
+                <span>{{ item.compare_at_price | money }}</span>
+              {%- endif -%}
+            </span>
+          {%- else -%}
+            <span class="CartProduct__pricenormal">{{ item.price | money }}</span>
+          {%- endif -%}
+        </span>
+      </h3>
+
+      <a class="CartProduct__removelink" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+        {{ 'cart.general.remove' | t }}
+      </a>
+    </div>
+  </div>
+</article>

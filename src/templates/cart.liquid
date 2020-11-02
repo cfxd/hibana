@@ -1,0 +1,20 @@
+<section class="Section">
+  <div class="Section__inner PageContainerFluid">
+    <div class="Section__body">
+      {%- if cart.item_count > 0 -%}
+        <form action="/cart" class="CartForm" method="post" novalidate>
+          {%- include 'cart-products' -%}
+          {%- include 'cart-summary' -%}
+        </form>
+      {%- else -%}
+        <div class="CartEmpty">
+          <p class="CartEmpty__text">{{ 'cart.empty.text' | t }}</p>
+
+          <a class="button button--primary" href="/collections/all">
+            {{ 'cart.empty.button_text' | t }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+{
+  "name": "hibana",
+  "version": "1.0.0",
+  "private": true,
+  "author": "https://www.charle.co.uk/",
+  "description": "Bespoke theme for Hibana",
+  "keywords": [
+    "shopify",
+    "theme"
+  ],
+  "bugs": "https://github.com/Charle-Team/hibana/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Charle-Team/hibana"
+  },
+  "devDependencies": {
+    "@shopify/slate-tools": "1.0.0-beta.17",
+    "babel-preset-shopify": "^16.2.0",
+    "copy-webpack-plugin": "^5.0.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-shopify": "^19.0.0",
+    "stylelint": "^13.2.0",
+    "stylelint-config-prettier": "^3.0.4",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-shopify": "^5.0.0",
+    "stylelint-order": "^4.0.0"
+  },
+  "dependencies": {
+    "@shopify/theme-a11y": "^2.0.1",
+    "@shopify/theme-addresses": "^3.0.0",
+    "@shopify/theme-cart": "^1.0.0-alpha.7",
+    "@shopify/theme-currency": "^1.0.0-alpha.7",
+    "@shopify/theme-images": "^1.0.0-alpha.7",
+    "@shopify/theme-product": "^1.0.0",
+    "@shopify/theme-product-form": "^3.0.0",
+    "@shopify/theme-rte": "^1.0.0-alpha.7",
+    "@shopify/theme-sections": "^1.1.0",
+    "@shopify/theme-variants": "^1.0.0-alpha.8",
+    "@ungap/url-search-params": "^0.2.2",
+    "flickity": "^2.2.1",
+    "flickity-fade": "^1.0.0",
+    "flickity-imagesloaded": "^2.0.0",
+    "gsap": "././gsap-bonus.tgz",
+    "headroom.js": "^0.11.0",
+    "js-cookie": "^2.2.1",
+    "lazysizes": "^4.1.1",
+    "three": "^0.121.1",
+    "viewprt": "^4.0.0"
+  },
+  "scripts": {
+    "start": "slate-tools start",
+    "watch": "slate-tools start --skipFirstDeploy",
+    "build": "slate-tools build",
+    "deploy": "slate-tools build && slate-tools deploy",
+    "zip": "slate-tools build && slate-tools zip",
+    "lint": "slate-tools lint",
+    "format": "slate-tools format",
+    "stylelint": "stylelint --fix 'src/**/*.scss'",
+    "eslint": "eslint --fix src/scripts/**/*.js"
+  }
+}

@@ -1,0 +1,43 @@
+.Image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.Image__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    .Image--contain & {
+        object-fit: contain;
+    }
+}
+
+.Image--cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+img:not([src]) {
+    visibility: hidden;
+}
+
+/* fade image in after load */
+
+.lazyload,
+.lazyloading {
+    opacity: 0;
+}
+
+.lazyloaded {
+    opacity: 1;
+    transition: opacity 300ms;
+}

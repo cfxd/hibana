@@ -1,0 +1,30 @@
+/*
+|--------------------------------------------------------------------------
+| Page Content - Main / Body
+|--------------------------------------------------------------------------
+| @namespace: PageContentMain
+|
+*/
+
+.PageContentMain__block + .PageContentMain__block {
+    margin-top: 5rem;
+}
+
+.PageContentMain__header {
+    margin-bottom: 2rem;
+    @include bp(sm) {
+        margin-bottom: 3rem;
+    }
+}
+
+.PageContentMain__title {
+    font-family: $font-primary;
+    text-transform: uppercase;
+    @include Font__32-38;
+}
+
+.PageContentMain__text {
+    max-width: 29rem;
+    margin-top: 2rem;
+    @include Font__15-24;
+}

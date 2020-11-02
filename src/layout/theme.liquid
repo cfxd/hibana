@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8" />
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} | {{ 'general.meta.tags' | t: tags: meta_tags }}
+    {%- endif -%}
+
+    {%- if current_page != 1 -%}
+      | {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Charle" />
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}" />
+  {%- endif -%}
+
+  {%- if template contains 'collection' and current_tags -%}
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+  {%- else -%}
+    <link rel="canonical" href="{{ canonical_url }}" />
+  {%- endif -%}
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    };
+  </script>
+
+  {%- include 'style-tags', layout: 'theme' -%}
+  {%- include 'script-tags', layout: 'theme' -%}
+
+  {%- if product -%}
+    <script>
+      window.YETT_BLACKLIST = [
+        /bugsnag\.min\.js/,
+      ]
+    </script>
+
+    <script src="https://unpkg.com/yett"></script>
+  {%- endif -%}
+
+  {{ content_for_header }}
+</head>
+
+<body class="lyt-Site template-{{ template.name | handle }}" id="{{ page_title | handle }}">
+  <a class="util-ScreenReaderOnly" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {%- section 'header' -%}
+
+  <main class="lyt-Main" id="MainContent" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {%- section 'footer' -%}
+</body>
+</html>

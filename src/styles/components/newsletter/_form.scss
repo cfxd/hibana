@@ -1,0 +1,52 @@
+/*
+|--------------------------------------------------------------------------
+| Newsletter - Form
+|--------------------------------------------------------------------------
+| @namespace: NewsletterForm
+|
+*/
+
+.NewsletterForm {
+    max-width: 40rem;
+    margin: auto;
+}
+
+.NewsletterForm__input-wrap {
+    position: relative;
+}
+
+.NewsletterForm__input-text {
+    height: 56px;
+    background-color: $color-white;
+}
+
+.NewsletterForm__button {
+    width: 100%;
+    height: 56px;
+    margin-top: 0.5rem;
+    padding: 1rem 3rem;
+    color: $color-white;
+    font-weight: $font-bold;
+    line-height: 0;
+    text-transform: uppercase;
+    background-color: $color-primary;
+    border-radius: 0.25rem;
+    @include bp(sm) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+        margin-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.Newsletter__error {
+    padding: 0.5rem;
+    font-weight: $font-bold;
+    text-align: center;
+    border: 2px solid;
+}

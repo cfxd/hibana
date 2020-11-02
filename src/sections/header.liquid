@@ -1,0 +1,35 @@
+<header class="Header" data-module="header">
+  <div class="Header__inner PageContainerFluid">
+    <div class="Header__body">
+      <p>Header</p>
+
+      <nav class="">
+        <ul class="">
+          {%- for link in linklists[section.settings.menu].links -%}
+            <li class="">
+              <a class=" {% if link.active %}HeaderNavList__link--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}

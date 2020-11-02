@@ -1,0 +1,8 @@
+{
+  "presets": [
+    "shopify/web"
+  ],
+  "plugins": [
+    "transform-async-to-generator"
+  ]
+}

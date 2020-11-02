@@ -1,0 +1,35 @@
+<div class="Pagination">
+  <nav class="PaginationNav">
+    {% if paginate.previous.is_link %}
+      <a class="PaginationNav__prev-next PaginationNav__prev-next--previous" href="{{ paginate.previous.url }}">{% include 'kk-icon-chevron-left' %}</a>
+    {% else %}
+      <span class="PaginationNav__prev-next PaginationNav__prev-next--inactive PaginationNav__prev-next--previous">{% include 'kk-icon-chevron-left' %}</span>
+    {% endif %}
+
+    <ul class="PaginationNavList">
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <li class="PaginationNavList__item">
+            <a class="PaginationNavList__link" href="{{ part.url }}">{{ part.title }}</a>
+          </li>
+        {% else %}
+          {% if part.title == paginate.current_page %}
+            <li class="PaginationNavList__item">
+              <a class="PaginationNavList__link PaginationNavList__link--active" href="{{ part.url }}" disabled aria-current="page">{{ part.title }}</a>
+            </li>
+          {% else %}
+            <li class="PaginationNavList__item">
+              <span>{{ part.title }}</span>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if paginate.next.is_link %}
+      <a class="PaginationNav__prev-next PaginationNav__prev-next--next" href="{{ paginate.next.url }}">{% include 'kk-icon-chevron-right' %}</a>
+    {% else %}
+      <span class="PaginationNav__prev-next PaginationNav__prev-next--inactive PaginationNav__prev-next--next">{% include 'kk-icon-chevron-right' %}</span>
+    {% endif %}
+  </nav>
+</div>

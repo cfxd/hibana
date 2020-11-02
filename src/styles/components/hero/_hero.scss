@@ -1,0 +1,24 @@
+/*
+|--------------------------------------------------------------------------
+| Hero
+|--------------------------------------------------------------------------
+| @namespace: Hero
+|
+*/
+
+.Hero {
+
+    & > .flickity-viewport {
+        @include bp(md) {
+            overflow: visible;
+        }
+    }
+}
+
+.Hero__cell {
+    position: relative;
+    width: 100%;
+    height: 25rem;
+    overflow: hidden;
+    background: $color-black;
+}

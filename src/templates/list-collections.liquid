@@ -1,0 +1,17 @@
+<section class="Section">
+  <div class="Section__inner PageContainerFluid">
+    <header class="Section__header">
+      <h2 class="Section__title">{{ page_title }}</h2>
+    </header>
+
+    <div class="Section__body">
+      <ul class="CollectionList">
+        {%- for collection in collections -%}
+          <li class="CollectionList__item">
+            {%- include 'collection-card' with collection: collection -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>

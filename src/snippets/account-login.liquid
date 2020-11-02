@@ -1,0 +1,96 @@
+<div class="AccountBox" data-login-form>
+    <header class="AccountBox__header">
+        <h2 class="AccountBox__title">{{ 'customer.account.login_title' | t }}</h2>
+    </header>
+    <div class="pg-Validation pg-Validation-success UtilityHide" data-reset-success>
+        {{ 'customer.recover_password.success' | t }}
+    </div>
+    {%- form 'customer_login', class: 'Form' -%}
+        {%- if form.errors -%}
+            <div class="Validation Validation--error">
+                {%- for field in form.errors -%}
+                    <p class="Validation__text">
+                        {{ form.errors.messages[field] }}
+                    </p>
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+        <ul class="Form__columns Form__columns--tight">
+            <li class="Form__column Form__column--span">
+                <div class="InputWrap">
+                    <label class="InputLabel" for="CustomerEmail">
+                        {{ 'customer.login.email' | t }}
+                    </label>
+                    <input class="Input Input--text {% if form.errors contains 'email' %} Input--error{% endif %}" type="email" name="customer[email]" id="CustomerEmail" placeholder="{{ 'customer.login.email' | t }}" spellcheck="false" autocomplete="off" autocapitalize="off"/>
+                </div>
+            </li>
+            <li class="Form__column Form__column--span">
+                <div class="InputWrap">
+                    <label class="InputLabel" for="CustomerPassword">
+                        {{ 'customer.login.password' | t }}
+                    </label>
+                    <input class="Input Input--text {% if form.errors contains 'password' %} Input--error{% endif %}" type="password" name="customer[password]" id="CustomerPassword" placeholder="{{ 'customer.login.password' | t }}"/>
+                </div>
+            </li>
+        </ul>
+        <div class="Form__footer">
+            <ul class="Form__columns Form__columns--tight">
+                <li class="Form__column Form__column--span">
+                    <button class="button button--block button--primary" type="Submit" value="{{ 'customer.login.sign_in' | t }}">
+                        {{ 'customer.account.login' | t }}
+                    </button>
+                </li>
+                <li class="Form__column Form__column--span">
+                    {%- if form.password_needed -%}
+                        <a class="Form__link" data-recover-toggle href="#recover">
+                            {{ 'customer.login.forgot_password' | t }}
+                        </a>
+                    {%- endif -%}
+                </li>
+            </ul>
+        </div>
+    {%- endform -%}
+</div>
+<div class="AccountBox UtilityHide" data-recover-form>
+    <header class="AccountBox__header">
+        <h2 class="AccountBox__title">{{ 'customer.recover_password.title' | t }}</h2>
+    </header>
+    {%- form 'recover_customer_password', class: 'Form' -%}
+        {%- if form.errors -%}
+            <div class="Validation Validation--error">
+                {%- for field in form.errors -%}
+                    <p class="Validation__text">
+                        {{ form.errors.messages[field] }}
+                    </p>
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+        {%- if form.posted_successfully? -%}
+            <span class="UtilityHide reset-password-success" data-form-state></span>
+        {%- endif -%}
+        <ul class="Form__columns Form__columns--tight">
+            <li class="Form__column Form__column--span">
+                <div class="InputWrap">
+                    <label class="InputLabel" for="CustomerEmail">
+                        {{ 'customer.login.email' | t }}
+                    </label>
+                    <input class="Input Input--text" type="email" name="email" id="RecoverEmail" placeholder="{{ 'customer.recover_password.email' | t }}" spellcheck="false" autocomplete="off" autocapitalize="off"/>
+                </div>
+            </li>
+        </ul>
+        <div class="Form__footer">
+            <ul class="Form__columns Form__columns--tight">
+                <li class="Form__column Form__column--span">
+                    <button class="button button--block button--primary" type="Submit" value="{{ 'customer.recover_password.submit' | t }}">
+                        {{ 'customer.recover_password.submit' | t }}
+                    </button>
+                </li>
+                <li class="Form__column Form__column--span">
+                    <a class="Form__link" data-recover-toggle href="#">
+                        {{ 'customer.recover_password.cancel' | t }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {%- endform -%}
+</div>

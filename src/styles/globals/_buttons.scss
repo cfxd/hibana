@@ -1,0 +1,107 @@
+button {
+    font-family: inherit;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.button {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 0.75rem;
+    overflow: hidden;
+    color: $color-black;
+    font-weight: $font-medium;
+    font-size: 15px;
+    font-family: $font-primary;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: $color-white;
+    border: 1px solid;
+    transition: color $transition;
+    -webkit-appearance: none;
+    appearance: none;
+    @include bp(sm) {
+        padding: 1.25rem;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        @include Hover() {
+            cursor: not-allowed;
+        }
+    }
+
+    .Svg {
+        margin-right: 1rem;
+    }
+
+    &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: $color-white;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform $transition, background-color $transition;
+        content: '';
+    }
+    @include Hover() {
+        color: $color-white;
+        cursor: pointer;
+
+        &:after {
+            background-color: $color-black;
+            transform: scaleX(1);
+        }
+    }
+}
+
+.button--icon {
+    padding: 0.75rem 1rem;
+}
+
+.button--primary {
+    color: $color-white;
+    background-color: $color-primary;
+    border-color: inherit;
+
+    &:after {
+        background-color: $color-secondary;
+    }
+    @include Hover() {
+
+        &:after {
+            background-color: $color-secondary;
+        }
+    }
+}
+
+.button--white {
+    color: $color-text;
+    background-color: $color-white;
+    border-color: inherit;
+    @include Hover() {
+        border-color: $color-text;
+    }
+}
+
+.button--block {
+    width: 100%;
+}
+
+.button--blocksmall {
+    width: 100%;
+    @include bp(sm) {
+        width: auto;
+    }
+}

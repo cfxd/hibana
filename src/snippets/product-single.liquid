@@ -1,0 +1,122 @@
+{%- assign title = product.title -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign featured_image = product.featured_image -%}
+{%- assign available = false -%}
+{%- capture product_status -%}
+    {%- if product.available == false -%}
+        Sold
+    {%- else -%}
+        {{ product.price | money }}
+    {%- endif -%}
+{%- endcapture -%}
+<div class="ProductSingle">
+    <div class="ProductSingle__columns">
+        <div class="ProductSingle__column ProductSingle__column--primary" data-appear>
+            <a class="ProductSingle__imagelink" href="{{ product.url }}">
+                {% include 'responsive-image' with image: product.featured_image %}
+            </a>
+        </div>
+        <div class="ProductSingle__column ProductSingle__column--secondary">
+            {% if featured %}
+                <div class="ProductContent">
+                    <header class="ProductContent__header">
+                        {%- if title != blank -%}
+                            <h2 class="ProductContent__title" data-appear>
+                                <a href="{{ product.url }}">{{ title }}</a>
+                            </h2>
+                        {%- endif -%}
+                        <div class="ProductContent__meta">
+                            <ul class="ProductContentMetaList">
+                                {%- if current_variant.sku != blank -%}
+                                    <li class="ProductContentMetaList__item" data-appear>
+                                        {{ current_variant.sku }}
+                                    </li>
+                                {%- endif -%}
+                                <li class="ProductContentMetaList__item" data-appear>
+                                    {% include 'product-year' %}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ProductContent__price" data-appear>
+                            {{ product_status }}
+                        </div>
+                        <div class="ProductContent__icons" data-appear>
+                            {% include 'product-icons' %}
+                        </div>
+                    </header>
+                    <div class="ProductContent__body">
+                        <div class="ProductContent__form">
+                            <form action="/cart/add" class="Form" enctype="multipart/form-data" method="post">
+                                <div class="Form__body">
+                                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"/>
+                                    <input name="quantity" type="hidden" value="1"/>
+                                </div>
+                                <div class="Form__footer">
+                                    <button class="button button--primary button--block" {% unless current_variant.available %} disabled="disabled" {% endunless %} type="submit" data-appear>
+                                        {% if current_variant.available %}
+                                            {{ 'products.product.add_to_cart' | t }}
+                                        {% else %}
+                                            {{ 'products.product.sold_out' | t }}
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="ProductContent__action">
+                            <a class="ProductContent__actionlink" href="{{ product.url }}" data-appear>View Product details</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="ProductContent">
+                    <header class="ProductContent__header">
+                        {%- if title != blank -%}
+                            <h2 class="ProductContent__title" data-appear>
+                                {{ title }}
+                            </h2>
+                        {%- endif -%}
+                        <div class="ProductContent__meta">
+                            <ul class="ProductContentMetaList">
+                                {%- if current_variant.sku != blank -%}
+                                    <li class="ProductContentMetaList__item" data-appear>
+                                        {{ current_variant.sku }}
+                                    </li>
+                                {%- endif -%}
+                                <li class="ProductContentMetaList__item" data-appear>
+                                    {% include 'product-year' %}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ProductContent__price" data-appear>
+                            {{ product_status }}
+                        </div>
+                        <div class="ProductContent__icons" data-appear>
+                            {% include 'product-icons' %}
+                        </div>
+                    </header>
+                    <div class="ProductContent__body">
+                        <div class="ProductContent__form">
+                            <form action="/cart/add" class="Form" enctype="multipart/form-data" method="post">
+                                <div class="Form__body">
+                                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"/>
+                                    <input name="quantity" type="hidden" value="1"/>
+                                </div>
+                                <div class="Form__footer">
+                                    <button class="button button--primary button--block" {% unless current_variant.available %} disabled="disabled" {% endunless %} type="submit" data-appear>
+                                        {% if current_variant.available %}
+                                            {{ 'products.product.add_to_cart' | t }}
+                                        {% else %}
+                                            {{ 'products.product.sold_out' | t }}
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        {% include 'product-tabs' %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

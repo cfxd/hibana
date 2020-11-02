@@ -1,0 +1,24 @@
+/*
+|--------------------------------------------------------------------------
+| Validation
+|--------------------------------------------------------------------------
+| @namespace: Validation
+|
+*/
+
+.Validation {
+    display: block;
+    margin: 1rem 0;
+    font-family: $font-secondary;
+    font-style: italic;
+    text-align: center;
+    border: 2px solid;
+}
+
+.Validation--error {
+    border-color: $color-validation-error;
+}
+
+.Validation__text {
+    margin: 0.5rem 0;
+}

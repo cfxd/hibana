@@ -1,0 +1,74 @@
+{%- assign featured_image = product.featured_image -%}
+{%- assign secondary_image = false -%}
+{%- assign available = false -%}
+{%- if product.images[1].src != blank -%}
+    {%- assign secondary_image = true -%}
+    {%- assign secondary_image_src = product.images[1] -%}
+{%- endif -%}
+{%- capture product_status -%}
+    {%- if product.available == false -%}
+        Sold
+    {%- else -%}
+        {{ product.price | money }}
+    {%- endif -%}
+{%- endcapture -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<article class="ProductCard {% if secondary_image %} ProductCard--has-secondary{% endif %}">
+    <div class="ProductCard__inner">
+        <div class="ProductCard__upper">
+            {%- if secondary_image -%}
+                <div data-module="distortion-hover" class="ProductCardImageFrameDistortion" data-displacement="{{ 'distortion.png' | asset_url }}" data-intensity="-0.5" data-speedin="2" data-speedout="2" data-speedout="2" data-hoverelement=".ProductCard">
+                    <img class="ProductCardImageFrameDistortion__image ProductCardImageFrameDistortion__image--primary" src="{{ featured_image | img_url: '1000x1000', crop: 'center' }}" alt="Image"/>
+                    <img class="ProductCardImageFrameDistortion__image ProductCardImageFrameDistortion__image--secondary" src="{{ secondary_image_src | img_url: '1000x1000', crop: 'center' }}" alt="Image"/>
+                </div>
+            {%- else -%}
+                <div class="ProductCardImageFrame">
+                    <div class="ProductCardImage ProductCardImage--primary">
+                        {% include 'responsive-image' with image: product.featured_image, cover:true %}
+                    </div>
+                </div>
+            {%- endif -%}
+            <div class="ProductCardOverlay">
+                <header class="ProductCardOverlay__header">
+                    <h3 class="ProductCardOverlay__title">
+                        {{ product.title }}
+                    </h3>
+                    <div class="ProductCardOverlay__meta">
+                        {%- if current_variant.sku != blank -%}
+                            <span class="ProductCardOverlay__data">
+                                {{ current_variant.sku }}
+                            </span>
+                        {%- endif -%}
+                        <span class="ProductCardOverlay__data">
+                            {% include 'product-year' %}
+                        </span>
+                    </div>
+                </header>
+                {%- if product.description != blank -%}
+                    <div class="ProductCardOverlay__content">
+                        <div class="ProductCardOverlay__icons">
+                            {% include 'product-icons' %}
+                        </div>
+                        <p class="ProductCardOverlay__text">
+                            {{ product.description | strip_html | truncatewords: 20 }}
+                        </p>
+                    </div>
+                {%- endif -%}
+                <div class="ProductCardOverlay__action">
+                    <span class="ProductCardOverlay__link">
+                        View product in more detail
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="ProductCard__lower">
+            <h3 class="ProductCard__title">{{ product.title }}
+                &mdash;
+                <span class="ProductCard__status">
+                    {{ product_status }}
+                </span>
+            </h3>
+        </div>
+    </div>
+    <a class="ProductCard__fauxlink" href="{{ product.url }}" title="{{ product.title }}"></a>
+</article>

@@ -1,0 +1,49 @@
+/*
+|--------------------------------------------------------------------------
+| TrustList
+|--------------------------------------------------------------------------
+| @namespace: TrustList
+|
+*/
+
+.TrustList {
+    overflow: hidden;
+}
+
+.TrustList__items {
+    @include PageGrid();
+}
+
+.TrustList__item {
+    grid-column: span 3;
+}
+
+.TrustListCard {
+    display: flex;
+    justify-content: center;
+}
+
+.TrustListCard__icon {
+    margin-right: 1rem;
+}
+
+.TrustListCard__image {
+    display: block;
+    width: auto;
+    height: 2.5rem;
+}
+
+.TrustListCard__title {
+    margin-bottom: 0.5rem;
+    font-weight: $font-bold;
+    @include Font__15-15;
+}
+
+.TrustListCard__content {
+    @include Font__15-15;
+}
+
+.TrustListCard__link {
+    @include LinkUnderline;
+    color: $color-secondary;
+}

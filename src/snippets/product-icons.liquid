@@ -1,0 +1,22 @@
+<div class="ProductIcons">
+  <ul class="ProductIconsList">
+    {%- for tag in product.tags -%}
+      {% if tag contains 'Product Feature: Card' %}
+        <li class="ProductIconsList__item" data-appear>
+          {%- include 'kk-product-card' -%}
+          <span class="ProductIconsList__text">Cards</span>
+        </li>
+      {% elsif tag contains 'Product Feature: Box' %}
+        <li class="ProductIconsList__item" data-appear>
+          {%- include 'kk-product-box' -%}
+          <span class="ProductIconsList__text">Box</span>
+        </li>
+      {% elsif tag contains 'Product Feature: Papers' %}
+        <li class="ProductIconsList__item" data-appear>
+          {%- include 'kk-product-papers' -%}
+          <span class="ProductIconsList__text">Papers</span>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
