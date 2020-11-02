@@ -1,0 +1,33 @@
+<div class="CartFormSummary">
+    <header class="CartFormSummary__header">
+        <h3 class="CartFormSummary__title">{{ 'cart.general.cart_summary_title' | t }}</h3>
+    </header>
+    <div class="CartSummary">
+        <p class="CartSummary__text">
+            <strong>{{ 'cart.general.delivery_title' | t }}</strong>
+            {{ 'cart.general.delivery_message' | t }}</p>
+        <p class="CartSummary__text">
+            <strong>{{ 'cart.general.delivery_title_estimated' | t }}</strong>
+            {{ 'cart.general.delivery_message_estimated' | t }}</p>
+        <p class="CartSummary__text">
+            <strong>{{ 'cart.general.discount_title' | t }}</strong>
+            {{ 'cart.general.discount_message' | t }}</p>
+        <div class="CartSummary__row">
+            <p class="CartSummary__label">{{ 'cart.general.subtotal' | t }}</p>
+            <p class="CartSummary__value">{{ cart.total_price | money }}</p>
+        </div>
+        {%- if cart.total_discounts > 0 -%}
+            <div class="CartSummary__row">
+                <p class="CartSummary__label">
+                    {{ 'cart.general.savings' | t }}
+                </p>
+                <p class="CartSummary__value">{{ cart.total_discounts | money }}</p>
+            </div>
+        {%- endif -%}
+        <div class="CartSummary__action">
+            <button class="button button--block button--primary" name="checkout" type="submit">
+                {{ 'cart.general.checkout' | t }}
+            </button>
+        </div>
+    </div>
+</div>

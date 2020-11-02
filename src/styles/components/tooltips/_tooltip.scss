@@ -1,0 +1,46 @@
+/* Tooltip container */
+
+.Tooltip {
+    position: relative;
+    display: inline-block;
+    @include Hover() {
+        cursor: help;
+    }
+}
+
+.Tooltip__content {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    z-index: 1;
+    min-width: 60px;
+    padding: 0.5em;
+    color: $color-text;
+    font-family: $font-primary;
+    font-style: italic;
+    text-align: center;
+    background-color: $color-white;
+    border-radius: 2px;
+    box-shadow: $box-shadow;
+    transform: translate3d(-30px, 16px, 0);
+    opacity: 0;
+    transition: transform $transition, opacity $transition;
+    pointer-events: none;
+    @include Font__10-10;
+
+    &::after {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-color: transparent transparent $color-white;
+        border-style: solid;
+        border-width: 5px;
+        content: " ";
+    }
+
+    .Tooltip:hover & {
+        transform: translate3d(-30px, 0, 0);
+        opacity: 1;
+    }
+}

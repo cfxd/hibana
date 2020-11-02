@@ -1,0 +1,40 @@
+/*
+|--------------------------------------------------------------------------
+| Social - List
+|--------------------------------------------------------------------------
+| @namespace: SocialList
+|
+*/
+
+.SocialList {
+
+   .HeaderNotification & {
+       display: none;
+       @include bp(sm) {
+           display: block;
+       }
+   }
+}
+
+.SocialList__items {
+    display: flex;
+    align-items: center;
+}
+
+.SocialList__item {
+
+    .Svg {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+.SocialList__item + .SocialList__item {
+    margin-left: 1rem;
+}
+
+.SocialList__link {
+    transition: color $transition;
+    display: block;
+}

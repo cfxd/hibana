@@ -1,0 +1,45 @@
+{%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+<div class="CollectionSorting" data-module="collection-sort-by">
+    <ul class="CollectionSortingList">
+        <li class="CollectionSortingList__item {% if current_sort == 'manual' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="manual">
+                {{ 'collections.sorting.featured' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'best-selling' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="best-selling">
+                {{ 'collections.sorting.best_selling' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'title-ascending' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="title-ascending">
+                {{ 'collections.sorting.az' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'title-descending' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="title-descending">
+                {{ 'collections.sorting.za' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'price-ascending' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="price-ascending">
+                {{ 'collections.sorting.price_ascending' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'price-descending' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="price-descending">
+                {{ 'collections.sorting.price_descending' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'created-descending' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="created-descending">
+                {{ 'collections.sorting.date_descending' | t }}
+            </button>
+        </li>
+        <li class="CollectionSortingList__item {% if current_sort == 'created-ascending' %} CollectionSortingList__item--active{% endif %}">
+            <button class="CollectionSortingList__button" type="button" value="created-ascending">
+                {{ 'collections.sorting.date_ascending' | t }}
+            </button>
+        </li>
+    </ul>
+</div>

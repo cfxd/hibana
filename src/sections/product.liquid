@@ -1,0 +1,50 @@
+{%- comment -%} ---------------------------------------------------------
+| Product - variants
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- comment -%} ---------------------------------------------------------
+| Product - information
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign title = product.title -%}
+{%- assign sku = current_variant.sku -%}
+
+{%- comment -%} ---------------------------------------------------------
+| Product - status
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+  {%- assign on_sale = true -%}
+{%- endif -%}
+
+{%- assign unavailable = false -%}
+{%- if product.available == true -%}
+{%- assign unavailable = true -%}
+{%- endif -%}
+
+{%- comment -%} ---------------------------------------------------------
+| Product - images
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign featured_image = product.featured_image -%}
+{%- assign secondary_image = false -%}
+{%- if product.images[1].src != blank -%}
+    {%- assign secondary_image = true -%}
+    {%- assign secondary_image_src = product.images[1] -%}
+{%- endif -%}
+    
+<section class="Section Section--flushtop" data-module="product" data-section-id="{{ section.id }}" data-section-type="product">
+    <div class="Section__inner">
+        <div class="Section__body">
+            <div class="ProductSingle">
+                <div class="ProductSingle__columns">
+                    <div class="ProductSingle__column ProductSingle__column--primary">
+                        {% include 'product-gallery' %}
+                    </div>
+                    <div class="ProductSingle__column ProductSingle__column--secondary">
+                        {% include 'product-content-single' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

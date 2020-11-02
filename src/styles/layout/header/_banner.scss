@@ -1,0 +1,17 @@
+/*
+|--------------------------------------------------------------------------
+| Header - Banner
+|--------------------------------------------------------------------------
+| @namespace: HeaderBrand
+|
+*/
+
+.HeaderBanner {
+    background: $color-black;
+}
+
+.HeaderBanner__body {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0;
+}

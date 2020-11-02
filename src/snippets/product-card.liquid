@@ -1,0 +1,51 @@
+{%- comment -%} ---------------------------------------------------------
+| Product - status
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+  {%- assign on_sale = true -%}
+{%- endif -%}
+
+{%- comment -%} ---------------------------------------------------------
+| Product - images
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign featured_image = product.featured_image -%}
+{%- assign secondary_image = false -%}
+{%- if product.images[1].src != blank -%}
+    {%- assign secondary_image = true -%}
+    {%- assign secondary_image_src = product.images[1] -%}
+{%- endif -%}
+
+{%- comment -%} ---------------------------------------------------------
+| Product - Variants
+| ----------------------------------------------------- {%- endcomment -%}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<article class="ProductCard {% if secondary_image %} ProductCard--has-secondary{% endif %}">
+    <div class="ProductCard__inner">
+        <div class="ProductCard__upper">
+            {% include 'product-tags' %}
+            {%- if secondary_image -%}
+                <div class="ProductCardImageFrame ProductCardImageFrame--has-secondary">
+                    <div class="ProductCardImage ProductCardImage--primary">
+                        {% include 'responsive-image' with image: product.featured_image, cover:true %}
+                    </div>
+                    <div class="ProductCardImage ProductCardImage--secondary">
+                        {% include 'responsive-image' with image: secondary_image_src, cover:true %}
+                    </div>
+                </div>
+            {%- else -%}
+                <div class="ProductCardImageFrame">
+                    <div class="ProductCardImage ProductCardImage--primary">
+                        {% include 'responsive-image' with image: product.featured_image, cover:true %}
+                    </div>
+                </div>
+            {%- endif -%}
+        </div>
+        <div class="ProductCard__lower">
+            <h3 class="ProductCard__title">{{ product.title }}</h3>
+            {% include 'product-price' with on_sale:on_sale %}
+        </div>
+    </div>
+    <a class="ProductCard__fauxlink" href="{{ product.url }}" title="{{ product.title }}"></a>
+</article>

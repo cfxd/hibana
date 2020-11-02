@@ -1,0 +1,49 @@
+
+/*
+|--------------------------------------------------------------------------
+| Order - Cards
+|--------------------------------------------------------------------------
+| @namespace: OrderCard
+|
+*/
+
+.OrderCard {
+    width: 100%;
+    font-family: $font-secondary;
+    background-color: $color-white;
+    border-radius: 6px;
+}
+
+.OrderCard + .OrderCard {
+    margin-top: 1rem;
+
+    @include bp(sm) {
+        margin-top: 2rem;
+    }
+}
+
+.OrderCardTable {
+    width: 100%;
+    @include Font__15-24;
+}
+
+.OrderCardTable__data {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: left;
+}
+
+.OrderCardTable__data:last-of-type {
+    text-align: right;
+}
+
+.OrderCardTable__title {
+    color: $color-secondary;
+    font-family: $font-primary;
+    text-transform: uppercase;
+    @include Font__18-20;
+}
+
+.OrderCardTable__row--border-top {
+    border-top: 1px solid $color-black;
+}

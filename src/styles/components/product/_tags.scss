@@ -1,0 +1,38 @@
+/*
+|--------------------------------------------------------------------------
+| Product - Tags
+|--------------------------------------------------------------------------
+| @namespace: ProductTags
+|
+*/
+
+.ProductTags {
+    .ProductCard & {
+        position: absolute;
+        top:0;
+        left: 0;
+        z-index: 300;
+    }
+    
+}
+.ProductTagsList {
+    display: flex;
+}
+
+.ProductTagsList__item + .ProductTagsList__item {
+    margin-left: 0.5rem;
+}
+
+.ProductTagsList__tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    background-color: $color-black;
+    color: $color-white;
+    padding: 0.25rem;
+    line-height: 1;
+    display: block;
+    font-weight: $font-semi-bold;
+    &.ProductTagsList__tag--sale {
+        background-color: $color-sale;
+    }
+}

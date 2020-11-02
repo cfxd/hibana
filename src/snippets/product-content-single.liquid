@@ -1,0 +1,29 @@
+<div class="ProductContent">
+    <header class="ProductContent__header">
+        <div class="ProductContent__meta">
+            {% if on_sale or unavailable %}
+                <div class="ProductContent__tags">
+                    {%- include 'product-tags' -%}
+                </div>
+            {% endif %}
+            <div class="ProductContent__sku">
+                {%- include 'product-sku' -%}
+            </div>
+        </div>
+        <h2 class="ProductContent__title">
+            {%- include 'helper-widow' with text: title -%}
+        </h2>
+        <div class="ProductContent__price">
+            {%- include 'product-price' -%}
+        </div>
+    </header>
+    <div class="ProductContent__body">
+        <div class="ProductContent__form">
+            {% include 'product-form' %}
+        </div>
+        {% include 'product-tabs' %}
+
+        
+
+    </div>
+</div>

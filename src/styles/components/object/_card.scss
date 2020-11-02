@@ -1,0 +1,158 @@
+/*
+|--------------------------------------------------------------------------
+| Product - Card
+|--------------------------------------------------------------------------
+| @namespace: ObjectCard
+|
+*/
+
+.ObjectCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.ObjectCard__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ObjectCard__title {
+    font-weight: $font-medium;
+    text-transform: uppercase;
+    @include Font__14-24;
+}
+
+.ObjectCard__status {
+    font-weight: $font-normal;
+    font-family: $font-secondary;
+    text-transform: initial;
+}
+
+.ObjectCard__fauxlink {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+    @include Hover() {
+        cursor: pointer;
+    }
+}
+
+.ObjectCardImage--primary {
+    z-index: 200;
+    transition: opacity $transition-slow;
+
+    .ObjectCard--has-secondary:hover & {
+        opacity: 0;
+    }
+}
+
+.ObjectCardImage--secondary {
+    z-index: 100;
+    transform: scale(1.05);
+    transition: transform $transition-slow;
+
+    .ObjectCard--has-secondary:hover & {
+        transform: scale(1);
+    }
+}
+
+.ObjectCardImageFrame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background: $color-gray-medium;
+}
+
+.ObjectCardImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ObjectCardOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    @include bp(lg) {
+        padding: 4rem;
+    }
+    color: $color-white;
+    text-align: center;
+    pointer-events: none;
+}
+
+.ObjectCardOverlay__content {
+    width: 100%;
+    max-width: 18rem;
+}
+
+.ObjectCardOverlay__subtitle {
+    margin-bottom: 1rem;
+    font-family: $font-secondary;
+}
+
+.ObjectCardOverlay__title {
+    font-weight: $font-normal;
+    text-transform: uppercase;
+    @include Font__24-28;
+
+    @include bp(sm) {
+        @include Font__32-38;
+    }
+}
+
+.ObjectCardOverlay__action {
+    margin-top: 1rem;
+}
+
+.ObjectCardOverlay__link {
+    font-family: $font-secondary;
+    font-style: italic;
+    @include LinkUnderlined;
+}
+
+.ObjectCardImageFrameDistortion {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    background: $color-gray-medium;
+
+    .ProductList__item--featured & {
+        min-height: 100%;
+    }
+}
+
+.ObjectCardImageFrameDistortion__image {
+    display: none;
+}
+
+.ObjectCardImageFrameDistortion__image--secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ObjectCardImageFrameDistortion canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

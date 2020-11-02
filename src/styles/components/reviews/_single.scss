@@ -1,0 +1,52 @@
+/*
+|--------------------------------------------------------------------------
+| Reviews - Single
+|--------------------------------------------------------------------------
+| @namespace: ReviewSingle
+|
+*/
+
+.ReviewSingle {
+    text-align: center;
+
+    .Carousel__cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+    }
+}
+
+.ReviewSingle__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.ReviewSingle__widget {
+    align-self: center;
+    margin-bottom: -1rem;
+}
+
+.ReviewSingle__logo {
+    width: 8rem;
+    margin-right: 1rem;
+}
+
+.ReviewSingle__review {
+    font-weight: $font-normal;
+    font-family: $font-secondary;
+    @include Font__22-38;
+    @include bp(sm) {
+        @include Font__32-48;
+    }
+}
+
+.ReviewSingle__reviewer {
+    margin-top: 1.5rem;
+    @include Font__20-24;
+    font-family: $font-secondary;
+    font-style: italic;
+}

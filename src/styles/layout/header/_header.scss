@@ -1,0 +1,27 @@
+/*
+|--------------------------------------------------------------------------
+| Header
+|--------------------------------------------------------------------------
+| @namespace: Header
+|
+*/
+
+.Header {
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    z-index: $z-header;
+    width: 100%;
+    transition: transform $transition-medium, top $transition-medium;
+    text-transform: uppercase;
+    font-size: 12px;
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: 400;
+}
+
+
+
+
+
+

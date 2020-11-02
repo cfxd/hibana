@@ -1,0 +1,19 @@
+<div class="CartFormProducts">
+    <header class="CartFormProducts__header">
+        <h3 class="CartFormProducts__title">{{ 'cart.general.cart_products_title' | t }}
+            (<span data-cart-count>{{ cart.item_count }}</span>)</h3>
+    </header>
+    <div class="CartProducts">
+        <ul class="CartProductsList">
+            {%- for item in cart.items -%}
+                <li class="CartProductsList__item">
+                    {% include 'cart-product' %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="CartProducts__update">
+          <input class="button button--secondary button--blocksmall" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+        </div>
+    </div>
+</div>

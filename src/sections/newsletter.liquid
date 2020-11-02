@@ -1,0 +1,75 @@
+{% assign title = section.settings.title %}
+{% assign text = section.settings.text %}
+{% assign label = section.settings.label %}
+{% assign placeholder = section.settings.placeholder %}
+{% assign button_text = section.settings.button_text %}
+<section class="Newsletter">
+    <div class="Newsletter__inner PageContainer">
+		<header class="Newsletter__header">
+            <div class="Newsletter__columns">
+                <div class="Newsletter__column Newsletter__column--tight">
+                    {%- if title != blank -%}
+                        <h2 class="Newsletter__title" data-appear>
+                            {{ title }}
+                        </h2>
+                    {%- endif -%}
+                    {%- if text != blank -%}
+                        <p class="Newsletter__text" data-appear>
+                            {{ text }}
+                        </p>
+                    {%- endif -%}
+                </div>
+            </div>
+        </header>
+        <div class="Newsletter__body">
+            <div class="Newsletter__columns">
+                <div class="Newsletter__column Section__column--tight" data-appear>
+					{%- include 'newsletter-form' with
+					label: label,
+					placeholder: placeholder,
+					button_text: button_text
+					-%}
+				</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+	"presets": [{
+		"name": "Newsletter",
+		"category": "Newsletter"
+	}],
+	"settings": [{
+			"type": "header",
+			"content": "Introduction",
+			"info": "Title and Text"
+		}, {
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		}, {
+			"type": "text",
+			"id": "text",
+			"label": "Text"
+		},
+		{
+			"type": "header",
+			"content": "Form"
+		}, {
+			"type": "text",
+			"id": "label",
+			"label": "Label"
+		}, {
+			"type": "text",
+			"id": "placeholder",
+			"label": "Text"
+		},
+		{
+			"type": "text",
+			"id": "button_text",
+			"label": "Text"
+		}
+	]
+}
+{% endschema %}

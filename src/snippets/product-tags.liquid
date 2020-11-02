@@ -1,0 +1,33 @@
+{%- comment -%}
+/* ------------------------------------------------------------------------
+| Product Tags
+|--------------------------------------------------------------------------
+Accepts
+- on_sale: {Boolean} True / False
+- unavailable: {Boolean} True / False
+---------------------------------------------------------------------------
+Usage
+{% include 'product-tags' %}
+---------------------------------------------------------------------------
+Description
+Product tags to display on product card or single product template.
+Priority should be as follows:
+
+- Unavailable
+- Sale
+- New
+- Additional
+---------------------------------------------------------------------------
+*/
+{%- endcomment -%}
+<div class="ProductTags">
+    <ul class="ProductTagsList">
+        {% if on_sale %}
+        <li class="ProductTagsList__item">
+            <span class="ProductTagsList__tag ProductTagsList__tag--sale">
+                {{ 'products.product.on_sale' | t }}
+            </span>
+        </li>
+        {% endif %}
+    </ul>
+</div>

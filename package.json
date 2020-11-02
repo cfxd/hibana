@@ -1,0 +1,64 @@
+{
+  "name": "starter-theme",
+  "version": "1.0.0",
+  "private": true,
+  "author": "https://kithkin.studio",
+  "description": "Shopify bespoke theme using Parcel, ThemeKit and BrowserSync",
+  "keywords": [
+    "shopify",
+    "theme"
+  ],
+  "bugs": "https://github.com/Shopify/starter-theme/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shopify/starter-theme.git"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ],
+  "dependencies": {
+    "@shopify/theme-a11y": "^4.0.2",
+    "@shopify/theme-currency": "^4.0.2",
+    "@shopify/theme-product": "^4.0.2",
+    "@shopify/theme-product-form": "^4.0.2",
+    "@shopify/theme-sections": "^4.0.2",
+    "@shopify/themekit": "^1.1.6",
+    "@ungap/url-search-params": "^0.2.2",
+    "autoprefixer": "^10.0.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "css-loader": "^5.0.0",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.1.1",
+    "flickity": "^2.2.1",
+    "flickity-fade": "^1.0.0",
+    "flickity-imagesloaded": "^2.0.0",
+    "fs": "^0.0.1-security",
+    "gsap": "./gsap-bonus.tgz",
+    "headroom.js": "^0.12.0",
+    "js-cookie": "^2.2.1",
+    "lazysizes": "^5.2.2",
+    "style-loader": "^2.0.0",
+    "viewprt": "^4.1.0",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.4",
+    "webpack": "^5.2.0",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-cli": "^4.1.0"
+  },
+  "scripts": {
+    "web:dev": "webpack",
+    "theme:dev": "theme watch --dir=./dist --notify=./themekit_update",
+    "brw:dev": "browser-sync start --config bs-config.js",
+    "watch": "yarn web:dev & yarn theme:dev & yarn brw:dev",
+    "open": "theme open",
+    "edit": "theme open --edit"
+  }
+}

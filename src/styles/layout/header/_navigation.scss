@@ -1,0 +1,35 @@
+/*
+|--------------------------------------------------------------------------
+| Header - Navigation
+|--------------------------------------------------------------------------
+| @namespace: HeaderNavigation
+|
+*/
+
+.HeaderNavigation {
+
+    display: none;
+    flex-grow: 1;
+    align-items: center;
+    width: 50%;
+    @include bp(sm) {
+        display: flex;
+    }
+}
+
+.HeaderNavigationList {
+    display: flex;
+    align-items: center;
+}
+
+.HeaderNavigationList__item + .HeaderNavigationList__item {
+    margin-left: 1rem;
+}
+
+.HeaderNavigationList__link {
+    @include LinkUnderline;
+}
+
+.HeaderNavigationList__link--active {
+    @include LinkUnderlined;
+}

@@ -1,0 +1,26 @@
+/*
+|--------------------------------------------------------------------------
+| Object - List
+|--------------------------------------------------------------------------
+| @namespace: ObjectList
+|
+*/
+
+.ObjectList {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 0.75rem;
+    grid-column-gap: 0.75rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include bp(md) {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+
+.ObjectList__item {
+    grid-column: span 4;
+    @include bp(md) {
+        grid-column: span 6;
+    }
+}

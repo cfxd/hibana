@@ -1,0 +1,35 @@
+/*
+|--------------------------------------------------------------------------
+| Product - Price
+|--------------------------------------------------------------------------
+| @namespace: ProductPrice
+|
+*/
+
+.ProductPrice {
+    display: flex;
+    line-height: 1;
+    align-items: flex-end;
+    font-size: 16px;
+    .ProductCard & {
+        margin-top: 0.5rem;
+    }
+    .ProductContent & {
+        font-size: 24px;
+    }
+}
+
+.ProductPrice__previous {
+    font-size: 0.75em;
+    
+    text-decoration: line-through;
+    margin-left:0.5em;
+    
+}
+
+.ProductPrice__current {
+    color: $color-gray-dark;
+    .ProductPrice--sale & {
+        color: $color-sale;
+    }
+}

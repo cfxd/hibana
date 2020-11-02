@@ -1,0 +1,81 @@
+/*
+|--------------------------------------------------------------------------
+| Section
+|--------------------------------------------------------------------------
+| @namespace: Section
+|
+*/
+
+.shopify-section {
+    width: 100%;
+}
+
+.Section {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    @include bp(sm) {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+}
+
+.Section__header {
+    margin-bottom: 2rem;
+    text-align: center;
+    @include bp(sm) {
+        margin-bottom: 3rem;
+    }
+}
+
+.Section__title {
+    @include Font__32-32;
+    @include bp(sm) {
+        margin-top: 0;
+    }
+}
+
+.Section__subtitle {
+    margin-bottom: 0.5rem;
+    font-family: $font-secondary;
+}
+
+.Section__more-link {
+    text-transform: uppercase;
+    @include LinkUnderlined;
+}
+
+.Section__footer {
+    margin-top: 2rem;
+    text-align: center;
+    @include bp(sm) {
+        margin-top: 3rem;
+    }
+}
+
+.Section--border-top {
+    margin-top: 0;
+    padding-top: 2rem;
+    border-top: 1px solid $color-border;
+    @include bp(sm) {
+        margin-top: 0;
+        padding-top: 4rem;
+    }
+}
+
+.Section--flush {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include bp(sm) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.Section--flushtop {
+    margin-top: 0;
+   
+    @include bp(sm) {
+        margin-top: 0;
+    }
+}

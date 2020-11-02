@@ -1,0 +1,35 @@
+
+{%- comment -%}
+/* ------------------------------------------------------------------------
+| Product price
+|--------------------------------------------------------------------------
+Accepts
+- on_sale: {Boolean} True / False
+---------------------------------------------------------------------------
+Usage
+{% include 'product-price' %}
+---------------------------------------------------------------------------
+Description
+Product price to be used in both cards and product template
+---------------------------------------------------------------------------
+*/
+{%- endcomment -%}
+
+{%- unless current_variant.price == 0.00 -%}
+{%- if on_sale -%}
+    <p class="ProductPrice ProductPrice--sale" data-price-wrapper>
+        <span class="ProductPrice__current" data-product-price>
+            {{ current_variant.price | money_without_trailing_zeros }}
+        </span>
+        <span class="ProductPrice__previous" data-compare-price>
+            {{ current_variant.compare_at_price | money_without_trailing_zeros }}
+        </span>
+    </p>
+{%- else -%}
+    <p class="ProductPrice" data-price-wrapper>
+        <span class="ProductPrice__current" data-product-price>
+            {{ product.price | money_without_trailing_zeros }}
+        </span>
+    </p>
+{%- endif -%}
+{%- endunless -%}

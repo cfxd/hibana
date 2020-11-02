@@ -1,0 +1,31 @@
+/*
+|--------------------------------------------------------------------------
+| Contact - Details
+|--------------------------------------------------------------------------
+| @namespace: ContactDetails
+|
+*/
+
+.ContactDetails {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.ContactDetails__detail {
+    max-width: 20rem;
+}
+
+.ContactDetails__detail + .ContactDetails__detail {
+    margin-top: 1.5rem;
+}
+
+.ContactDetails__title {
+    margin-bottom: 1rem;
+    font-weight: $font-medium;
+    @include Font__24-24;
+}
+
+.ContactDetails__text {
+    font-weight: $font-medium;
+    @include Font__15-24;
+}

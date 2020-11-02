@@ -1,0 +1,103 @@
+{%- assign title = section.settings.title -%}
+{%- assign subtitle = section.settings.subtitle -%}
+{%- assign featured_collection = section.settings.collection -%}
+{%- assign border_top = section.settings.border_top -%}
+{%- assign more_link = section.settings.more_link -%}
+{%- assign more_link_text = section.settings.more_link_text -%}
+<section class="Section {% if border_top %} Section--border-top{% endif %}">
+    <div class="Section__inner PageContainerFluid">
+        <header class="Section__header">
+            <ul class="Section__columns">
+                <li class="Section__column Section__column--tight">
+                    {%- if subtitle != blank -%}
+                        <p class="Section__subtitle" data-appear>
+                            {{ subtitle }}
+                        </p>
+                    {%- endif -%}
+                    {%- if title != blank -%}
+                        <h2 class="Section__title" data-appear>
+                            {{ title }}
+                        </h2>
+                    {%- endif -%}
+                </li>
+            </ul>
+        </header>
+        <div class="Section__body">
+            {% include 'product-list' %}
+            <ul class="ProductList">
+                {% for product in collections[featured_collection].products %}
+                    {%- assign product = all_products[block.settings.product] -%}
+                    {% capture featured %}
+                        {% for tag in product.tags %}
+                            {% if tag contains 'Featured' %}
+                                ProductList__item--featured
+                            {% endif %}
+                        {% endfor %}
+                    {% endcapture %}
+                    <li class="ProductList__item {{ featured }}" data-appear>
+                        {%- include 'product-card' with product:product  -%}
+                    </li>
+                {%- endfor -%}
+            </ul>
+        </div>
+        {%- if more_link != blank -%}
+            <footer class="Section__footer" data-appear>
+                <div class="Section__more">
+                    <a class="Section__more-link" href="{{ more_link }}">{{ more_link_text }}</a>
+                </div>
+            </footer>
+        {%- endif -%}
+    </div>
+</section>
+{% schema %}
+
+{
+    "presets": [
+        {
+            "name": "Featured Collection",
+            "category": "Collections"
+        }
+    ],
+    "settings": [
+        {
+            "type": "header",
+            "content": "Styling",
+            "info": "Styling such as dividing borders"
+        }, {
+            "type": "checkbox",
+            "id": "border_top",
+            "default": false,
+            "label": "Add top border"
+        }, {
+            "type": "header",
+            "content": "Introduction",
+            "info": "Title and Text"
+        }, {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        }, {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle"
+        }, {
+            "type": "header",
+            "content": "Link",
+            "info": "Link below title, e.g 'View More'"
+        }, {
+            "type": "url",
+            "id": "more_link",
+            "label": "Link"
+        }, {
+            "type": "text",
+            "id": "more_link_text",
+            "label": "Link Text"
+        }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+    ]
+}
+
+{% endschema %}

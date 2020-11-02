@@ -1,0 +1,79 @@
+/*
+|--------------------------------------------------------------------------
+| Product - Card
+|--------------------------------------------------------------------------
+| @namespace: ProductCard
+|
+*/
+.ProductCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.ProductCard__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ProductCard__title {
+    font-family: $font-secondary;
+    font-size: 16px;
+}
+
+.ProductCard__status {
+    font-weight: $font-normal;
+    font-family: $font-secondary;
+    text-transform: initial;
+}
+
+.ProductCard__upper {
+    position: relative;
+}
+
+.ProductCard__lower {
+    padding: 1rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ProductCard__fauxlink {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+}
+
+.ProductCardImage--primary {
+    z-index: 200;
+    transition: opacity $transition;
+
+    .ProductCard--has-secondary:hover & {
+        opacity: 0;
+    }
+}
+
+.ProductCardImage--secondary {
+    z-index: 100;
+}
+
+.ProductCardImageFrame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%;
+    background: $color-gray-medium;
+}
+
+.ProductCardImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

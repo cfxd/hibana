@@ -1,0 +1,61 @@
+/*
+|--------------------------------------------------------------------------
+| Page Content
+|--------------------------------------------------------------------------
+| @namespace: PageContent
+|
+*/
+
+.PageContent__columns {
+    @include PageGrid();
+}
+
+.PageContent__column--aside {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    height: 100%;
+    border-bottom: 1px solid $color-border;
+    @include bp(sm) {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+    @include bp(lg) {
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+}
+
+.PageContent__column--main {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    @include bp(sm) {
+        grid-column-start: 5;
+        grid-column-end: 13;
+    }
+}
+
+.PageContent__column--medium {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    @include bp(sm) {
+        grid-column-start: 2;
+        grid-column-end: 12;
+    }
+    @include bp(lg) {
+        grid-column-start: 3;
+        grid-column-end: 11;
+    }
+}
+
+.PageContent__column--narrow {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    @include bp(sm) {
+        grid-column-start: 2;
+        grid-column-end: 12;
+    }
+    @include bp(lg) {
+        grid-column-start: 4;
+        grid-column-end: 10;
+    }
+}

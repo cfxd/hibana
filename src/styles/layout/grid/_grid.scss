@@ -1,0 +1,29 @@
+/*
+|--------------------------------------------------------------------------
+| Site Grid
+|--------------------------------------------------------------------------
+| @namespace: Grid
+|
+*/
+
+@mixin PageGrid {
+    display: grid;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include bp(sm) {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+
+@mixin PageGridTight {
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include bp(sm) {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}

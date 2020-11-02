@@ -1,0 +1,21 @@
+/*
+|--------------------------------------------------------------------------
+| Header - Brand
+|--------------------------------------------------------------------------
+| @namespace: HeaderBrand
+|
+*/
+
+.HeaderBrand {
+    flex-shrink: 0;
+}
+
+.HeaderBrand__link {
+    display: block;
+}
+
+.HeaderBrand__image {
+    .Svg {
+        width: 5rem;
+    }
+}

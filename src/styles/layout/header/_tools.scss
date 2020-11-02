@@ -1,0 +1,39 @@
+/*
+|--------------------------------------------------------------------------
+| Header - Tools
+|--------------------------------------------------------------------------
+| @namespace: HeaderTools
+|
+*/
+
+.HeaderTools {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    text-align: right;
+}
+
+.HeaderToolsList {
+    display: flex;
+    align-items: center;
+}
+
+.HeaderToolsList__text {
+    @include UtilityScreenReaderOnly;
+}
+
+.HeaderToolsList__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+}
+
+.HeaderToolsList__item + .HeaderToolsList__item {
+    margin-left: 1rem;
+}
+
+.HeaderToolsList__link {
+    display: block;
+}

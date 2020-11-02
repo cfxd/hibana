@@ -1,0 +1,18 @@
+/*
+|--------------------------------------------------------------------------
+| Siteby - Card
+|--------------------------------------------------------------------------
+| @namespace: Siteby
+|
+*/
+
+.Siteby {
+    font-weight: $font-light;
+    text-transform: uppercase;
+    @include Font__10-18;
+}
+
+.Siteby__link {
+    font-weight: $font-normal;
+    @include LinkUnderline;
+}

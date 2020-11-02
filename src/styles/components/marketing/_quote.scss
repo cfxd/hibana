@@ -1,0 +1,70 @@
+.MarketingQuote__columns {
+    @include PageGrid();
+}
+
+.MarketingQuote__column {
+    align-self: center;
+}
+
+.MarketingQuote__column--primary {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    margin-bottom: 2rem;
+
+    @include bp(sm) {
+        grid-column-start: 2;
+        grid-column-end: 5;
+        margin-bottom: none;
+    }
+}
+
+.MarketingQuote__column--secondary {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    @include bp(sm) {
+        grid-column-start: 6;
+        grid-column-end: 13;
+    }
+}
+
+.MarketingQuote__text {
+    position: relative;
+    display: inline-block;
+    padding: 2rem 0;
+    font-family: $font-secondary;
+    font-style: italic;
+
+    @include Font__24-40;
+
+    @include bp(sm) {
+        @include Font__32-48;
+    }
+
+    &:before, &:after {
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        width: 100vmax;
+        height: 1px;
+        background-color: $color-black;
+        content: '';
+    }
+
+    &:before {
+        bottom: 0;
+    }
+
+    &:after {
+        top: 0;
+    }
+}
+
+.MarketingQuote__illustration {
+    width: 100%;
+    max-width: 13rem;
+    margin: auto;
+    @include bp(sm) {
+        max-width: initial;
+        margin: 0;
+    }
+}

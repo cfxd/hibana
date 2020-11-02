@@ -1,0 +1,31 @@
+.MarketingText__header {
+    margin-bottom: 2rem;
+}
+
+.MarketingText__subtitle {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    @include Font__24-24;
+}
+
+.MarketingText__title {
+    position: relative;
+    display: inline-block;
+    font-family: $font-secondary;
+    font-style: italic;
+    @include Font__32-48;
+    @include bp(sm) {
+        @include Font__40-56;
+    }
+
+    &:after {
+        position: absolute;
+        bottom: 0.35em;
+        display: inline-block;
+        width: 100vmax;
+        height: 1px;
+        margin-left: 1rem;
+        background-color: $color-black;
+        content: '';
+    }
+}

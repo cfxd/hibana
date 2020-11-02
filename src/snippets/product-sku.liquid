@@ -1,0 +1,19 @@
+{%- comment -%}
+/* ------------------------------------------------------------------------
+| Product SKU
+|--------------------------------------------------------------------------
+Accepts
+- on_sale: {Boolean} True / False
+- unavailable: {Boolean} True / False
+---------------------------------------------------------------------------
+Usage
+{% include 'product-sku' %}
+---------------------------------------------------------------------------
+Description
+Product sku to display on product card or single product template.
+---------------------------------------------------------------------------
+*/
+{%- endcomment -%}
+<div class="ProductSku">
+    {{ sku }}
+</div>
