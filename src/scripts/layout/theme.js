@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // If the device is iOS add a class to the body so we can do specific CSS for it
-  if (!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)) {
+  if (Boolean(navigator.platform) && /iPad|iPhone|iPod/.test(navigator.platform)) {
     const body = document.body || document.documentElement;
     body.classList.add('is-iOS');
   }

@@ -38,14 +38,8 @@
     "@shopify/theme-sections": "^1.1.0",
     "@shopify/theme-variants": "^1.0.0-alpha.8",
     "@ungap/url-search-params": "^0.2.2",
-    "flickity": "^2.2.1",
-    "flickity-fade": "^1.0.0",
-    "flickity-imagesloaded": "^2.0.0",
-    "gsap": "././gsap-bonus.tgz",
-    "headroom.js": "^0.11.0",
     "js-cookie": "^2.2.1",
     "lazysizes": "^4.1.1",
-    "three": "^0.121.1",
     "viewprt": "^4.0.0"
   },
   "scripts": {

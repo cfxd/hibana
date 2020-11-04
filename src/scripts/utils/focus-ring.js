@@ -1,22 +1,22 @@
-const body = document.body || document.documentElement
-body.classList.remove('util-IsTabbing')
+const body = document.body || document.documentElement;
+body.classList.remove('util-IsTabbing');
 
-const handleFirstTab = e => {
-  if (e.keyCode === 9) {
-    body.classList.add('util-IsTabbing')
+const handleFirstTab = (event) => {
+  if (event.keyCode === 9) {
+    body.classList.add('util-IsTabbing');
 
-    window.removeEventListener('keydown', handleFirstTab)
-    window.addEventListener('mousedown', handleMouseDownOnce)
+    window.removeEventListener('keydown', handleFirstTab);
+    window.addEventListener('mousedown', handleMouseDownOnce);
   }
-}
+};
 
-window.addEventListener('keydown', handleFirstTab)
+window.addEventListener('keydown', handleFirstTab);
 
 const handleMouseDownOnce = () => {
-  body.classList.remove('util-IsTabbing')
+  body.classList.remove('util-IsTabbing');
 
-  window.removeEventListener('mousedown', handleMouseDownOnce)
-  window.addEventListener('keydown', handleFirstTab)
-}
+  window.removeEventListener('mousedown', handleMouseDownOnce);
+  window.addEventListener('keydown', handleFirstTab);
+};
 
-window.addEventListener('mousedown', handleMouseDownOnce)
+window.addEventListener('mousedown', handleMouseDownOnce);

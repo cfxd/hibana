@@ -3,6 +3,11 @@
     <div class="Header__body">
       <p>Header</p>
 
+
+      <div class="Header__logo">
+        {%- render 'logo' -%}
+      </div>
+
       <nav class="">
         <ul class="">
           {%- for link in linklists[section.settings.menu].links -%}

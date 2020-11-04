@@ -3,8 +3,8 @@ const elements = {
   newAddressToggles: document.querySelectorAll('[data-address-new-toggle]'),
   addresses: document.querySelectorAll('[data-address]'),
 };
-function initAddresses() {
 
+function initAddresses() {
   elements.newAddressToggles.forEach((element) => {
     element.addEventListener('click', () => {
       elements.newAddressForm.classList.toggle('UtilityHide');
@@ -20,6 +20,6 @@ function initAddresses() {
       });
     });
   });
-
 }
+
 initAddresses();
