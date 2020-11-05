@@ -1,0 +1,21 @@
+{%- liquid
+  assign is_dev_theme = false
+
+  if theme.name contains '(Development'
+    assign is_dev_theme = true
+  endif
+-%}
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+  window.theme = {
+    isDevTheme: {{ is_dev_theme }},
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }}
+    },
+    moneyFormat: {{ shop.money_format | json }}
+  };
+</script>

@@ -8,49 +8,83 @@
     "theme_support_url": "https://github.com/Shopify/starter-theme/issues"
   },
   {
-    "name": "Reviews",
+    "name": "App Icons",
     "settings": [
       {
         "type": "header",
-        "content": "Review One"
+        "content": "Settings"
       },
       {
         "type": "text",
-        "id": "review_title_1",
-        "label": "Review Title One"
+        "id": "store_name",
+        "label": "Store name"
       },
       {
         "type": "text",
-        "id": "review_text_1",
-        "label": "Review Text One"
+        "id": "store_url",
+        "label": "Store URL"
+      },
+      {
+        "type": "color",
+        "id": "store_color",
+        "label": "Theme colour",
+        "default": "#000000"
       },
       {
         "type": "header",
-        "content": "Review Two"
+        "content": "Icons"
       },
       {
-        "type": "text",
-        "id": "review_title_2",
-        "label": "Review Title Two"
+        "type": "image_picker",
+        "id": "apple_touch_icon",
+        "label": "Apple touch icon",
+        "info": "Size: 180 x 180 px"
       },
       {
-        "type": "text",
-        "id": "review_text_2",
-        "label": "Review Text Two"
+        "type": "image_picker",
+        "id": "android_chrome_icon",
+        "label": "Android chrome icon",
+        "info": "Size: 192 x 192 px"
       },
       {
-        "type": "header",
-        "content": "Review Three"
+        "type": "image_picker",
+        "id": "ms_tile_icon",
+        "label": "Microsoft tile icon",
+        "info": "Size: 150 x 150 px"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Fav Icons",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon_small",
+        "label": "Favicon (small)",
+        "info": "Size: 16 x 16 px"
       },
       {
-        "type": "text",
-        "id": "review_title_3",
-        "label": "Review Title Three"
+        "type": "image_picker",
+        "id": "favicon_medium",
+        "label": "Favicon (medium)",
+        "info": "Size: 32 x 32 px"
       },
       {
-        "type": "text",
-        "id": "review_text_3",
-        "label": "Review Text Three"
+        "type": "image_picker",
+        "id": "favicon_large",
+        "label": "Favicon (large)",
+        "info": "Size: 194 x 194 px"
       }
     ]
   },
@@ -122,28 +156,6 @@
         "type": "text",
         "id": "social_twitter_link",
         "label": "Twitter link"
-      }
-    ]
-  },
-  {
-    "name": "Cart",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "cart_notes_enable",
-        "label": "Enable cart notes",
-        "default": true
-      }
-    ]
-  },
-  {
-    "name": "Favicon",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "favicon",
-        "label": "Favicon image",
-        "info": "Will be scaled down to 32 x 32px"
       }
     ]
   }

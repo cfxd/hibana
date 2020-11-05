@@ -31,24 +31,11 @@
     <link rel="canonical" href="{{ canonical_url }}" />
   {%- endif -%}
 
-  {%- if settings.favicon != blank -%}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
-  {%- endif -%}
-
-  <script>
-    document.documentElement.className = document.documentElement.className.replace('no-js', '');
-    window.theme = {
-      strings: {
-        addToCart: {{ 'products.product.add_to_cart' | t | json }},
-        soldOut: {{ 'products.product.sold_out' | t | json }},
-        unavailable: {{ 'products.product.unavailable' | t | json }}
-      },
-      moneyFormat: {{ shop.money_format | json }}
-    };
-  </script>
-
-  {%- include 'style-tags', layout: 'theme' -%}
-  {%- include 'script-tags', layout: 'theme' -%}
+  {%- render 'favicons' -%}
+  {%- render 'social-meta-tags' -%}
+  {%- render 'style-tags', layout: 'theme' -%}
+  {%- render 'head-script' -%}
+  {%- render 'script-tags', layout: 'theme' -%}
 
   {%- if product -%}
     <script>
