@@ -1,0 +1,78 @@
+/*
+|--------------------------------------------------------------------------
+| Newsletter
+|--------------------------------------------------------------------------
+| @namespace: ft-
+|
+*/
+.ft-Newsletter {
+  position: relative;
+
+  max-width: 650px;
+  margin-right: auto;
+  margin-bottom: 75px;
+  margin-left: auto;
+
+  text-align: center;
+
+  border: 3px solid rgba($color-rust, 0.3);
+  border-radius: 0 0 60px 60px;
+}
+
+.ft-Newsletter_Title {
+  margin-top: -30px;
+
+  font-size: 48px;
+  line-height: 56px;
+
+  color: $color-brand;
+}
+
+.ft-Newsletter_Form {
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 80px;
+  padding-bottom: 35px;
+}
+
+.ft-Newsletter_Fields {
+  display: flex;
+
+  border-bottom: 1px solid $color-brand;
+}
+
+.ft-Newsletter_Field {
+  width: 100%;
+}
+
+.ft-Newsletter_Input {
+  width: 100%;
+  padding-bottom: 10px;
+
+  font-size: 20px;
+  letter-spacing: 0.25px;
+  line-height: 24px;
+
+  appearance: none;
+  background-color: $color-offwhite;
+  border: 0;
+  border-radius: 0;
+  color: $color-brand;
+
+  &::placeholder {
+    color: $color-brand;
+    opacity: 1;
+  }
+}
+
+.ft-Newsletter_Button {
+  width: 85px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+
+  font-size: 20px;
+  line-height: 24px;
+
+  color: $color-brand;
+}

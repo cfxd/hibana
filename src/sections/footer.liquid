@@ -1,7 +1,101 @@
-<footer class="Footer">
-  <div class="Footer__inner PageContainerFluid">
-    <div class="Footer__body">
-      <p>Footer</p>
+<footer class="ft-Footer">
+  <div class="ft-Footer_Inner">
+    <div class="ft-Footer_Body">
+      <div class="ft-Newsletter">
+        {%- if section.settings.newsletter_title != blank -%}
+          <h2 class="ft-Newsletter_Title">{{ section.settings.newsletter_title }}</h2>
+        {%- endif -%}
+
+        {%- form 'customer', class: 'ft-Newsletter_Form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="val-Validation val-Validation-success">
+              <p class="val-Validation_Text">{{ 'general.newsletter.success' | t }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="val-Validation val-Validation-error">
+              {%- for field in form.errors -%}
+                <p class="val-Validation_Text">{{ field | capitalize }} {{ form.errors.messages[field] }}</p>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <input type="hidden" name="contact[tags]" value="prospect, newsletter" id="contact_tags" />
+
+          <div class="ft-Newsletter_Fields">
+            <div class="ft-Newsletter_Field">
+              <label class="ft-Newsletter_Label util-ScreenReaderOnly">{{ section.settings.placeholder }}</label>
+              <input class="ft-Newsletter_Input" name="contact[email]" type="text" id="contact_email" placeholder="{{ section.settings.placeholder }}" aria-label="{{ section.settings.placeholder }}" spellcheck="false" autocorrect="off" autocapitalize="off" />
+            </div>
+
+            {%- if section.settings.button_text != blank -%}
+              <button class="ft-Newsletter_Button btn-GhostWhite" type="submit" name="contact_submit">
+                {{ section.settings.button_text }}
+              </button>
+            {%- endif -%}
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div class="ft-Banner">
+        <div class="ft-Banner_Inner lyt-Container">
+          <div class="ft-Banner_Body">
+            <div class="ft-Banner_Columns">
+              <div class="ft-Banner_Column ft-Banner_Column-logo">
+                <div class="ft-Logo">
+                  {%- render 'logo' -%}
+                </div>
+              </div>
+
+              {%- for link in linklists[section.settings.menu].links -%}
+                <div class="ft-Banner_Column ft-Banner_Column-navigation" data-module="footer-accordion" data-module-class="js-FooterAccordion">
+                  <div class="ft-Banner_Navigation js-FooterAccordion_Accordion">
+                    <h3 class="ft-Banner_Title js-FooterAccordion_Title">{{ link.title }}</h3>
+
+                    {%- if link.links != blank -%}
+                      <nav class="ft-Navigation" aria-label="Footer navigation">
+                        <ul class="ft-Navigation_Items">
+                          {%- for childlink in link.links -%}
+                            <li class="ft-Navigation_Item">
+                              <a class="ft-Navigation_Link{% if childlink.active %} ft-Navigation_Link-active{% endif %}" href="{{ childlink.url }}" title="{{ childlink.title }}">
+                                {{ childlink.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </nav>
+                    {%- endif -%}
+
+                    {%- if link.title == 'Contact' -%}
+                      <div class="ft-Social">
+                        {%- assign social_accounts = 'Instagram, Facebook, Twitter' | split: ', ' -%}
+
+                        <ul class="ft-Social_Items">
+                          {%- for social in social_accounts -%}
+                            {%- assign social_handle = social | handleize -%}
+                            {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+                            {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+                            {%- if settings[social_link] != blank -%}
+                              <li class="ft-Social_Item">
+                                <a class="ft-Social_Link" href="{{ settings[social_link] }}" title="{{ social }}" target="_blank" rel="noopener">
+                                  <span class="ft-Social_Title util-ScreenReaderOnly">{{ social }}</span>
+                                  <span class="ft-Social_Icon">{%- include social_icon -%}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
@@ -10,7 +104,34 @@
   {
     "name": "Footer",
     "settings": [
-
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Placeholder"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text"
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
     ]
   }
 {% endschema %}

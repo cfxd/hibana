@@ -55,7 +55,7 @@
     ]
   },
   {
-    "name": "Social media",
+    "name": "Social Media",
     "settings": [
       {
         "type": "header",
@@ -65,17 +65,11 @@
         "type": "image_picker",
         "id": "share_image",
         "label": "Image",
-        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
+        "info": "Shown when sharing a link on social media. [Learn more](https://help.shopify.com/manual/using-themes/troubleshooting/showing-social-media-thumbnail-images/) about image thumbnails."
       },
       {
         "type": "header",
         "content": "Social sharing options"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_sharing_blog",
-        "label": "Enable sharing for blog articles",
-        "default": true
       },
       {
         "type": "checkbox",
@@ -97,22 +91,12 @@
       },
       {
         "type": "header",
-        "content": "Sharing links"
+        "content": "Social links"
       },
       {
         "type": "text",
-        "id": "social_twitter_link",
-        "label": "Twitter link"
-      },
-      {
-        "type": "text",
-        "id": "social_facebook_link",
-        "label": "Facebook link"
-      },
-      {
-        "type": "text",
-        "id": "social_pinterest_link",
-        "label": "Pinterest link"
+        "id": "social_instagram_text",
+        "label": "Instagram text"
       },
       {
         "type": "text",
@@ -121,23 +105,23 @@
       },
       {
         "type": "text",
-        "id": "social_snapchat_link",
-        "label": "Snapchat link"
+        "id": "social_facebook_text",
+        "label": "Facebook text"
       },
       {
         "type": "text",
-        "id": "social_tumblr_link",
-        "label": "Tumblr link"
+        "id": "social_facebook_link",
+        "label": "Facebook link"
       },
       {
         "type": "text",
-        "id": "social_youtube_link",
-        "label": "Youtube link"
+        "id": "social_twitter_text",
+        "label": "Twitter text"
       },
       {
         "type": "text",
-        "id": "social_vimeo_link",
-        "label": "Vimeo link"
+        "id": "social_twitter_link",
+        "label": "Twitter link"
       }
     ]
   },

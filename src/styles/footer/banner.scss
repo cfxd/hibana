@@ -1,0 +1,26 @@
+/*
+|--------------------------------------------------------------------------
+| Banner
+|--------------------------------------------------------------------------
+| @namespace: ft-
+|
+*/
+.ft-Banner_Columns {
+  position: relative;
+
+  display: flex;
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.ft-Banner_Column {
+  flex-shrink: 0;
+
+  width: 25%;
+}
+
+.ft-Banner_Title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+}

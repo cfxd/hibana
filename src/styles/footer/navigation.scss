@@ -1,0 +1,17 @@
+/*
+|--------------------------------------------------------------------------
+| Navigation
+|--------------------------------------------------------------------------
+| @namespace: ft-
+|
+*/
+.ft-Navigation_Link {
+  display: block;
+
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.ft-Navigation_Link-active {
+  color: $color-brand;
+}

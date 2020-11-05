@@ -1,0 +1,29 @@
+/*
+|--------------------------------------------------------------------------
+| Social
+|--------------------------------------------------------------------------
+| @namespace: ft-
+|
+*/
+.ft-Social {
+  margin-top: 60px;
+}
+
+.ft-Social_Items {
+  display: flex;
+}
+
+.ft-Social_Item {
+  margin-right: 20px;
+}
+
+.ft-Social_Link {
+  display: block;
+
+  color: $color-brand;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
