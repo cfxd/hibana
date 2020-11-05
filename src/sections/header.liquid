@@ -1,25 +1,146 @@
-<header class="Header" data-module="header">
-  <div class="Header__inner PageContainerFluid">
-    <div class="Header__body">
-      <p>Header</p>
+<header class="hd-Header">
+  <div class="hd-Header_Inner">
+    <div class="hd-Header_Body">
+      {%- form 'currency', class: 'hd-Currency' -%}
+        {{ form | currency_selector }}
+      {%- endform -%}
 
-
-      <div class="Header__logo">
-        {%- render 'logo' -%}
-      </div>
-
-      <nav class="">
-        <ul class="">
-          {%- for link in linklists[section.settings.menu].links -%}
-            <li class="">
-              <a class=" {% if link.active %}HeaderNavList__link--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+      <div class="hd-SubNavigation">
+        <ul class="hd-SubNavigation_Items">
+          {%- for link in linklists[section.settings.sub_menu].links -%}
+            <li class="hd-SubNavigation_Item">
+              <a class="hd-SubNavigation_Link {% if link.active %}hd-SubNavigation_Link-active{% endif %}" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
             </li>
           {%- endfor -%}
         </ul>
+      </div>
+
+      {%- if section.settings.announcement_text != blank -%}
+        <div class="hd-Announcement">
+          <div class="hd-Announcement_Inner">
+            <div class="hd-Announcement_Body">
+              <p class="hd-Announcement_Text">{{ section.settings.announcement_text }}</p>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="hd-Banner">
+        <div class="hd-Banner_Inner">
+          <div class="hd-Banner_Body">
+            {%- if template.name == 'index' -%}
+              <h1 class="hd-Banner_Logo">
+                <a class="hd-Logo" href="/" itemprop="url" aria-label="{{ shop.name }}">
+                  {%- render 'logo' -%}
+                </a>
+              </h1>
+            {%- else -%}
+              <div class="hd-Banner_Logo">
+                <a class="hd-Logo" href="/" itemprop="url" aria-label="{{ shop.name }}">
+                  {%- render 'logo' -%}
+                </a>
+              </div>
+            {%- endif -%}
+
+            <div class="hd-Banner_Search">
+              <p>Search</p>
+              {%- render 'icon-search' -%}
+            </div>
+
+            <div class="hd-Banner_Tools">
+              <nav class="hd-Tools">
+                <ul class="hd-Tools_Items">
+                  {%- if shop.customer_accounts_enabled -%}
+                    <li class="hd-Tools_Item hd-Tools_Item-account">
+                      {%- if customer -%}
+                        <a class="hd-Tools_Link" href="/account">
+                      {%- else -%}
+                        <a class="hd-Tools_Link" href="/account/login">
+                      {%- endif -%}
+                        <span class="hd-Tools_Title util-ScreenReaderOnly">{{ 'general.header.account' | t }}</span>
+                        <span class="hd-Tools_Icon">{%- render 'icon-account' -%}</span>
+                      </a>
+                    </li>
+                  {%- endif -%}
+
+                  <li class="hd-Tools_Item hd-Tools_Item-wishlist">
+                    <a class="hd-Tools_Link" href="/">
+                      <span class="hd-Tools_Title util-ScreenReaderOnly">{{ 'general.header.wishlist' | t }}</span>
+                      <span class="hd-Tools_Icon">{%- render 'icon-heart' -%}</span>
+                    </a>
+                  </li>
+
+                  <li class="hd-Tools_Item hd-Tools_Item-cart">
+                    <a class="hd-Tools_Link" href="/cart">
+                      <span class="hd-Tools_Title util-ScreenReaderOnly">{{ 'general.header.cart' | t }}</span>
+                      <span class="hd-Tools_Icon">{%- render 'icon-bag' -%}</span>
+                      <span class="hd-Tools_Count">{{ cart.item_count }}</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="hd-Navigation">
+        <div class="hd-Navigation_Inner">
+          <div class="hd-Navigation_Body">
+            <ul class="hd-Navigation_Items">
+              {%- for link in linklists[section.settings.menu].links -%}
+                <li class="hd-Navigation_Item">
+                  <a class="hd-Navigation_Link {% if link.active %}hd-Navigation_Link-active{% endif %}" href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
       </nav>
     </div>
   </div>
 </header>
+
+{%- capture same_as -%}
+  {%- if settings.social_instagram_link != blank -%}|{{ settings.social_instagram_link }}{%- endif -%}
+  {%- if settings.social_facebook_link != blank -%}|{{ settings.social_facebook_link }}{%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}|{{ settings.social_twitter_link }}{%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}|{{ settings.social_youtube_link }}{%- endif -%}
+{%- endcapture -%}
+{%- assign same_as = same_as | remove_first: '|' | strip | split: '|' -%}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "{{ shop.name }}",
+    "logo": "{{ settings.google_schema_image | img_url: '200x' }}",
+    "sameAs": [{% for item in same_as %}
+      "{{ item }}"{% unless forloop.last %},{% endunless %}{% endfor %}
+    ],
+    "url": "{{ shop.url }}{{ page.url }}"
+  }
+</script>
+
+{%- if template.name == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}"
+    }
+  </script>
+{%- endif -%}
 
 {% schema %}
   {
@@ -27,13 +148,26 @@
     "settings": [
       {
         "type": "header",
+        "content": "Announcement"
+      },
+      {
+        "type": "textarea",
+        "id": "announcement_text",
+        "label": "Text"
+      },
+      {
+        "type": "header",
         "content": "Header"
       },
       {
         "type": "link_list",
         "id": "menu",
-        "label": "Menu",
-        "default": "main-menu"
+        "label": "Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "sub_menu",
+        "label": "Sub menu"
       }
     ]
   }

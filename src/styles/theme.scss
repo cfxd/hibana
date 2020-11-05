@@ -1,6 +1,22 @@
-@charset 'utf-8';
+// CSS Reset
+@import '~sanitize.css';
 
-/* ----------------------------------------------------------------------
-| Variables
-|--------------------------------------------------------------------- */
-@import './variables';
+// Tools
+@import './tools/variables';
+
+// Core
+@import './core/define';
+
+// Helpers
+@import './helpers/utils';
+
+// Header
+@import './header/announcement';
+@import './header/banner';
+@import './header/currency';
+@import './header/header';
+@import './header/logo';
+@import './header/navigation';
+@import './header/search';
+@import './header/sub-navigation';
+@import './header/tools';

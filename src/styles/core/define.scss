@@ -1,0 +1,168 @@
+/*
+|--------------------------------------------------------------------------
+| Define
+|--------------------------------------------------------------------------
+|
+|
+*/
+/* stylelint-disable */
+[hidden] {
+  display: none !important;
+}
+
+[disabled] {
+  cursor: not-allowed;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a,
+area,
+button,
+[role='button'],
+input:not([type='range']),
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+
+  border-radius: 0;
+}
+
+button {
+  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  outline: 0;
+}
+
+body:not(.util-IsTabbing) button:focus,
+body:not(.util-IsTabbing) input:focus,
+body:not(.util-IsTabbing) select:focus,
+body:not(.util-IsTabbing) textarea:focus {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+|--------------------------------------------------------------------------
+| HTML / Body Resets
+|--------------------------------------------------------------------------
+|
+*/
+html {
+  font-size: 16px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-size: 16px;
+  line-height: 24px;
+  text-rendering: optimizeLegibility;
+
+  background-color: #fff;
+  color: $color-brand;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Typography
+|--------------------------------------------------------------------------
+|
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $color-border;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  font-weight: inherit;
+  text-decoration: none;
+
+  color: currentColor;
+}
+
+a:not([class]) {
+  font-weight: 500;
+
+  color: $color-brand;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Images
+|--------------------------------------------------------------------------
+|
+*/
+img {
+  max-width: 100%;
+}
+
+svg {
+  display: block;
+  width: inherit;
+  height: inherit;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Tables
+|--------------------------------------------------------------------------
+|
+*/
+table {
+  width: 100%;
+
+  table-layout: fixed;
+}
+/* stylelint-enable */
