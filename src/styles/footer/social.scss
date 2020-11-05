@@ -6,7 +6,11 @@
 |
 */
 .ft-Social {
-  margin-top: 60px;
+  margin-top: 30px;
+
+  @media ($breakpoint-sm) {
+    margin-top: 60px;
+  }
 }
 
 .ft-Social_Items {

@@ -41,7 +41,7 @@
       <div class="ft-Banner">
         <div class="ft-Banner_Inner">
           <div class="ft-Banner_Body">
-            <div class="ft-Banner_Columns">
+            <div class="ft-Banner_Columns" data-module="footer-navigation" data-module-navigation="ft-Navigation" data-module-title="ft-Navigation_Title">
               <div class="ft-Banner_Column ft-Banner_Column-logo">
                 <div class="ft-Logo">
                   {%- render 'logo' -%}
@@ -49,12 +49,12 @@
               </div>
 
               {%- for link in linklists[section.settings.menu].links -%}
-                <div class="ft-Banner_Column ft-Banner_Column-navigation" data-module="footer-accordion" data-module-class="js-FooterAccordion">
-                  <div class="ft-Banner_Navigation js-FooterAccordion_Accordion">
-                    <h3 class="ft-Banner_Title js-FooterAccordion_Title">{{ link.title }}</h3>
-
+                <div class="ft-Banner_Column ft-Banner_Column-navigation">
+                  <div class="ft-Banner_Navigation">
                     {%- if link.links != blank -%}
-                      <nav class="ft-Navigation" aria-label="Footer navigation">
+                      <nav class="ft-Navigation">
+                        <h3 class="ft-Navigation_Title">{{ link.title }}</h3>
+
                         <ul class="ft-Navigation_Items">
                           {%- for childlink in link.links -%}
                             <li class="ft-Navigation_Item">

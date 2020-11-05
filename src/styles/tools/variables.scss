@@ -4,13 +4,13 @@
 |--------------------------------------------------------------------------
 |
 */
-$breakpoint-xxs: 350px;
-$breakpoint-xs: 450px;
-$breakpoint-sm: 768px;
-$breakpoint-md: 900px;
-$breakpoint-lg: 1200px;
-$breakpoint-xlg: 1440px;
-$breakpoint-xxlg: 1675px;
+$breakpoint-xxs: 'min-width: 350px';
+$breakpoint-xs: 'min-width: 450px';
+$breakpoint-sm: 'min-width: 768px';
+$breakpoint-md: 'min-width: 900px';
+$breakpoint-lg: 'min-width: 1200px';
+$breakpoint-xlg: 'min-width: 1440px';
+$breakpoint-xxlg: 'min-width: 1675px';
 
 /*
 |--------------------------------------------------------------------------

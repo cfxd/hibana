@@ -5,6 +5,18 @@
 | @namespace: ft-
 |
 */
+.ft-Navigation_Items {
+  display: none;
+
+  @media ($breakpoint-sm) {
+    display: block;
+  }
+
+  .ft-Navigation-active & {
+    display: block;
+  }
+}
+
 .ft-Navigation_Link {
   display: block;
 

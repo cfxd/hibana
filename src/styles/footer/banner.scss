@@ -6,19 +6,37 @@
 |
 */
 .ft-Banner_Columns {
-  position: relative;
-
-  display: flex;
+  @media ($breakpoint-sm) {
+    display: flex;
+  }
 }
 
 .ft-Banner_Column {
-  flex-shrink: 0;
+  @media ($breakpoint-sm) {
+    flex-shrink: 0;
 
-  width: 25%;
+    width: 25%;
+  }
 }
 
-.ft-Banner_Title {
+.ft-Banner_Column-logo {
+  margin-bottom: 30px;
+
+  @media ($breakpoint-sm) {
+    margin-bottom: 0;
+  }
+}
+
+.ft-Navigation_Title {
   font-size: 16px;
   font-weight: 400;
   line-height: 32px;
+
+  .ft-Navigation-active & {
+    color: red;
+  }
+}
+
+.fft-Navigation_Title-active {
+  color: red;
 }

@@ -6,10 +6,15 @@
 |
 */
 .ft-Footer {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   background-color: $color-offwhite;
+
+  @media ($breakpoint-sm) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 }
 
 .ft-Footer_Inner {
