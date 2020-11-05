@@ -40,7 +40,8 @@
     "@ungap/url-search-params": "^0.2.2",
     "js-cookie": "^2.2.1",
     "lazysizes": "^4.1.1",
-    "viewprt": "^4.0.0"
+    "viewprt": "^4.0.0",
+    "sanitize.css": "^11.0.0"
   },
   "scripts": {
     "start": "slate-tools start",
