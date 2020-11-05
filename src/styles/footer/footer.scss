@@ -11,3 +11,7 @@
 
   background-color: $color-offwhite;
 }
+
+.ft-Footer_Inner {
+  @include Container;
+}

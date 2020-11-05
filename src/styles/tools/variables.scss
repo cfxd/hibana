@@ -1,5 +1,19 @@
 /*
 |--------------------------------------------------------------------------
+| Breakpoints
+|--------------------------------------------------------------------------
+|
+*/
+$breakpoint-xxs: 350px;
+$breakpoint-xs: 450px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1200px;
+$breakpoint-xlg: 1440px;
+$breakpoint-xxlg: 1675px;
+
+/*
+|--------------------------------------------------------------------------
 | Colours
 |--------------------------------------------------------------------------
 |
@@ -13,22 +27,18 @@ $color-offwhite: #fafafa;
 
 /*
 |--------------------------------------------------------------------------
+| Container
+|--------------------------------------------------------------------------
+|
+*/
+$container-width: 1400px;
+$container-gutter-desktop: 80px;
+$container-gutter-mobile: 20px;
+
+/*
+|--------------------------------------------------------------------------
 | Fonts
 |--------------------------------------------------------------------------
 |
 */
 $font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-
-/*
-|--------------------------------------------------------------------------
-| Breakpoints
-|--------------------------------------------------------------------------
-|
-*/
-$breakpoint-xxs: 350px;
-$breakpoint-xs: 450px;
-$breakpoint-sm: 768px;
-$breakpoint-md: 900px;
-$breakpoint-lg: 1200px;
-$breakpoint-xlg: 1440px;
-$breakpoint-xxlg: 1675px;

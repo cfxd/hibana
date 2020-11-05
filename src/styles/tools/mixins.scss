@@ -17,7 +17,7 @@
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 50px;
-  color: #000000;
+  color: $color-brand;
 
   transition: background-color 0.2s, border 0.2s, color 0.2s;
 
@@ -31,8 +31,8 @@
   }
 
   &[disabled] {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: $color-brand;
+    color: #fff;
   }
 }
 
@@ -41,30 +41,30 @@
 
   background-color: $color-accent;
   border-color: $color-accent;
-  color: #ffffff;
+  color: #fff;
 
   &:hover,
   &:focus {
-    background-color: #000000;
-    border-color: #000000;
+    background-color: $color-brand;
+    border-color: $color-brand;
   }
 }
 
 /*
 |--------------------------------------------------------------------------
-| Grid
+| Container
 |--------------------------------------------------------------------------
 |
 */
-@mixin Grid_Container {
-  width: 100%;
+@mixin Container {
+  max-width: $container-width;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: $container-gutter-mobile;
+  padding-left: $container-gutter-mobile;
 
   @media (min-width: 750px) {
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: $container-gutter-desktop;
+    padding-left: $container-gutter-desktop;
   }
 }
