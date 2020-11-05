@@ -7,6 +7,7 @@
 */
 .hd-Navigation {
   display: block;
+  margin-top: 20px;
 }
 
 .hd-Navigation_Items {
@@ -16,48 +17,51 @@
 }
 
 .hd-Navigation_Item {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .hd-Navigation_Link {
   position: relative;
 
   display: block;
+  padding: 5px 45px;
+
+  font-size: 20px;
+  line-height: 24px;
+
+  background-color: #fff;
+  border-radius: 0 0 20px 20px;
+
+  transition: background-color 0.2s;
 }
 
-.hd-Navigation_Icon {
-  position: absolute;
-  bottom: -8px;
-
-  justify-content: center;
-
-  display: flex;
-  width: 100%;
-  height: 7px;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transform: translateY(-5px);
-  transition: visibility 0.2s, transform 0.2s;
-
-  .hd-Navigation_Link:hover & {
-    opacity: 1;
-    visibility: visible;
-
-    transform: none;
+.hd-Navigation_Link-1 {
+  &:hover {
+    background-color: rgba($color-rust, 0.5);
   }
 
-  .hd-Navigation_Link-active & {
-    opacity: 1;
-    visibility: visible;
+  &.hd-Navigation_Link-active {
+    background-color: rgba($color-rust, 0.5);
+  }
+}
 
-    transform: none;
+.hd-Navigation_Link-2 {
+  &:hover {
+    background-color: rgba($color-ochre, 0.5);
   }
 
-  svg {
-    width: 15px;
-    height: 7px;
+  &.hd-Navigation_Link-active {
+    background-color: rgba($color-ochre, 0.5);
+  }
+}
+
+.hd-Navigation_Link-3 {
+  &:hover {
+    background-color: rgba($color-forestgreen, 0.5);
+  }
+
+  &.hd-Navigation_Link-active {
+    background-color: rgba($color-forestgreen, 0.5);
   }
 }

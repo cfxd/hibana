@@ -10,7 +10,7 @@
 }
 
 .hd-Tools_Item {
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 .hd-Tools_Item-cart {
@@ -21,27 +21,30 @@
   position: relative;
 
   display: block;
-  width: 18px;
-  height: 18px;
 
-  color: #000000;
-
-  svg {
-    width: 18px;
-    height: 18px;
-  }
+  color: $color-brand;
 }
 
 .hd-Tools_Icon {
   display: block;
+  width: 24px;
+  height: 24px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .hd-Tools_Count {
   position: absolute;
-  top: -15px;
-  right: -2px;
+  top: 5px;
+  left: -18px;
 
   display: block;
 
-  font-size: 9px;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: $color-brand;
 }

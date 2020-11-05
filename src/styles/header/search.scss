@@ -6,10 +6,50 @@
 |
 */
 .hd-Search {
-  svg {
-    width: 24px;
-    height: 24px;
+  min-width: 250px;
+}
 
-    color: #444;
+.hd-Search_Fields {
+  position: relative;
+
+  display: flex;
+
+  border-bottom: 1px solid $color-brand;
+}
+
+.hd-Search_Field {
+  width: 100%;
+}
+
+.hd-Search_Input {
+  width: 100%;
+  padding-bottom: 12px;
+  padding-left: 45px;
+
+  font-size: 20px;
+  letter-spacing: 0.25px;
+  line-height: 24px;
+
+  appearance: none;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0;
+  color: $color-brand;
+}
+
+.hd-Search_Button {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hd-Search_Icon {
+  display: block;
+
+  svg {
+    width: 32px;
+    height: 32px;
+
+    color: $color-brand;
   }
 }

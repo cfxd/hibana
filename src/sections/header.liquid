@@ -45,8 +45,19 @@
             {%- endif -%}
 
             <div class="hd-Banner_Search">
-              <p>Search</p>
-              {%- render 'icon-search' -%}
+              <form class="hd-Search" action="/search" method="get">
+                <div class="hd-Search_Fields">
+                  <div class="hd-Search_Field">
+                    <label class="hd-Search_Label util-ScreenReaderOnly" for="header-search">{{ 'general.search.placeholder' | t }}</label>
+                    <input class="hd-Search_Input" type="search" name="q" id="header-search" />
+                  </div>
+
+                  <button class="hd-Search_Button" type="submit">
+                    <span class="util-ScreenReaderOnly">{{ 'general.search.submit' | t }}</span>
+                    <span class="hd-Search_Icon">{%- render 'icon-search' -%}</span>
+                  </button>
+                </div>
+              </form>
             </div>
 
             <div class="hd-Banner_Tools">
@@ -92,7 +103,7 @@
             <ul class="hd-Navigation_Items">
               {%- for link in linklists[section.settings.menu].links -%}
                 <li class="hd-Navigation_Item">
-                  <a class="hd-Navigation_Link {% if link.active %}hd-Navigation_Link-active{% endif %}" href="{{ link.url }}">
+                  <a class="hd-Navigation_Link hd-Navigation_Link-{{ forloop.index }}{% if link.active %} hd-Navigation_Link-active{% endif %}" href="{{ link.url }}">
                     {{ link.title }}
                   </a>
                 </li>
