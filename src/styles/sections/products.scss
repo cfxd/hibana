@@ -1,0 +1,71 @@
+/*
+|--------------------------------------------------------------------------
+| Products
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Products {
+  position: relative;
+
+  margin-top: 120px;
+  margin-bottom: 120px;
+  padding-bottom: 80px;
+
+  overflow: hidden;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 57px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $color-offwhite;
+  }
+}
+
+.sec-Products_Inner {
+  @include Container;
+}
+
+.sec-Products_Header {
+  align-items: center;
+  justify-content: space-between;
+
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.sec-Products_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 94px;
+
+  color: $color-black;
+}
+
+.sec-Products_Link {
+  @include Button-rust-outline;
+
+  margin-top: 15px;
+}
+
+.sec-Products_Items {
+  display: flex;
+  margin-left: -25px;
+}
+
+.sec-Products_Item {
+  flex-grow: 1;
+
+  width: calc(33.33% - 25px);
+  margin-left: 25px;
+}

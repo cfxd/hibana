@@ -1,74 +1,47 @@
-{%- assign featured_image = product.featured_image -%}
-{%- assign secondary_image = false -%}
-{%- assign available = false -%}
-{%- if product.images[1].src != blank -%}
-    {%- assign secondary_image = true -%}
-    {%- assign secondary_image_src = product.images[1] -%}
-{%- endif -%}
-{%- capture product_status -%}
-    {%- if product.available == false -%}
-        Sold
-    {%- else -%}
-        {{ product.price | money }}
-    {%- endif -%}
-{%- endcapture -%}
+{%- assign on_sale = false -%}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
-<article class="ProductCard {% if secondary_image %} ProductCard--has-secondary{% endif %}">
-    <div class="ProductCard__inner">
-        <div class="ProductCard__upper">
-            {%- if secondary_image -%}
-                <div data-module="distortion-hover" class="ProductCardImageFrameDistortion" data-displacement="{{ 'distortion.png' | asset_url }}" data-intensity="-0.5" data-speedin="2" data-speedout="2" data-speedout="2" data-hoverelement=".ProductCard">
-                    <img class="ProductCardImageFrameDistortion__image ProductCardImageFrameDistortion__image--primary" src="{{ featured_image | img_url: '1000x1000', crop: 'center' }}" alt="Image"/>
-                    <img class="ProductCardImageFrameDistortion__image ProductCardImageFrameDistortion__image--secondary" src="{{ secondary_image_src | img_url: '1000x1000', crop: 'center' }}" alt="Image"/>
-                </div>
-            {%- else -%}
-                <div class="ProductCardImageFrame">
-                    <div class="ProductCardImage ProductCardImage--primary">
-                        {% include 'responsive-image' with image: product.featured_image, cover:true %}
-                    </div>
-                </div>
-            {%- endif -%}
-            <div class="ProductCardOverlay">
-                <header class="ProductCardOverlay__header">
-                    <h3 class="ProductCardOverlay__title">
-                        {{ product.title }}
-                    </h3>
-                    <div class="ProductCardOverlay__meta">
-                        {%- if current_variant.sku != blank -%}
-                            <span class="ProductCardOverlay__data">
-                                {{ current_variant.sku }}
-                            </span>
-                        {%- endif -%}
-                        <span class="ProductCardOverlay__data">
-                            {% include 'product-year' %}
-                        </span>
-                    </div>
-                </header>
-                {%- if product.description != blank -%}
-                    <div class="ProductCardOverlay__content">
-                        <div class="ProductCardOverlay__icons">
-                            {% include 'product-icons' %}
-                        </div>
-                        <p class="ProductCardOverlay__text">
-                            {{ product.description | strip_html | truncatewords: 20 }}
-                        </p>
-                    </div>
-                {%- endif -%}
-                <div class="ProductCardOverlay__action">
-                    <span class="ProductCardOverlay__link">
-                        View product in more detail
-                    </span>
-                </div>
-            </div>
+
+{%- if product.compare_at_price > product.price -%}
+  {%- assign on_sale = true -%}
+{%- endif -%}
+
+<div class="prd-Card{% if not_grid == true %} prd-Card-notgrid{% endif %}">
+  {%- if product.featured_image != blank -%}
+    <a href="{{ product.url }}" class="prd-Card_ImageContainer">
+      {%- for image in product.images -%}
+        <div class="prd-Card_Image">
+          {%- render 'responsive-image',
+            image: image,
+            width: width,
+            height: height
+          -%}
         </div>
-        <div class="ProductCard__lower">
-            <h3 class="ProductCard__title">{{ product.title }}
-                &mdash;
-                <span class="ProductCard__status">
-                    {{ product_status }}
-                </span>
-            </h3>
-        </div>
-    </div>
-    <a class="ProductCard__fauxlink" href="{{ product.url }}" title="{{ product.title }}"></a>
-</article>
+
+        {%- break -%}
+      {%- endfor -%}
+    </a>
+  {%- endif -%}
+
+  <div class="prd-Card_Content">
+    <h4 class="prd-Card_Brand">Brand Name</h4>
+
+    <h3 class="prd-Card_Title">
+      <a class="prd-Card_TitleLink" href="{{ product.url }}">
+        {{ product.title }}
+      </a>
+    </h3>
+
+    <p class="prd-Card_Price">
+      {%- if on_sale -%}
+        <span class="prd-Card_ComparePrice">{{ current_variant.compare_at_price | money }}</span>
+        <span class="prd-Card_NewPrice">{{ current_variant.price | money }}</span>
+      {%- else -%}
+        <span class="prd-Card_OriginalPrice">{{ current_variant.price | money }}</span>
+      {%- endif -%}
+
+      {%- if product.available == false -%}
+        <span class="prd-Card_Soldout">{{ 'products.product.sold_out' | t }}</span>
+      {%- endif -%}
+    </p>
+  </div>
+</div>
