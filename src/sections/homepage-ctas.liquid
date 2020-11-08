@@ -1,0 +1,94 @@
+<section class="sec-Ctas">
+  <div class="sec-Ctas_Inner">
+    <div class="sec-Ctas_Body">
+      <div class="sec-Ctas_Items">
+        {%- for block in section.blocks -%}
+          <div class="sec-Ctas_Item">
+            <div class="sec-Ctas_Card sec-Ctas_Card-{{ block.settings.colour }}">
+              {%- if block.settings.image != blank -%}
+                <div class="sec-Ctas_ImageContainer">
+                  <div class="sec-Ctas_Image">
+                    {%- render 'responsive-image',
+                      image: block.settings.image,
+                      width: 600,
+                      height: 1000
+                    -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.title != blank -%}
+                <h3 class="sec-Ctas_Title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+
+              {%- if block.settings.link != blank -%}
+                <a class="util-FauxLink" href="{{ block.settings.link }}">
+                  {%- if block.settings.title != blank -%}
+                    <span class="util-ScreenReaderOnly">{{ block.settings.title }}<span>
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "CTAs",
+    "max_blocks": 3,
+    "blocks": [
+      {
+        "type": "cta",
+        "name": "CTA",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 600 x 1000 px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "select",
+            "id": "colour",
+            "label": "Colour",
+            "options": [
+              {
+                "value": "rust",
+                "label": "Rust"
+              },
+              {
+                "value": "forestgreen",
+                "label": "Forest Green"
+              },
+              {
+                "value": "ochre",
+                "label": "Ochre"
+              }
+            ],
+            "default": "rust"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Homepage",
+        "name": "CTAs"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,102 @@
+/*
+|--------------------------------------------------------------------------
+| Ctas
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Ctas {
+  padding-top: 120px;
+  padding-bottom: 100px;
+}
+
+.sec-Ctas_Inner {
+  @include Container;
+}
+
+.sec-Ctas_Body {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.sec-Ctas_Items {
+  display: flex;
+  margin-left: -75px;
+}
+
+.sec-Ctas_Item {
+  flex-grow: 1;
+
+  width: calc(33.33% - 75px);
+  margin-left: 75px;
+}
+
+.sec-Ctas_Card {
+  position: relative;
+}
+
+.sec-Ctas_ImageContainer {
+  margin-bottom: 4px;
+}
+
+.sec-Ctas_Image {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 30px;
+    left: -30px;
+
+    width: 100%;
+    height: 100%;
+
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 200px 200px 0 0;
+
+    transition: background-color 0.2s;
+
+    .sec-Ctas_Card:hover & {
+      z-index: -1;
+    }
+
+    .sec-Ctas_Card-rust & {
+      border-color: rgba($color-rust, 0.3);
+    }
+
+    .sec-Ctas_Card-forestgreen & {
+      border-color: rgba($color-forestgreen, 0.3);
+    }
+
+    .sec-Ctas_Card-ochre & {
+      border-color: rgba($color-ochre, 0.3);
+    }
+  }
+
+  &::before {
+    .sec-Ctas_Card-rust:hover & {
+      background-color: $color-rust;
+    }
+
+    .sec-Ctas_Card-forestgreen:hover & {
+      background-color: $color-forestgreen;
+    }
+
+    .sec-Ctas_Card-ochre:hover & {
+      background-color: $color-ochre;
+    }
+  }
+
+  .rsp-Image_Image {
+    border-radius: 200px 200px 0 0;
+  }
+}
+
+.sec-Ctas_Title {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+}
