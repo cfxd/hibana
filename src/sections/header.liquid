@@ -5,7 +5,8 @@
         <div class="hd-Megamenu_Inner">
           <div class="hd-Megamenu_Body">
             <button class="hd-Megamenu_Close" type="button" data-megamenu-toggle>
-              {%- render 'icon-cross' -%}
+              <span class="util-ScreenReaderOnly">Close</span>
+              <span class="hd-Megamenu_Icon">{%- render 'icon-cross' -%}</span>
             </button>
           </div>
         </div>
@@ -19,8 +20,8 @@
             <form class="hd-Search" action="/search" method="get">
               <div class="hd-Search_Fields">
                 <div class="hd-Search_Field">
-                  <label class="hd-Search_Label util-ScreenReaderOnly" for="header-search">{{ 'general.search.placeholder' | t }}</label>
-                  <input class="hd-Search_Input" type="search" name="q" id="header-search" />
+                  <label class="hd-Search_Label util-ScreenReaderOnly" for="header-search-splash">{{ 'general.search.placeholder' | t }}</label>
+                  <input class="hd-Search_Input" type="search" name="q" id="header-search-splash" />
                 </div>
 
                 <button class="hd-Search_Button" type="submit">
@@ -31,7 +32,8 @@
             </form>
 
             <button class="hd-SearchFull_Close" type="button" data-search-toggle>
-              {%- render 'icon-cross' -%}
+              <span class="util-ScreenReaderOnly">Close</span>
+              <span class="hd-SearchFull_Icon">{%- render 'icon-cross' -%}</span>
             </button>
           </div>
         </div>
