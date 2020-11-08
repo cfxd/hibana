@@ -41,5 +41,8 @@ $container-gutter-mobile: 20px;
 |--------------------------------------------------------------------------
 |
 */
-$font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-$font-global: 'FoundersGroteskRegular', $font-body;
+$fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+$founders-grotesk-light: FoundersGroteskLight, $fallback;
+$founders-grotesk-regular: FoundersGroteskRegular, $fallback;
+$founders-grotesk-medium: FoundersGroteskMedium, $fallback;
