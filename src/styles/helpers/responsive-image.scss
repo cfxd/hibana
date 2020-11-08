@@ -1,0 +1,72 @@
+/*
+|--------------------------------------------------------------------------
+| Responsive Image
+|--------------------------------------------------------------------------
+| @namespace: rsp-
+|
+*/
+.rsp-Image {
+  position: relative;
+
+  width: 100%;
+  margin-right: auto;
+  margin-top: auto;
+
+  overflow: hidden;
+
+  .util-NoJs & {
+    display: none;
+  }
+
+  /* stylelint-disable selector-class-pattern */
+  .ls-blur-up-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    opacity: 0;
+
+    transition: opacity 1s;
+  }
+
+  /* stylelint-disable selector-max-class, selector-max-specificity */
+  .ls-blur-up-img.ls-inview.ls-original-loaded {
+    opacity: 0;
+  }
+  /* stylelint-enable */
+
+  &::before {
+    content: '';
+
+    position: relative;
+
+    display: block;
+  }
+}
+
+.rsp-Image_Image {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+
+  transition: opacity 0.5s ease, transform 0.5s;
+
+  /* stylelint-disable selector-class-pattern */
+  &.lazyloaded {
+    opacity: 1;
+  }
+  /* stylelint-enable */
+}
