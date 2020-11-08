@@ -1,4 +1,5 @@
 {%- assign on_sale = false -%}
+{%- assign availability = product.available -%}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {%- if product.compare_at_price > product.price -%}
@@ -6,7 +7,7 @@
 {%- endif -%}
 
 <div class="prd-Card{% if not_grid == true %} prd-Card-notgrid{% endif %}">
-  {%- if product.featured_image != blank -%}
+  {%- if product.images.size > 0 -%}
     <a href="{{ product.url }}" class="prd-Card_ImageContainer">
       {%- for image in product.images -%}
         <div class="prd-Card_Image">
@@ -23,7 +24,9 @@
   {%- endif -%}
 
   <div class="prd-Card_Content">
-    <h4 class="prd-Card_Brand">Brand Name</h4>
+    {%- if product.vendor != blank -%}
+      <h4 class="prd-Card_Brand">{{ product.vendor }}</h4>
+    {%- endif -%}
 
     <h3 class="prd-Card_Title">
       <a class="prd-Card_TitleLink" href="{{ product.url }}">
@@ -35,12 +38,11 @@
       {%- if on_sale -%}
         <span class="prd-Card_ComparePrice">{{ current_variant.compare_at_price | money }}</span>
         <span class="prd-Card_NewPrice">{{ current_variant.price | money }}</span>
+      {%- elsif availability == false -%}
+        <span class="prd-Card_ComparePrice">{{ current_variant.price | money }}</span>
+        <span class="prd-Card_Soldout">{{ 'products.product.sold_out' | t }}</span>
       {%- else -%}
         <span class="prd-Card_OriginalPrice">{{ current_variant.price | money }}</span>
-      {%- endif -%}
-
-      {%- if product.available == false -%}
-        <span class="prd-Card_Soldout">{{ 'products.product.sold_out' | t }}</span>
       {%- endif -%}
     </p>
   </div>

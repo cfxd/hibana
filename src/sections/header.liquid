@@ -1,7 +1,6 @@
 <header class="hd-Header">
   <div class="hd-Header_Inner">
     <div class="hd-Header_Body">
-
       <div class="hd-Megamenu" data-module="megamenu">
         <div class="hd-Megamenu_Inner">
           <div class="hd-Megamenu_Body">
@@ -46,7 +45,7 @@
         <ul class="hd-SubNavigation_Items">
           {%- for link in linklists[section.settings.sub_menu].links -%}
             <li class="hd-SubNavigation_Item">
-              <a class="hd-SubNavigation_Link {% if link.active %}hd-SubNavigation_Link-active{% endif %}" href="{{ link.url }}">
+              <a class="hd-SubNavigation_Link {% if link.active %}hd-SubNavigation_Link-active{% endif %}" href="{{ link.url }}" title="{{ link.title }}">
                 {{ link.title }}
               </a>
             </li>
@@ -140,8 +139,7 @@
             <ul class="hd-Navigation_Items">
               {%- for link in linklists[section.settings.menu].links -%}
                 <li class="hd-Navigation_Item">
-                  <a class="hd-Navigation_Link hd-Navigation_Link-{{ forloop.index }}{% if link.active %} hd-Navigation_Link-active{% endif %}"
-                     href="{{ link.url }}"{% if link.url == '#' %} data-megamenu-toggle{% endif %}>
+                  <a class="hd-Navigation_Link hd-Navigation_Link-{{ forloop.index }}{% if link.active %} hd-Navigation_Link-active{% endif %}" href="{{ link.url }}" title="{{ link.title }}"{% if link.url == '#' %} data-megamenu-toggle{% endif %}>
                     {{ link.title }}
                   </a>
                 </li>

@@ -334,7 +334,7 @@
   "products": {
       "product": {
           "regular_price": "Regular price",
-          "sold_out": "Sold",
+          "sold_out": "Sold out",
           "unavailable": "Unavailable",
           "on_sale": "Sale",
           "on_sale_from_html": "On Sale from {{ price }}",

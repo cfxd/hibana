@@ -12,7 +12,13 @@
   {%- endif -%}
 
   <div class="art-CardFeatured_Content">
-    <p class="art-CardFeatured_Category">Stories</p>
+    {%- if article.tags.size > 0 -%}
+      {%- for tag in article.tags -%}
+        {%- if tag contains 'Category|' -%}
+          <h4 class="art-CardFeatured_Category">{{ tag | replace: 'Category|', '' }}</h4>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
 
     <h3 class="art-CardFeatured_Title">
       <a class="art-CardFeatured_TitleLink" href="{{ article.url }}">

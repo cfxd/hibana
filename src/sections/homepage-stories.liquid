@@ -5,7 +5,9 @@
         <h2 class="sec-Stories_Title">{{ section.settings.title }}</h2>
 
         {%- if section.settings.link_text != blank -%}
-          <a class="sec-Stories_Link" href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+          <a class="sec-Stories_Link" href="{{ section.settings.link_url }}">
+            {{ section.settings.link_text }}
+          </a>
         {%- endif -%}
       </header>
     {%- endif -%}
@@ -13,11 +15,9 @@
     <div class="sec-Stories_Body">
       <ul class="sec-Stories_Items">
         {%- for block in section.blocks -%}
-          {%- assign blog_article = articles[block.settings.article] -%}
-
           <li class="sec-Stories_Item">
             {%- render 'article-card-featured',
-              article: blog_article,
+              article: articles[block.settings.article],
               width: 1500,
               height: 850
             -%}
