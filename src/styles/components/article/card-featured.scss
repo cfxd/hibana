@@ -1,0 +1,57 @@
+/*
+|--------------------------------------------------------------------------
+| Card Featured
+|--------------------------------------------------------------------------
+| @namespace: art-
+|
+*/
+.art-CardFeatured {
+  width: 100%;
+}
+
+.art-CardFeatured_ImageContainer {
+  display: block;
+  margin-bottom: 25px;
+}
+
+.art-CardFeatured_Image {
+  .rsp-Image_Image {
+    border-radius: 0 0 60px 60px;
+  }
+}
+
+.art-CardFeatured_Content {
+  max-width: 625px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.art-CardFeatured_Category {
+  margin-bottom: 15px;
+
+  font-family: $founders-grotesk-light;
+  font-size: 16px;
+  letter-spacing: 1.6px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.art-CardFeatured_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.art-CardFeatured_Text {
+  margin-top: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
+
+.art-CardFeatured_Link {
+  font-weight: 500;
+}

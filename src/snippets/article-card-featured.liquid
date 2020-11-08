@@ -1,0 +1,33 @@
+<div class="art-CardFeatured">
+  {%- if article.image != blank -%}
+    <a class="art-CardFeatured_ImageContainer" href="{{ article.url }}">
+      <div class="art-CardFeatured_Image">
+        {%- render 'responsive-image',
+          image: article.image,
+          width: width,
+          height: height
+        -%}
+      </div>
+    </a>
+  {%- endif -%}
+
+  <div class="art-CardFeatured_Content">
+    <p class="art-CardFeatured_Category">Stories</p>
+
+    <h3 class="art-CardFeatured_Title">
+      <a class="art-CardFeatured_TitleLink" href="{{ article.url }}">
+        {{ article.title }}
+      </a>
+    </h3>
+
+    {%- if article.excerpt != blank -%}
+      <p class="art-CardFeatured_Text">
+        {{ article.excerpt | strip_html }}
+
+        <a class="art-CardFeatured_Link" href="{{ article.url }}">
+          read more
+        </a>
+      </p>
+    {%- endif -%}
+  </div>
+</div>

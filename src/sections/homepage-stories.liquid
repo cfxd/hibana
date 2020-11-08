@@ -1,0 +1,71 @@
+<section class="sec-Stories">
+  <div class="sec-Stories_Inner lyt-Container">
+    {%- if section.settings.title != blank -%}
+      <header class="sec-Stories_Header">
+        <h2 class="sec-Stories_Title">{{ section.settings.title }}</h2>
+
+        {%- if section.settings.link_text != blank -%}
+          <a class="sec-Stories_Link" href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    <div class="sec-Stories_Body">
+      <ul class="sec-Stories_Items">
+        {%- for block in section.blocks -%}
+          {%- assign blog_article = articles[block.settings.article] -%}
+
+          <li class="sec-Stories_Item">
+            {%- render 'article-card-featured',
+              article: blog_article,
+              width: 1500,
+              height: 850
+            -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Stories",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article",
+        "name": "Article",
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": "Article"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Homepage",
+        "name": "Stories"
+      }
+    ]
+  }
+{% endschema %}

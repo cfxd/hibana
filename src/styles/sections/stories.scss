@@ -1,0 +1,58 @@
+/*
+|--------------------------------------------------------------------------
+| Stories
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Stories {
+  position: relative;
+
+  margin-top: 120px;
+  margin-bottom: 120px;
+  padding-bottom: 80px;
+
+  overflow: hidden;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 57px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $color-offwhite;
+  }
+}
+
+.sec-Stories_Inner {
+  @include Container;
+}
+
+.sec-Stories_Header {
+  align-items: center;
+  justify-content: space-between;
+
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.sec-Stories_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 94px;
+
+  color: $color-black;
+}
+
+.sec-Stories_Item {
+  padding-right: 80px;
+  padding-left: 80px;
+}
