@@ -7,6 +7,12 @@
 */
 .hd-Search {
   min-width: 250px;
+
+  transition: transform 0.2s;
+
+  .lay-Megamenu-active & {
+    z-index: 2;
+  }
 }
 
 .hd-Search_Fields {

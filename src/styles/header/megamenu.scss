@@ -1,15 +1,11 @@
 /*
 |--------------------------------------------------------------------------
-| Header
+| Megamenu
 |--------------------------------------------------------------------------
 | @namespace: hd-
 |
 */
-// .hd-Header_Body {
-//   position: relative;
-// }
-
-.hd-SearchFull {
+.hd-Megamenu {
   position: absolute;
   top: 0;
   right: 0;
@@ -25,20 +21,20 @@
   transform: translateY(-100%);
   transition: transform 0.2s;
 
-  .lay-Search-active & {
+  .lay-Megamenu-active & {
     transform: none;
   }
 }
 
-.hd-SearchFull_Inner {
+.hd-Megamenu_Inner {
   @include Container;
 }
 
-.hd-SearchFull_Body {
+.hd-Megamenu_Body {
   position: relative;
 }
 
-.hd-SearchFull_Close {
+.hd-Megamenu_Close {
   position: absolute;
   top: 80px;
   right: 0;

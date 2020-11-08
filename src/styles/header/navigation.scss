@@ -8,6 +8,13 @@
 .hd-Navigation {
   display: block;
   margin-top: 20px;
+
+  transition: transform 0.2s;
+
+  .lay-Megamenu-active & {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .hd-Navigation_Items {
@@ -53,6 +60,12 @@
 
   &.hd-Navigation_Link-active {
     background-color: rgba($color-ochre, 0.5);
+  }
+
+  .lay-Megamenu-active & {
+    background-color: rgba($color-ochre, 0.5);
+
+    transition: transform 0.2s;
   }
 }
 
