@@ -32,7 +32,7 @@
 
   &[disabled] {
     background-color: $color-brand;
-    color: #fff;
+    color: $color-white;
   }
 }
 
@@ -41,7 +41,7 @@
 
   background-color: $color-accent;
   border-color: $color-accent;
-  color: #fff;
+  color: $color-white;
 
   &:hover,
   &:focus {
