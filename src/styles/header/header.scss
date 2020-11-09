@@ -5,6 +5,12 @@
 | @namespace: hd-
 |
 */
+.hd-Header {
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid $color-border;
+}
+
 .hd-SearchFull {
   position: absolute;
   top: 0;

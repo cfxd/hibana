@@ -7,7 +7,7 @@
 */
 .hd-Currency {
   position: absolute;
-  top: 5px;
+  top: 3px;
   left: 20px;
 
   select {
@@ -15,6 +15,6 @@
     letter-spacing: 0.17px;
     line-height: 15px;
 
-    border-color: rgba($color-brand, 0.5);
+    border: 0;
   }
 }
