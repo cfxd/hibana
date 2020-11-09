@@ -1,0 +1,94 @@
+/*
+|--------------------------------------------------------------------------
+| Collections
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Collections {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.sec-Collections_Inner {
+  @include Container;
+}
+
+.sec-Collections_Items {
+  position: relative;
+
+  display: flex;
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 30px;
+    bottom: 55px;
+    left: -30px;
+
+    width: 100%;
+
+    border: 2px solid rgba($color-rust, 0.3);
+    border-radius: 0 0 60px 60px;
+
+    transition: background-color 0.2s;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      z-index: -1;
+    }
+
+    &::before {
+      background-color: $color-rust;
+    }
+  }
+}
+
+.sec-Collections_Item {
+  flex-grow: 1;
+
+  width: 33.33%;
+}
+
+.sec-Collections_ImageContainer {
+  margin-bottom: 25px;
+}
+
+.sec-Collections_Image {
+  .rsp-Image_Image {
+    .sec-Collections_Item:first-child & {
+      border-radius: 0 0 0 60px;
+    }
+
+    .sec-Collections_Item:last-child & {
+      border-radius: 0 0 60px 0;
+    }
+  }
+}
+
+.sec-Collections_Content {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.sec-Collections_Subtitle {
+  margin-bottom: 10px;
+
+  font-family: $founders-grotesk-light;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1.6px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.sec-Collections_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}

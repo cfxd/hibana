@@ -1,0 +1,85 @@
+<section class="sec-Collections">
+  <div class="sec-Collections_Inner">
+    <div class="sec-Collections_Body">
+      <div class="sec-Collections_Items">
+        {%- for block in section.blocks -%}
+          <div class="sec-Collections_Item">
+            <div class="sec-Collections_Card">
+              {%- if block.settings.image != blank -%}
+                <div class="sec-Collections_ImageContainer">
+                  <div class="sec-Collections_Image">
+                    {%- render 'responsive-image',
+                      image: block.settings.image,
+                      width: 900,
+                      height: 800
+                    -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              <div class="sec-Collections_Content">
+                {%- if block.settings.sub_title != blank -%}
+                  <h3 class="sec-Collections_Subtitle">{{ block.settings.sub_title }}</h3>
+                {%- endif -%}
+
+                {%- if block.settings.title != blank -%}
+                  <h2 class="sec-Collections_Title">{{ block.settings.title }}</h2>
+                {%- endif -%}
+
+                {%- if block.settings.link != blank -%}
+                  <a class="util-FauxLink" href="{{ block.settings.link }}">
+                    {%- if block.settings.title != blank -%}
+                      <span class="util-ScreenReaderOnly">{{ block.settings.title }}<span>
+                    {%- endif -%}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Collections",
+    "max_blocks": 3,
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 900 x 800 px"
+          },
+          {
+            "type": "text",
+            "id": "sub_title",
+            "label": "Sub title"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Homepage",
+        "name": "Collections"
+      }
+    ]
+  }
+{% endschema %}
