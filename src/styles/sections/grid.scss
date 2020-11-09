@@ -1,0 +1,103 @@
+/*
+|--------------------------------------------------------------------------
+| Grid
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Grid {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.sec-Grid_Inner {
+  @include Container;
+}
+
+.sec-Grid_Items {
+  grid-auto-flow: column;
+  grid-template-columns: repeat(12, 1fr);
+
+  display: grid;
+}
+
+.sec-Grid_Item {
+  overflow: hidden;
+}
+
+.sec-Grid_Item-content {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 2;
+}
+
+.sec-Grid_Item-imagesquaresmall {
+  grid-column: 1 / span 5;
+  grid-row: 3 / span 2;
+}
+
+.sec-Grid_Item-imagesquarelarge {
+  grid-column: 6 / span 7;
+  grid-row: 1 / span 3;
+}
+
+.sec-Grid_Item-imagelandscape {
+  grid-column: 6 / span 7;
+  grid-row: 4 / span 1;
+}
+
+.sec-Grid_ImageContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.sec-Grid_Image {
+  width: 100%;
+  height: 100%;
+
+  .rsp-Image {
+    height: 100%;
+  }
+
+  .rsp-Image_Image {
+    .sec-Grid_Item-imagesquaresmall & {
+      border-radius: 0 0 0 60px;
+    }
+
+    .sec-Grid_Item-imagelandscape & {
+      border-radius: 0 0 60px 0;
+    }
+  }
+}
+
+.sec-Grid_Content {
+  margin-right: 25px;
+  margin-bottom: 50px;
+
+  text-align: right;
+}
+
+.sec-Grid_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 85px;
+  text-align: left;
+
+  color: $color-black;
+}
+
+.sec-Grid_Text {
+  margin-top: 25px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.sec-Grid_Link {
+  @include Button-rust-outline;
+
+  margin-top: 40px;
+}

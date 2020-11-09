@@ -1,0 +1,152 @@
+<section class="sec-Grid">
+  <div class="sec-Grid_Inner">
+    <div class="sec-Grid_Body">
+      <div class="sec-Grid_Items">
+        {%- if section.settings.title != blank -%}
+          <div class="sec-Grid_Item sec-Grid_Item-content">
+            <div class="sec-Grid_Content">
+              <h2 class="sec-Grid_Title">{{ section.settings.title }}</h2>
+
+              {%- if section.settings.text != blank -%}
+                <p class="sec-Grid_Text">{{ section.settings.text }}</p>
+              {%- endif -%}
+
+              {%- if section.settings.link_text != blank -%}
+                <a class="sec-Grid_Link" href="{{ section.settings.link }}">
+                  {{ section.settings.link_text }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'image_square_small' -%}
+            <div class="sec-Grid_Item sec-Grid_Item-imagesquaresmall">
+              <div class="sec-Grid_ImageContainer">
+                <div class="sec-Grid_Image">
+                  {%- render 'responsive-image',
+                    image: block.settings.image,
+                    width: 1000,
+                    height: 800
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- elsif block.type == 'image_square_large' -%}
+            <div class="sec-Grid_Item sec-Grid_Item-imagesquarelarge">
+              <div class="sec-Grid_ImageContainer">
+                <div class="sec-Grid_Image">
+                  {%- render 'responsive-image',
+                    image: block.settings.image,
+                    width: 1400,
+                    height: 1000
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- elsif block.type == 'image_landscape' -%}
+            <div class="sec-Grid_Item sec-Grid_Item-imagelandscape">
+              <div class="sec-Grid_ImageContainer">
+                <div class="sec-Grid_Image">
+                  {%- render 'responsive-image',
+                    image: block.settings.image,
+                    width: 1400,
+                    height: 650
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Grid",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_square_small",
+        "name": "Image (square small)",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 1000 x 800 px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "type": "image_square_large",
+        "name": "Image (square large)",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 1400 x 1000 px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "type": "image_landscape",
+        "name": "Image (landscape)",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 1400 x 650 px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Homepage",
+        "name": "Grid"
+      }
+    ]
+  }
+{% endschema %}
