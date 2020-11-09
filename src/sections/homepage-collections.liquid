@@ -25,15 +25,15 @@
                 {%- if block.settings.title != blank -%}
                   <h2 class="sec-Collections_Title">{{ block.settings.title }}</h2>
                 {%- endif -%}
-
-                {%- if block.settings.link != blank -%}
-                  <a class="util-FauxLink" href="{{ block.settings.link }}">
-                    {%- if block.settings.title != blank -%}
-                      <span class="util-ScreenReaderOnly">{{ block.settings.title }}<span>
-                    {%- endif -%}
-                  </a>
-                {%- endif -%}
               </div>
+
+              {%- if block.settings.link != blank -%}
+                <a class="util-FauxLink" href="{{ block.settings.link }}">
+                  {%- if block.settings.title != blank -%}
+                    <span class="util-ScreenReaderOnly">{{ block.settings.title }}<span>
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
             </div>
           </div>
         {%- endfor -%}
