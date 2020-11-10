@@ -57,9 +57,11 @@
 }
 
 .sec-Stories_Item {
-  opacity: 0.5;
+  position: relative;
 
-  transition: opacity 0.2s;
+  opacity: 0.6;
+
+  transition: opacity 0.5s;
 }
 
 .sec-Stories_Item-active {
@@ -74,59 +76,36 @@
   touch-action: pan-y;
 }
 
-.sec-Stories_Arrow {
+.sec-Stories_Arrows {
   position: absolute;
-  top: 50%;
-
-  justify-content: center;
-
-  display: flex;
-  width: 25px;
-  height: 25px;
-
-  background-color: transparent;
-  border: 0;
-  color: #999999;
-
-  transform: translateY(-50%);
-}
-
-.sec-Stories_Arrow-left {
+  top: 35%;
+  right: 0;
   left: 0;
 }
 
+.sec-Stories_Arrow {
+  position: absolute;
+  top: 36%;
+}
+
+.sec-Stories_Arrow-left {
+  left: 140px;
+}
+
 .sec-Stories_Arrow-right {
-  right: 0;
+  right: 140px;
 }
 
-.sec-Stories_Dots {
-  position: relative;
-  z-index: 1;
+.sec-Stories_ArrowIcon {
+  width: 75px;
+  height: 25px;
 
-  justify-content: center;
+  color: $color-brand;
 
-  display: flex;
-  margin-top: 30px;
-}
+  stroke: $color-brand;
 
-.sec-Stories_Dot {
-  position: relative;
-
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 5px;
-  margin-left: 5px;
-
-  background-color: rgba(#000000, 0.2);
-  border: 0;
-  border-radius: 50%;
-
-  &:hover {
-    background-color: #000000;
+  svg {
+    width: 75px;
+    height: 25px;
   }
-}
-
-.sec-Stories_Dot-active {
-  background-color: #000000;
 }

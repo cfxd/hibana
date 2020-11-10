@@ -1,3 +1,28 @@
+{%- if section.blocks.size > 1 -%}
+  {%- capture data_module -%}data-module-carousel="sec-Stories_Item" data-module="homepage-stories"{%- endcapture -%}
+
+  {%- capture has_carousel -%}sec-Stories-hascarousel{%- endcapture -%}
+
+  {%- capture glide_track -%}data-glide-el="track"{%- endcapture -%}
+  {%- capture glide_track_class -%}glide__track{%- endcapture -%}
+  {%- capture glide_slides_class -%}glide__slides{%- endcapture -%}
+  {%- capture glide_slide_class -%}glide__slide{%- endcapture -%}
+
+  {%- capture glide_arrows -%}
+    <div class="sec-Stories_Arrows" data-glide-el="controls">
+      <button class="sec-Stories_Arrow sec-Stories_Arrow-left" data-glide-dir="<">
+        <span class="sec-Stories_ArrowText util-ScreenReaderOnly">Previous</span>
+        <span class="sec-Stories_ArrowIcon">{%- render 'arrow-left' -%}</span>
+      </button>
+
+      <button class="sec-Stories_Arrow sec-Stories_Arrow-right" data-glide-dir=">">
+        <span class="sec-Stories_ArrowText util-ScreenReaderOnly">Next</span>
+        <span class="sec-Stories_ArrowIcon">{%- render 'arrow-right' -%}</span>
+      </button>
+    </div>
+  {%- endcapture -%}
+{%- endif -%}
+
 <section class="sec-Stories">
   <div class="sec-Stories_Inner">
     {%- if section.settings.title != blank -%}
@@ -12,63 +37,24 @@
       </header>
     {%- endif -%}
 
-    <div class="sec-Stories_Body">
-
-
-      {%- if section.blocks.size > 1 -%}
-        {%- capture data_module_class -%}data-module-targets="sec-Stories_Item" data-module="homepage-stories"{%- endcapture -%}
-
-        {%- capture has_carousel -%}sec-Stories-hascarousel{%- endcapture -%}
-
-        {%- capture glide_track -%}data-glide-el="track"{%- endcapture -%}
-        {%- capture glide_track_class -%}glide__track{%- endcapture -%}
-        {%- capture glide_slides_class -%}glide__slides{%- endcapture -%}
-        {%- capture glide_slide_class -%}glide__slide{%- endcapture -%}
-
-        {%- capture glide_dots -%}
-          <div class="sec-Stories_Dots" data-glide-el="controls[nav]">
+    <div class="sec-Stories_Body" {{ data_module }}>
+      <div class="sec-Stories_Carousel {{ has_carousel }}">
+        <div class="sec-Stories_Track {{ glide_track_class }}" {{ glide_track }}>
+          <ul class="sec-Stories_Items {{ glide_slides_class }}">
             {%- for block in section.blocks -%}
-              <button class="sec-Stories_Dot" data-glide-dir="={{ forloop.index0 }}">
-                <span class="util-ScreenReaderOnly">{{ forloop.index }}</span>
-              </button>
+              <li class="sec-Stories_Item {{ glide_slide_class }}">
+                {%- render 'article-card-featured',
+                  article: articles[block.settings.article],
+                  width: 1500,
+                  height: 850
+                -%}
+              </li>
             {%- endfor -%}
-          </div>
-        {%- endcapture -%}
-      {%- endif -%}
-
-      <div class="sec-Stories_Car" {{ data_module_class }}>
-        <div class="sec-Stories_Carousel {{ has_carousel }}">
-          <div class="sec-Stories_Track {{ glide_track_class }}" {{ glide_track }}>
-            <ul class="sec-Stories_Items {{ glide_slides_class }}">
-              {%- for block in section.blocks -%}
-                <li class="sec-Stories_Item {{ glide_slide_class }}">
-                  {%- render 'article-card-featured',
-                    article: articles[block.settings.article],
-                    width: 1500,
-                    height: 850
-                  -%}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-
-          {{ glide_dots }}
+          </ul>
         </div>
+
+        {{ glide_arrows }}
       </div>
-
-
-
-      {% comment %} <ul class="sec-Stories_Items">
-        {%- for block in section.blocks -%}
-          <li class="sec-Stories_Item">
-            {%- render 'article-card-featured',
-              article: articles[block.settings.article],
-              width: 1500,
-              height: 850
-            -%}
-          </li>
-        {%- endfor -%}
-      </ul> {% endcomment %}
     </div>
   </div>
 </section>
