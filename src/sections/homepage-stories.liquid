@@ -13,7 +13,52 @@
     {%- endif -%}
 
     <div class="sec-Stories_Body">
-      <ul class="sec-Stories_Items">
+
+
+      {%- if section.blocks.size > 1 -%}
+        {%- capture data_module_class -%}data-module-targets="sec-Stories_Item" data-module="homepage-stories"{%- endcapture -%}
+
+        {%- capture has_carousel -%}sec-Stories-hascarousel{%- endcapture -%}
+
+        {%- capture glide_track -%}data-glide-el="track"{%- endcapture -%}
+        {%- capture glide_track_class -%}glide__track{%- endcapture -%}
+        {%- capture glide_slides_class -%}glide__slides{%- endcapture -%}
+        {%- capture glide_slide_class -%}glide__slide{%- endcapture -%}
+
+        {%- capture glide_dots -%}
+          <div class="sec-Stories_Dots" data-glide-el="controls[nav]">
+            {%- for block in section.blocks -%}
+              <button class="sec-Stories_Dot" data-glide-dir="={{ forloop.index0 }}">
+                <span class="util-ScreenReaderOnly">{{ forloop.index }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endcapture -%}
+      {%- endif -%}
+
+      <div class="sec-Stories_Car" {{ data_module_class }}>
+        <div class="sec-Stories_Carousel {{ has_carousel }}">
+          <div class="sec-Stories_Track {{ glide_track_class }}" {{ glide_track }}>
+            <ul class="sec-Stories_Items {{ glide_slides_class }}">
+              {%- for block in section.blocks -%}
+                <li class="sec-Stories_Item {{ glide_slide_class }}">
+                  {%- render 'article-card-featured',
+                    article: articles[block.settings.article],
+                    width: 1500,
+                    height: 850
+                  -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          {{ glide_dots }}
+        </div>
+      </div>
+
+
+
+      {% comment %} <ul class="sec-Stories_Items">
         {%- for block in section.blocks -%}
           <li class="sec-Stories_Item">
             {%- render 'article-card-featured',
@@ -23,7 +68,7 @@
             -%}
           </li>
         {%- endfor -%}
-      </ul>
+      </ul> {% endcomment %}
     </div>
   </div>
 </section>
