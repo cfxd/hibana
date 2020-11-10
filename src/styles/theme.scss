@@ -1,6 +1,10 @@
 // CSS Reset
 @import '~sanitize.css';
 
+// GlideJS
+@import '~@glidejs/glide/dist/css/glide.core.min.css';
+@import '~@glidejs/glide/dist/css/glide.theme.min.css';
+
 // Tools
 @import './tools/variables';
 @import './tools/fonts';

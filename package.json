@@ -27,6 +27,7 @@
     "stylelint-order": "^4.0.0"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "@shopify/theme-a11y": "^2.0.1",
     "@shopify/theme-addresses": "^3.0.0",
     "@shopify/theme-cart": "^1.0.0-alpha.7",
