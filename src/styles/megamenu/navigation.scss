@@ -2,26 +2,34 @@
 |--------------------------------------------------------------------------
 | Navigation
 |--------------------------------------------------------------------------
-| @namespace: hd-
+| @namespace: meg-
 |
 */
-.hd-Navigation {
-  display: block;
-  margin-top: 20px;
+.meg-Navigation {
+  position: relative;
+  z-index: 2;
+
+  grid-column: 2 / span 10;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  display: flex;
+  min-height: 176px;
 }
 
-.hd-Navigation_Items {
+.meg-Navigation_Items {
   justify-content: center;
 
   display: flex;
 }
 
-.hd-Navigation_Item {
+.meg-Navigation_Item {
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.hd-Navigation_Link {
+.meg-Navigation_Link {
   position: relative;
 
   display: block;
@@ -37,6 +45,6 @@
   transition: background-color 0.2s;
 }
 
-.hd-Navigation_Link-active {
+.meg-Navigation_Link-active {
   font-family: $founders-grotesk-medium;
 }

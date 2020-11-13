@@ -1,0 +1,72 @@
+/*
+|--------------------------------------------------------------------------
+| Brands
+|--------------------------------------------------------------------------
+| @namespace: meg-
+|
+*/
+.meg-Brands {
+  padding-top: 60px;
+}
+
+.meg-Brands_Inner {
+  grid-gap: 25px;
+  grid-template-columns: repeat(12, 1fr);
+
+  display: grid;
+}
+
+.meg-Brands_Header {
+  align-items: center;
+  justify-content: space-between;
+
+  grid-column: 3 / span 8;
+
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.meg-Brands_Body {
+  grid-column: 3 / span 8;
+}
+
+.meg-Brands_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 56px;
+}
+
+.meg-Brands_All {
+  @include Button-rust-outline;
+}
+
+.meg-Brands_Columns {
+  display: flex;
+}
+
+.meg-Brands_Column {
+  flex-grow: 1;
+
+  width: 25%;
+}
+
+.meg-Brands_Category {
+  margin-bottom: 10px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.meg-Brands_Link {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 32px;
+}
+
+.meg-Brands_Link-all {
+  font-weight: 500;
+}

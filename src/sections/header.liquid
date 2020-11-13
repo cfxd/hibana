@@ -4,6 +4,113 @@
       <div class="hd-Megamenu" data-module="megamenu">
         <div class="hd-Megamenu_Inner">
           <div class="hd-Megamenu_Body">
+            <nav class="meg-Navigation">
+              <div class="meg-Navigation_Inner">
+                <div class="meg-Navigation_Body">
+                  <ul class="meg-Navigation_Items">
+                    {%- for link in linklists[section.settings.menu].links -%}
+                      <li class="meg-Navigation_Item">
+                        <a class="meg-Navigation_Link meg-Navigation_Link-{{ forloop.index }}{% if link.active %} meg-Navigation_Link-active{% endif %}" href="{{ link.url }}" title="{{ link.title }}"{% if link.url == '#' %} data-megamenu-toggle{% endif %}>
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+            <div class="meg-Shop">
+              <div class="meg-Shop_Inner">
+                <div class="meg-Shop_Body">
+                  <ul class="meg-Shop_Columns">
+                    {%- for link in linklists[section.settings.shop_menu].links -%}
+                      <li class="meg-Shop_Column meg-Shop_Column-links{{ forloop.index }}">
+                        <nav class="meg-Shop_Navigation">
+                          <h4 class="meg-Shop_Category">{{ link.title }}</h4>
+
+                          {%- if link.links != blank -%}
+                            <ul class="meg-Shop_Items">
+                              {%- for childlink in link.links -%}
+                                <li class="meg-Shop_Item">
+                                  <a class="meg-Shop_Link{% if childlink.title contains 'View all' %} meg-Shop_Link-all{% endif %}{% if childlink.active %} meg-Shop_Link-active{% endif %}" href="{{ childlink.url }}" title="{{ childlink.title }}">
+                                    {{ childlink.title }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endif -%}
+                        </nav>
+                      </li>
+                    {%- endfor -%}
+
+                    {%- for block in section.blocks -%}
+                      <li class="meg-Shop_Column meg-Shop_Column-collection{{ forloop.index }} meg-Shop_Column-{{ block.settings.colour }}">
+                        {%- assign collection = collections[block.settings.collection] -%}
+
+                        <div class="meg-Shop_Collection">
+                          <a class="meg-Shop_Card" href="{{ collection.url }}">
+                            {%- if block.settings.image -%}
+                              <div class="meg-Shop_ImageContainer">
+                                <div class="meg-Shop_Image">
+                                  {%- render 'responsive-image',
+                                    image: block.settings.image,
+                                    width: 600,
+                                    height: 400
+                                  -%}
+                                </div>
+                              </div>
+                            {%- endif -%}
+
+                            {%- if block.settings.title -%}
+                              <div class="meg-Shop_Content">
+                                <h3 class="meg-Shop_Title">{{ block.settings.title }}</h3>
+                                <p class="meg-Shop_Count">{{ collection.all_products_count }} items</p>
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="meg-Brands">
+              <div class="meg-Brands_Inner">
+                <header class="meg-Brands_Header">
+                  <h3 class="meg-Brands_Title">Brands</h3>
+
+                  <a class="meg-Brands_All" href="#">Brand directory</a>
+                </header>
+
+                <div class="meg-Brands_Body">
+                  <ul class="meg-Brands_Columns">
+                    {%- for link in linklists[section.settings.brands_menu].links -%}
+                      <li class="meg-Brands_Column">
+                        <nav class="meg-Brands_Navigation">
+                          <h4 class="meg-Brands_Category">{{ link.title }}</h4>
+
+                          {%- if link.links != blank -%}
+                            <ul class="meg-Brands_Items">
+                              {%- for childlink in link.links -%}
+                                <li class="meg-Brands_Item">
+                                  <a class="meg-Brands_Link{% if childlink.title contains 'View all' %} meg-Brands_Link-all{% endif %}{% if childlink.active %} meg-Brands_Link-active{% endif %}" href="{{ childlink.url }}" title="{{ childlink.title }}">
+                                    {{ childlink.title }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endif -%}
+                        </nav>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <button class="hd-Megamenu_Close" type="button" data-megamenu-toggle>
               <span class="util-ScreenReaderOnly">Close</span>
               <span class="hd-Megamenu_Icon">{%- render 'icon-cross' -%}</span>
@@ -194,6 +301,7 @@
 {% schema %}
   {
     "name": "Header",
+    "max_blocks": 3,
     "settings": [
       {
         "type": "header",
@@ -206,17 +314,76 @@
       },
       {
         "type": "header",
-        "content": "Header"
+        "content": "Menus"
       },
       {
         "type": "link_list",
         "id": "menu",
-        "label": "Menu"
+        "label": "Header menu"
       },
       {
         "type": "link_list",
         "id": "sub_menu",
         "label": "Sub menu"
+      },
+      {
+        "type": "link_list",
+        "id": "shop_menu",
+        "label": "Shop menu"
+      },
+      {
+        "type": "link_list",
+        "id": "brands_menu",
+        "label": "Brands menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "collection",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 600 x 400 px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "select",
+            "id": "colour",
+            "label": "Colour",
+            "options": [
+              {
+                "value": "rust",
+                "label": "Rust"
+              },
+              {
+                "value": "forestgreen",
+                "label": "Forest Green"
+              },
+              {
+                "value": "ochre",
+                "label": "Ochre"
+              }
+            ],
+            "default": "rust"
+          }
+        ]
       }
     ]
   }

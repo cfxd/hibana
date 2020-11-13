@@ -14,6 +14,7 @@ export default function init({el}) {
       event.preventDefault();
 
       document.body.classList.toggle('lay-Megamenu-active');
+      document.body.classList.toggle('util-SiteOverflow');
     });
   });
 }

@@ -1,0 +1,171 @@
+/*
+|--------------------------------------------------------------------------
+| Shop
+|--------------------------------------------------------------------------
+| @namespace: meg-
+|
+*/
+.meg-Shop {
+  padding-top: 60px;
+}
+
+.meg-Shop_Columns {
+  grid-gap: 25px;
+  grid-template-columns: repeat(12, 1fr);
+
+  display: grid;
+}
+
+.meg-Shop_Column-links1 {
+  grid-column: 3 / span 2;
+  grid-row: 2;
+
+  margin-top: -50px;
+}
+
+.meg-Shop_Column-links2 {
+  grid-column: 5 / span 2;
+  grid-row: 1;
+
+  margin-top: 50px;
+}
+
+.meg-Shop_Column-links3 {
+  grid-column: 7 / span 2;
+  grid-row: 1;
+
+  margin-top: 150px;
+}
+
+.meg-Shop_Column-links4 {
+  grid-column: 9 / span 2;
+  grid-row: 2;
+
+  margin-top: -50px;
+}
+
+.meg-Shop_Column-collection1 {
+  grid-column: 2 / span 3;
+  grid-row: 1;
+}
+
+.meg-Shop_Column-collection2 {
+  grid-column: 9 / span 3;
+  grid-row: 1;
+}
+
+.meg-Shop_Column-collection3 {
+  grid-column: 5 / span 3;
+  grid-row: 2;
+}
+
+.meg-Shop_Category {
+  margin-bottom: 10px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  text-decoration: underline;
+}
+
+.meg-Shop_Link {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 32px;
+}
+
+.meg-Shop_Link-all {
+  font-weight: 500;
+}
+
+.meg-Shop_Card {
+  display: block;
+
+  .meg-Shop_Column-collection3 & {
+    margin-right: -60px;
+    margin-left: 60px;
+  }
+}
+
+.meg-Shop_ImageContainer {
+  margin-bottom: 5px;
+}
+
+.meg-Shop_Image {
+  position: relative;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0 0 30px 30px;
+
+    transition: background-color 0.2s;
+
+    .meg-Shop_Column-rust & {
+      border-color: rgba($color-rust, 0.3);
+    }
+
+    .meg-Shop_Column-forestgreen & {
+      border-color: rgba($color-forestgreen, 0.3);
+    }
+
+    .meg-Shop_Column-ochre & {
+      border-color: rgba($color-ochre, 0.3);
+    }
+  }
+
+  .meg-Shop_Card:hover & {
+    &::before {
+      .meg-Shop_Column-rust & {
+        background-color: $color-rust;
+      }
+
+      .meg-Shop_Column-forestgreen & {
+        background-color: $color-forestgreen;
+      }
+
+      .meg-Shop_Column-ochre & {
+        background-color: $color-ochre;
+      }
+    }
+  }
+
+  .rsp-Image_Image {
+    border-radius: 0 0 30px 30px;
+  }
+}
+
+.meg-Shop_Content {
+  justify-content: space-between;
+
+  display: flex;
+}
+
+.meg-Shop_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.meg-Shop_Count {
+  min-width: 60px;
+  margin-left: 40px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
