@@ -18,7 +18,54 @@
               <h2 class="AccountBox__title">{{ 'customer.addresses.title' | t }}</h2>
             </header>
 
-            {%- include 'account-default-address' -%}
+            {%- if customer.default_address -%}
+              <div class="AccountAddress">
+                <h3 class="AccountAddress__title">{{ 'customer.addresses.default' | t }}</h3>
+
+                <p class="AccountAddress__text">
+                  {{ customer.default_address.first_name | capitalize }}
+                  {{ customer.default_address.last_name | capitalize }}<br />
+
+                  {%- if customer.default_address.company != blank -%}
+                    {{ customer.default_address.company }}<br/>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.street != blank -%}
+                    {{ customer.default_address.street }}<br/>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.city != blank -%}
+                    {{ customer.default_address.city }}<br/>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.province_code != blank -%}
+                    {{ customer.default_address.province_code | upcase }}<br/>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.zip != blank -%}
+                    {{ customer.default_address.zip | upcase }}<br/>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.country != blank -%}
+                    {{ customer.default_address.country }}<br/>
+                  {%- endif -%}
+
+                  {%- if customer.default_address.phone != blank -%}
+                    {{ customer.default_address.phone }}<br/>
+                  {%- endif -%}
+                </p>
+              </div>
+            {%- endif -%}
+
+            <div class="Form__footer">
+              <ul class="Form__columns Form__columns--tight">
+                <li class="Form__column Form__column--span">
+                  <a class="button button--block button--primary" href="/account/addresses">
+                    {{ 'customer.account.view_addresses' | t }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

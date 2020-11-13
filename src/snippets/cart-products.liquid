@@ -7,7 +7,7 @@
     <ul class="ProductList">
       {%- for item in cart.items -%}
         <li class="ProductList__item">
-          {% include 'cart-product' with item:item %}
+          {%- include 'cart-product' with item: item -%}
         </li>
       {%- endfor -%}
     </ul>

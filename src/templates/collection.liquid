@@ -64,9 +64,7 @@
               {% endcapture %}
 
               {%- if standout -%}
-                <li class="ProductList__item {{ featured }}" data-appear>
-                  {% include 'product-card-standout' with product:product %}
-                </li>
+
               {%- else -%}
                 <li class="ProductList__item {{ featured }}" data-appear>
                   {% include 'product-card' with product:product %}
