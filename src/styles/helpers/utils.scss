@@ -31,3 +31,13 @@
 
   overflow: hidden;
 }
+
+.util-SiteOverflow {
+  overflow: hidden;
+
+  &.is-iOS {
+    position: fixed;
+
+    width: 100%;
+  }
+}
