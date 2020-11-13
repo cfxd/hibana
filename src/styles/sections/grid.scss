@@ -50,6 +50,12 @@
 
   width: 100%;
   height: 100%;
+
+  transition: transform 0.3s;
+
+  .sec-Grid_Item-link:hover & {
+    transform: scale(1.025);
+  }
 }
 
 .sec-Grid_Image {

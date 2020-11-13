@@ -23,7 +23,7 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'image_square_small' -%}
             {%- if block.settings.link != blank -%}
-              <a class="sec-Grid_Item sec-Grid_Item-imagesquaresmall" href="{{ block.settings.link }}">
+              <a class="sec-Grid_Item sec-Grid_Item-link sec-Grid_Item-imagesquaresmall" href="{{ block.settings.link }}">
                 <div class="sec-Grid_ImageContainer">
                   <div class="sec-Grid_Image">
                     {%- render 'responsive-image',
@@ -57,7 +57,7 @@
             {%- endif -%}
           {%- elsif block.type == 'image_square_large' -%}
             {%- if block.settings.link != blank -%}
-              <a class="sec-Grid_Item sec-Grid_Item-imagesquarelarge" href="{{ block.settings.link }}">
+              <a class="sec-Grid_Item sec-Grid_Item-link sec-Grid_Item-imagesquarelarge" href="{{ block.settings.link }}">
                 <div class="sec-Grid_ImageContainer">
                   <div class="sec-Grid_Image">
                     {%- render 'responsive-image',
@@ -91,7 +91,7 @@
             {%- endif -%}
           {%- elsif block.type == 'image_landscape' -%}
             {%- if block.settings.link != blank -%}
-              <a class="sec-Grid_Item sec-Grid_Item-imagelandscape" href="{{ block.settings.link }}">
+              <a class="sec-Grid_Item sec-Grid_Item-link sec-Grid_Item-imagelandscape" href="{{ block.settings.link }}">
                 <div class="sec-Grid_ImageContainer">
                   <div class="sec-Grid_Image">
                     {%- render 'responsive-image',
