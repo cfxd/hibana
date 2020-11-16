@@ -1,85 +1,62 @@
-{%- assign collection_products_count = collection.products_count -%}
-{%- assign description = collection.description -%}
+<section class="clc-Header">
+  <div class="clc-Header_Inner">
+    <header class="clc-Header_Header">
+      {%- render 'breadcrumbs' -%}
+    </header>
 
-{%- if collection_products_count == 0 -%}
-  <section class="Section">
-    <div class="Section__inner PageContainerFluid">
-      <header class="Section__header">
-        <ul class="Section__columns">
-          <li class="Section__column Section__column--tight">
-            <h2 class="Section__title" data-appear>{{ 'collections.general.no_matches' | t }}</h2>
-
-            {%- if text != blank -%}
-              <p class="Section__text" data-appear>{{ text }}</p>
-            {%- endif -%}
-          </li>
-        </ul>
-
-        {%- if more_link != blank -%}
-          <div class="Section__more">
-            <a href="{{ more_link }}" class="Section__more-link" data-appear>{{ more_link_text }}</a>
+    <div class="clc-Header_Body">
+      {%- if collection.image != blank -%}
+        <div class="clc-Header_ImageContainer">
+          <div class="clc-Header_Image">
+            {%- render 'responsive-image',
+              image: collection.image,
+              width: 1400,
+              height: 650
+            -%}
           </div>
-        {%- endif -%}
-      </header>
-
-      <div class="Section__body"></div>
-    </div>
-  </section>
-{%- else -%}
-  {% paginate collection.products by 16 %}
-    <section class="Section">
-      <header class="Section__header">
-        <ul class="Section__columns">
-          <li class="Section__column Section__column--tight">
-            {%- if description != blank -%}
-              <p class="Section__subtitle" data-appear>{{ description }}</p>
-            {%- endif -%}
-
-            <h1 class="Section__title" data-appear>{{ collection.title }}</h1>
-          </li>
-        </ul>
-
-        {%- if more_link != blank -%}
-          <div class="Section__more">
-            <a href="{{ more_link }}" class="Section__more-link" data-appear>{{ more_link_text }}</a>
-          </div>
-        {%- endif -%}
-      </header>
-
-      <div class="Section__inner PageContainerFluid">
-        <div class="Section__body">
-          <ul class="ProductList">
-            {%- for product in collection.products -%}
-              {%- assign standout = false -%}
-              {%- assign product = all_products[block.settings.product] -%}
-              {% capture featured %}
-                {% for tag in product.tags %}
-                  {% if tag contains 'Featured' %}
-                    ProductList__item--featured
-                  {% elsif tag contains 'Standout' %}
-                    {%- assign standout = true -%}
-                    ProductList__item--standout
-                  {% endif %}
-                {% endfor %}
-              {% endcapture %}
-
-              {%- if standout -%}
-
-              {%- else -%}
-                <li class="ProductList__item {{ featured }}" data-appear>
-                  {% include 'product-card' with product:product %}
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
         </div>
+      {%- endif -%}
 
-        {%- if paginate.pages > 1 -%}
-          <footer class="Section__footer">
-            {%- include 'pagination' -%}
-          </footer>
+      <div class="clc-Header_Content">
+        <h1 class="clc-Header_Title">
+          {{ collection.title }}
+          <span class="clc-Header_Count">{{ collection.products_count }} items</span>
+        </h1>
+
+        {%- if collection.description != blank -%}
+          <div class="clc-Header_Text">{{ collection.description }}</div>
         {%- endif -%}
       </div>
-    </section>
-  {% endpaginate %}
-{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- paginate collection.products by 16 -%}
+  <section class="clc-Collection">
+    <div class="clc-Collection_Inner">
+      <header class="clc-Collection_Header">
+        {%- render 'collection-filters' -%}
+      </header>
+
+      <div class="clc-Collection_Body">
+        <ul class="clc-Collection_Items">
+          {%- for product in collection.products -%}
+            <li class="clc-Collection_Item">
+              {%- render 'product-card',
+                product: product,
+                width: 600,
+                height: 700
+              -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <footer class="clc-Collection_Footer">
+          {%- include 'pagination' -%}
+        </footer>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endpaginate -%}

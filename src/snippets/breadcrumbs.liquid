@@ -1,73 +1,99 @@
-{%- unless template == 'index' or template == 'list-collections' or template == '404' -%}
-  {%- assign t = template | split: '.' | first -%}
+<nav class="bdc-Breadcrumb">
+  <div class="bdc-Breadcrumb_Inner">
+    <div class="bdc-Breadcrumb_Body">
+      <ul class="bdc-Breadcrumb_Items" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+          <a class="bdc-Breadcrumb_Link" href="/" itemprop="item">
+            <span itemprop="name">{{ 'layout.breadcrumbs.home' | t }}</span>
+            <meta itemprop="position" content="1" />
+          </a>
+        </li>
 
-  <section class="Section Section--breadcrumbs" data-section-id="{{ section.id }}" data-section-type="product">
-    <div class="Section__inner PageContainerFluid">
-      <div class="Section__body">
-        <nav aria-label="breadcrumbs" class="Breadcrumbs" role="navigation">
-          <ol class="Breadcrumbs__list">
-            <li class="Breadcrumbs__item">
-              <a class="Breadcrumbs__link" href="/">Home</a>
+        {%- if template contains 'product' -%}
+          {%- if collection -%}
+            {%- if collection.handle -%}
+              <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <a class="bdc-Breadcrumb_Link" href="/collections/{{ collection.handle }}" itemprop="item">
+                  <span itemprop="name">{{ collection.title }}</span>
+                  <meta itemprop="position" content="2" />
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+
+          <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <span itemprop="name">{{ product.title }}</span>
+
+            {%- if collection -%}
+              {%- if collection.handle -%}
+                <meta itemprop="position" content="3" />
+              {%- endif -%}
+            {%- else -%}
+              <meta itemprop="position" content="2" />
+            {%- endif -%}
+          </li>
+        {%- elsif template contains 'collection' and collection.handle -%}
+          {%- if current_tags -%}
+            <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <a class="bdc-Breadcrumb_Link" href="/collections/{{ collection.handle }}" itemprop="item">
+                <span itemprop="name">{{ collection.title }}</span>
+                <meta itemprop="position" content="2" />
+              </a>
             </li>
 
-            {%- case t -%}
-              {%- when 'page' -%}
-                <li class="Breadcrumbs__item">
-                  <a class="Breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
-                </li>
+            <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <span itemprop="name">{{ current_tags | join: " + " }}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          {%- else -%}
+            <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <span itemprop="name">{{ collection.title }}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          {%- endif -%}
+        {%- elsif template == 'blog' -%}
+          {%- if current_tags -%}
+            <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <a class="bdc-Breadcrumb_Link" href="{{ blog.url }}" itemprop="item">
+                <span itemprop="name">{{ blog.title }}</span>
+                <meta itemprop="position" content="2" />
+              </a>
+            </li>
 
-              {%- when 'product' -%}
-                {%- if collection.url -%}
-                  <li class="Breadcrumbs__item">{{ collection.title | link_to: collection.url }}</li>
-                {%- endif -%}
+            <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <span itemprop="name">{{ current_tags | join: " + " }}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          {%- else -%}
+            <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <span itemprop="name">{{ blog.title }}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          {%- endif -%}
+        {%- elsif template == 'article' -%}
+          <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <a class="bdc-Breadcrumb_Link" href="{{ blog.url }}" itemprop="item">
+              <span itemprop="name">{{ blog.title }}</span>
+              <meta itemprop="position" content="2" />
+            </a>
+          </li>
 
-                <li class="Breadcrumbs__item">
-                  <a class="Breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
-                </li>
-
-              {%- when 'collection' and collection.handle -%}
-                {%- if current_tags -%}
-                  <li class="Breadcrumbs__item">{{ collection.title | link_to: collection.url }}</li>
-
-                  <li class="Breadcrumbs__item">
-                    {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
-                    <a class="Breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
-                  </li>
-                {%- else -%}
-                  <li class="Breadcrumbs__item">
-                    <a class="Breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
-                  </li>
-                {%- endif -%}
-
-              {%- when 'blog' -%}
-                {%- if current_tags -%}
-                  <li class="Breadcrumbs__item">{{ blog.title | link_to: blog.url }}</li>
-
-                  <li class="Breadcrumbs__item">
-                    {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
-                    <a class="Breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
-                  </li>
-                {%- else -%}
-                  <li class="Breadcrumbs__item">
-                    <a class="Breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
-                  </li>
-                {%- endif -%}
-
-              {%- when 'article' -%}
-                <li class="Breadcrumbs__item">{{ blog.title | link_to: blog.url }}</li>
-
-                <li class="Breadcrumbs__item">
-                  <a class="Breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
-                </li>
-
-              {%- else -%}
-                <li class="Breadcrumbs__item">
-                  <a class="Breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
-                </li>
-            {%- endcase -%}
-          </ol>
-        </nav>
-      {%- endunless -%}
+          <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <span itemprop="name">{{ article.title }}</span>
+            <meta itemprop="position" content="3">
+          </li>
+        {%- elsif template contains 'page' -%}
+          <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <span itemprop="name">{{ page.title }}</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        {%- else -%}
+          <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <span itemprop="name">{{ page_title }}</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        {%- endif -%}
+      </ul>
     </div>
   </div>
-</section>
+</nav>

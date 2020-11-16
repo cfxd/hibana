@@ -1,0 +1,63 @@
+/*
+|--------------------------------------------------------------------------
+| Header
+|--------------------------------------------------------------------------
+| @namespace: clc-
+|
+*/
+.clc-Header {
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 70px;
+}
+
+.clc-Header_Inner {
+  @include Container;
+}
+
+.clc-Header_Body {
+  align-items: center;
+
+  display: flex;
+}
+
+.clc-Header_ImageContainer {
+  flex-shrink: 0;
+
+  width: 35%;
+  margin-right: 25px;
+}
+
+.clc-Header_Content {
+  flex-grow: 1;
+
+  width: 65%;
+}
+
+.clc-Header_Title {
+  align-items: flex-end;
+  justify-content: space-between;
+
+  display: flex;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.clc-Header_Text {
+  margin-top: 20px;
+
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.25px;
+  line-height: 28px;
+}
+
+.clc-Header_Count {
+  font-family: $helvetica-neue;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.25px;
+  line-height: 28px;
+}

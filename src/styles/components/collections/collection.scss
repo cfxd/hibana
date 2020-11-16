@@ -1,0 +1,33 @@
+/*
+|--------------------------------------------------------------------------
+| Collection
+|--------------------------------------------------------------------------
+| @namespace: clc-
+|
+*/
+.clc-Collection {
+  width: 100%;
+  margin-bottom: 120px;
+}
+
+.clc-Collection_Inner {
+  @include Container;
+}
+
+.clc-Collection_Header {
+  margin-bottom: 50px;
+}
+
+.clc-Collection_Items {
+  flex-wrap: wrap;
+
+  display: flex;
+  margin-top: -50px;
+  margin-left: -25px;
+}
+
+.clc-Collection_Item {
+  width: calc(25% - 25px);
+  margin-top: 50px;
+  margin-left: 25px;
+}

@@ -1,0 +1,54 @@
+/*
+|--------------------------------------------------------------------------
+| Breadcrumb
+|--------------------------------------------------------------------------
+| @namespace: bdc-
+|
+*/
+.bdc-Breadcrumb {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.bdc-Breadcrumb_Items {
+  display: flex;
+}
+
+.bdc-Breadcrumb_Item {
+  position: relative;
+
+  margin-right: 6px;
+  padding-right: 15px;
+
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 17px;
+
+  color: rgba($color-brand, 0.6);
+
+  &::after {
+    content: '>';
+
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+    padding-right: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.bdc-Breadcrumb_Link {
+  color: rgba($color-brand, 0.6);
+
+  &:hover {
+    color: $color-brand;
+  }
+}
