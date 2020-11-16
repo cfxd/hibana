@@ -6,15 +6,13 @@
 |
 */
 .hd-Search {
-  min-width: 250px;
+  width: 80%;
 }
 
 .hd-Search_Fields {
   position: relative;
 
   display: flex;
-
-  border-bottom: 1px solid $color-brand;
 }
 
 .hd-Search_Field {
@@ -23,23 +21,33 @@
 
 .hd-Search_Input {
   width: 100%;
-  padding-bottom: 12px;
-  padding-left: 45px;
+  padding: 12px 12px 12px 55px;
 
-  font-size: 20px;
-  letter-spacing: 0.25px;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
   line-height: 24px;
 
   appearance: none;
-  background-color: $color-white;
+  background-color: $color-offwhite;
   border: 0;
   border-radius: 0;
+  color: $color-brand;
+
+  &::placeholder {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+
+    opacity: 0.3;
+  }
 }
 
 .hd-Search_Button {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 8px;
+  left: 10px;
 }
 
 .hd-Search_Icon {
