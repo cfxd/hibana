@@ -35,7 +35,7 @@
 <article role="article">
 
   {% if article.image %}
-    <div class="hero-banner hero-banner--article lazyload" data-bgset="{% include 'responsive-bg-image', image: article.image %}"></div>
+    <div class="hero-banner hero-banner--article lazyload" data-bgset="{% include 'responsive-image-bg', image: article.image %}"></div>
 
     <noscript>
       {%- assign image_size = article.image.width | append: 'x' -%}

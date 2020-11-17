@@ -45,22 +45,23 @@
 
 <style>
   {%- if provide_css -%}
-  #Image-{{ image.id }}-{{ width }}-{{ responsive_image_counter }} {
-    max-width: {{ width_image }}px;
-    {%- unless size_by_width -%}
-    max-height: {{ height_image }}px;
-    {%- endunless -%}
-  }
+    #Image-{{ image.id }}-{{ width }}-{{ responsive_image_counter }} {
+      max-width: {{ width_image }}px;
+      {%- unless size_by_width -%}
+        max-height: {{ height_image }}px;
+      {%- endunless -%}
+    }
 
-  #ImageWrapper-{{ image.id }}-{{ width }}-{{ responsive_image_counter }} {
-    max-width: {{ width_image }}px;
-  }
+    #ImageWrapper-{{ image.id }}-{{ width }}-{{ responsive_image_counter }} {
+      max-width: {{ width_image }}px;
+    }
   {%- endif -%}
 
   #ImageWrapper-{{ image.id }}-{{ width }}-{{ responsive_image_counter }}::before {
     {%- comment -%}
       When you change the window screen width, we want to make sure that the container's size is proportionally calculated.
-      Note regarding padding percentage: The percentage is calculated with respect to the width of the generated box's containing block (source: http://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#padding-properties)
+      Note regarding padding percentage: The percentage is calculated with respect to the width of the generated box's containing block
+      (source: http://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#padding-properties)
     {%- endcomment -%}
     padding-top: {{ height_image | divided_by: width_image | times: 100 }}%;
   }
@@ -80,7 +81,9 @@
 {%- endcapture -%}
 {%- assign image_widths = image_widths | strip -%}
 
-<div class="rsp-Image {{ wrapper_class }}" id="ImageWrapper-{{ image.id }}-{{ width }}-{{ responsive_image_counter }}" data-image-id="{{ image.id }}">
+<div class="rsp-Image {{ wrapper_class }}"
+     id="ImageWrapper-{{ image.id }}-{{ width }}-{{ responsive_image_counter }}"
+     data-image-id="{{ image.id }}">
   <img class="rsp-Image_Image lazyload {{ img_class }}"
        id="Image-{{ image.id }}-{{ width }}-{{ responsive_image_counter }}"
        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
