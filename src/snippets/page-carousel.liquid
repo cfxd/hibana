@@ -1,0 +1,104 @@
+{%- assign carousel_item_title = page.metafields.carousel_item.title -%}
+
+{%- if carousel_item_title.size > 0 -%}
+  {%- if carousel_item_title.size > 1 -%}
+    {%- capture data_module -%}data-module-carousel="sec-Carousel_Item" data-module="page-carousel"{%- endcapture -%}
+
+    {%- capture has_carousel -%}sec-Carousel-hascarousel{%- endcapture -%}
+
+    {%- capture glide_track -%}data-glide-el="track"{%- endcapture -%}
+    {%- capture glide_track_class -%}glide__track{%- endcapture -%}
+    {%- capture glide_slides_class -%}glide__slides{%- endcapture -%}
+    {%- capture glide_slide_class -%}glide__slide{%- endcapture -%}
+
+    {%- capture glide_arrows -%}
+      <div class="sec-Carousel_Arrows" data-glide-el="controls">
+        <button class="sec-Carousel_Arrow sec-Carousel_Arrow-left" data-glide-dir="<">
+          <span class="sec-Carousel_ArrowText util-ScreenReaderOnly">Previous</span>
+          <span class="sec-Carousel_ArrowIcon">{%- render 'arrow-left' -%}</span>
+        </button>
+
+        <button class="sec-Carousel_Arrow sec-Carousel_Arrow-right" data-glide-dir=">">
+          <span class="sec-Carousel_ArrowText util-ScreenReaderOnly">Next</span>
+          <span class="sec-Carousel_ArrowIcon">{%- render 'arrow-right' -%}</span>
+        </button>
+      </div>
+    {%- endcapture -%}
+  {%- endif -%}
+
+  <section class="sec-Carousel">
+    <div class="sec-Carousel_Inner">
+      {%- if page.metafields.carousel_header.title != blank -%}
+        <header class="sec-Carousel_Header">
+          <h2 class="sec-Carousel_Title">{{ page.metafields.carousel_header.title }}</h2>
+
+          {%- if page.metafields.carousel_header.link_text != blank -%}
+            <a class="sec-Carousel_Link" href="{{ page.metafields.carousel_header.link_url }}">
+              {{ page.metafields.carousel_header.link_text }}
+            </a>
+          {%- endif -%}
+        </header>
+      {%- endif -%}
+
+      <div class="sec-Carousel_Body" {{ data_module }}>
+        <div class="sec-Carousel_Carousel {{ has_carousel }}">
+          <div class="sec-Carousel_Track {{ glide_track_class }}" {{ glide_track }}>
+            <ul class="sec-Carousel_Items {{ glide_slides_class }}">
+              {%- for value in carousel_item_title -%}
+                {%- assign image = page.metafields.carousel_item.image[forloop.index0].first -%}
+                {%- assign logo = page.metafields.carousel_item.logo[forloop.index0].first -%}
+                {%- assign text = page.metafields.carousel_item.text[forloop.index0] -%}
+                {%- assign link_text = page.metafields.carousel_item.link_text[forloop.index0] -%}
+                {%- assign link_url = page.metafields.carousel_item.link_url[forloop.index0] -%}
+
+                <li class="sec-Carousel_Item {{ glide_slide_class }}">
+                  <div class="car-Card">
+                    {%- if image != blank -%}
+                      <a class="car-Card_ImageContainer" href="{{ article.url }}">
+                        <div class="car-Card_Image">
+                          {%- render 'responsive-image-metafield',
+                            image: image,
+                            width: 1500,
+                            height: 850
+                          -%}
+                        </div>
+                      </a>
+                    {%- endif -%}
+
+                    <div class="car-Card_Content">
+                      {%- if logo != blank -%}
+                        <div class="car-Card_Logo">
+                          {%- render 'responsive-image-metafield',
+                            image: logo,
+                            width: 240,
+                            height: 50
+                          -%}
+                        </div>
+                      {%- endif -%}
+
+                      <h3 class="car-Card_Title util-ScreenReaderOnly">{{ value }}</h3>
+
+                      {%- if text != blank -%}
+                        <p class="car-Card_Text">
+                          {{ text }}
+
+                          {%- if link_text != blank -%}
+                            <a class="car-Card_Link" href="{{ link_url }}">
+                              {{ link_text }}
+                            </a>
+                          {%- endif -%}
+                        </p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          {{ glide_arrows }}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}

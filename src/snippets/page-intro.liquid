@@ -1,0 +1,38 @@
+<section class="sec-Intro">
+  <div class="sec-Intro_Inner">
+    <header class="sec-Intro_Header">
+      {%- render 'breadcrumbs' -%}
+    </header>
+
+    <div class="sec-Intro_Body">
+      {%- assign image = page.metafields.intro.image.first -%}
+
+      {%- if image != blank -%}
+        <div class="sec-Intro_ImageContainer">
+          <div class="sec-Intro_Image">
+            {%- render 'responsive-image-metafield',
+              image: image,
+              width: 800,
+              height: 600
+            -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="sec-Intro_Content">
+        <h1 class="sec-Intro_Title">{{ page.title | replace: ' (category)', '' }}</h1>
+
+        {%- if page.content != blank -%}
+          <div class="sec-Intro_Text">{{ page.content }}</div>
+        {%- endif -%}
+
+        <ul class="sec-Intro_Items">
+          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop all</a></li>
+          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop Womens Clothing</a></li>
+          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop Mens Clothing</a></li>
+          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop Accessories</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

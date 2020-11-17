@@ -1,0 +1,63 @@
+/*
+|--------------------------------------------------------------------------
+| Card
+|--------------------------------------------------------------------------
+| @namespace: car-
+|
+*/
+.car-Card {
+  width: 100%;
+}
+
+.car-Card_ImageContainer {
+  display: block;
+  margin-bottom: 25px;
+}
+
+.car-Card_Image {
+  .rsp-Image_Image {
+    border-radius: 0 0 60px 60px;
+  }
+}
+
+.car-Card_Content {
+  max-width: 625px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.car-Card_Logo {
+  max-width: 240px;
+  margin-bottom: 25px;
+}
+
+.car-Card_Category {
+  margin-bottom: 15px;
+
+  font-family: $founders-grotesk-light;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1.6px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.car-Card_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.car-Card_Text {
+  margin-top: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
+
+.car-Card_Link {
+  font-weight: 500;
+}

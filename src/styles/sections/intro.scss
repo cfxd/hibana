@@ -1,40 +1,40 @@
 /*
 |--------------------------------------------------------------------------
-| Header
+| Intro
 |--------------------------------------------------------------------------
-| @namespace: clc-
+| @namespace: sec-
 |
 */
-.clc-Header {
+.sec-Intro {
   width: 100%;
   margin-top: 25px;
   margin-bottom: 70px;
 }
 
-.clc-Header_Inner {
+.sec-Intro_Inner {
   @include Container;
 }
 
-.clc-Header_Body {
+.sec-Intro_Body {
   align-items: center;
 
   display: flex;
 }
 
-.clc-Header_ImageContainer {
+.sec-Intro_ImageContainer {
   flex-shrink: 0;
 
-  width: 35%;
+  width: 30%;
   margin-right: 25px;
 }
 
-.clc-Header_Content {
+.sec-Intro_Content {
   flex-grow: 1;
 
-  width: 65%;
+  width: 70%;
 }
 
-.clc-Header_Title {
+.sec-Intro_Title {
   align-items: flex-end;
   justify-content: space-between;
 
@@ -46,7 +46,7 @@
   line-height: 56px;
 }
 
-.clc-Header_Text {
+.sec-Intro_Text {
   margin-top: 20px;
 
   font-size: 20px;
@@ -55,10 +55,27 @@
   line-height: 28px;
 }
 
-.clc-Header_Count {
+.sec-Intro_Count {
   font-family: $helvetica-neue;
   font-size: 20px;
   font-weight: 300;
   letter-spacing: 0.25px;
   line-height: 28px;
+}
+
+.sec-Intro_Items {
+  display: flex;
+  margin-top: 25px;
+}
+
+.sec-Intro_Item {
+  margin-right: 30px;
+
+  font-family: $founders-grotesk-medium;
+  font-size: 20px;
+  line-height: 28px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }

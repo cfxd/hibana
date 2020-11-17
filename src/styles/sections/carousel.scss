@@ -1,0 +1,110 @@
+/*
+|--------------------------------------------------------------------------
+| Carousel
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Carousel {
+  position: relative;
+
+  margin-top: 120px;
+  margin-bottom: 120px;
+  padding-bottom: 80px;
+
+  overflow: hidden;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 57px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $color-offwhite;
+  }
+}
+
+.sec-Carousel_Header {
+  @include Container;
+
+  align-items: center;
+  justify-content: space-between;
+
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.sec-Carousel_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 94px;
+
+  color: $color-black;
+}
+
+.sec-Carousel_Link {
+  @include Button-rust-outline;
+
+  margin-top: 17px;
+}
+
+.sec-Carousel_Item {
+  position: relative;
+
+  opacity: 0.6;
+
+  transition: opacity 0.5s;
+}
+
+.sec-Carousel_Item-active {
+  opacity: 1;
+}
+
+.sec-Carousel_Carousel {
+  position: relative;
+
+  overflow: hidden;
+
+  touch-action: pan-y;
+}
+
+.sec-Carousel_Arrows {
+  position: absolute;
+  top: 36%;
+  right: 0;
+  left: 0;
+}
+
+.sec-Carousel_Arrow {
+  position: absolute;
+}
+
+.sec-Carousel_Arrow-left {
+  left: 140px;
+}
+
+.sec-Carousel_Arrow-right {
+  right: 140px;
+}
+
+.sec-Carousel_ArrowIcon {
+  width: 75px;
+  height: 25px;
+
+  color: $color-brand;
+
+  stroke: $color-brand;
+
+  svg {
+    width: 75px;
+    height: 25px;
+  }
+}

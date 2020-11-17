@@ -46,11 +46,16 @@
 @import './footer/social';
 
 // Sections
+@import './sections/carousel';
 @import './sections/collections';
 @import './sections/ctas';
 @import './sections/grid';
+@import './sections/intro';
 @import './sections/products';
 @import './sections/stories';
+
+// Cards
+@import './cards/carousel';
 
 // Components
 @import './components/article/card-featured';
@@ -59,6 +64,5 @@
 
 @import './components/collections/collection';
 @import './components/collections/filters';
-@import './components/collections/header';
 
 @import './components/product/card';
