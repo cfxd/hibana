@@ -1,11 +1,11 @@
 /*
 |--------------------------------------------------------------------------
-| Card
+| Product
 |--------------------------------------------------------------------------
-| @namespace: prd-
+| @namespace: car-
 |
 */
-.prd-Card {
+.car-Product {
   position: relative;
 
   flex-direction: column;
@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-.prd-Card_ImageContainer {
+.car-Product_ImageContainer {
   display: block;
   width: 100%;
   margin-bottom: 15px;
@@ -24,24 +24,24 @@
   overflow: hidden;
 }
 
-.prd-Card_Image {
+.car-Product_Image {
   width: 100%;
 
   transition: transform 0.2s;
 
-  .prd-Card:hover & {
+  .car-Product:hover & {
     transform: scale(1.05);
   }
 }
 
-.prd-Card_Content {
+.car-Product_Content {
   flex-direction: column;
   flex-grow: 1;
 
   display: flex;
 }
 
-.prd-Card_Brand {
+.car-Product_Brand {
   margin-bottom: 10px;
 
   font-family: $founders-grotesk-medium;
@@ -50,7 +50,7 @@
   line-height: 18px;
 }
 
-.prd-Card_Title {
+.car-Product_Title {
   margin-bottom: 15px;
 
   font-size: 16px;
@@ -58,13 +58,13 @@
   letter-spacing: 0.2px;
   line-height: 20px;
 
-  .prd-Card-notgrid & {
+  .car-Product-notgrid & {
     font-size: 14px;
     line-height: 17px;
   }
 }
 
-.prd-Card_Price {
+.car-Product_Price {
   margin-top: auto;
 
   font-size: 16px;
@@ -72,13 +72,13 @@
   letter-spacing: 0.2px;
   line-height: 20px;
 
-  .prd-Card-notgrid & {
+  .car-Product-notgrid & {
     font-size: 14px;
     line-height: 17px;
   }
 }
 
-.prd-Card_ComparePrice {
+.car-Product_ComparePrice {
   position: relative;
 
   &::after {
@@ -95,10 +95,10 @@
   }
 }
 
-.prd-Card_NewPrice {
+.car-Product_NewPrice {
   color: $color-rust;
 }
 
-.prd-Card_Soldout {
+.car-Product_Soldout {
   color: $color-rust;
 }

@@ -6,11 +6,11 @@
   {%- assign on_sale = true -%}
 {%- endif -%}
 
-<div class="prd-Card{% if not_grid == true %} prd-Card-notgrid{% endif %}">
+<div class="car-Product{% if not_grid == true %} car-Product-notgrid{% endif %}">
   {%- if product.images.size > 0 -%}
-    <a href="{{ product.url }}" class="prd-Card_ImageContainer">
+    <a href="{{ product.url }}" class="car-Product_ImageContainer">
       {%- for image in product.images -%}
-        <div class="prd-Card_Image">
+        <div class="car-Product_Image">
           {%- render 'responsive-image',
             image: image,
             width: width,
@@ -23,26 +23,26 @@
     </a>
   {%- endif -%}
 
-  <div class="prd-Card_Content">
+  <div class="car-Product_Content">
     {%- if product.vendor != blank -%}
-      <h4 class="prd-Card_Brand">{{ product.vendor }}</h4>
+      <h4 class="car-Product_Brand">{{ product.vendor }}</h4>
     {%- endif -%}
 
-    <h3 class="prd-Card_Title">
-      <a class="prd-Card_TitleLink" href="{{ product.url }}">
+    <h3 class="car-Product_Title">
+      <a class="car-Product_TitleLink" href="{{ product.url }}">
         {{ product.title }}
       </a>
     </h3>
 
-    <p class="prd-Card_Price">
+    <p class="car-Product_Price">
       {%- if on_sale -%}
-        <span class="prd-Card_ComparePrice">{{ current_variant.compare_at_price | money }}</span>
-        <span class="prd-Card_NewPrice">{{ current_variant.price | money }}</span>
+        <span class="car-Product_ComparePrice">{{ current_variant.compare_at_price | money }}</span>
+        <span class="car-Product_NewPrice">{{ current_variant.price | money }}</span>
       {%- elsif availability == false -%}
-        <span class="prd-Card_ComparePrice">{{ current_variant.price | money }}</span>
-        <span class="prd-Card_Soldout">{{ 'products.product.sold_out' | t }}</span>
+        <span class="car-Product_ComparePrice">{{ current_variant.price | money }}</span>
+        <span class="car-Product_Soldout">{{ 'products.product.sold_out' | t }}</span>
       {%- else -%}
-        <span class="prd-Card_OriginalPrice">{{ current_variant.price | money }}</span>
+        <span class="car-Product_OriginalPrice">{{ current_variant.price | money }}</span>
       {%- endif -%}
     </p>
   </div>
