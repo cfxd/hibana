@@ -1,0 +1,50 @@
+/*
+|--------------------------------------------------------------------------
+| Recommendations
+|--------------------------------------------------------------------------
+| @namespace: prd-
+|
+*/
+.prd-Recommendations {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+
+  background-color: $color-offwhite;
+}
+
+.prd-Recommendations_Inner {
+  @include Container;
+}
+
+.prd-Recommendations_Header {
+  position: relative;
+  top: -30px;
+
+  margin-bottom: -30px;
+}
+
+.prd-Recommendations_Body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.prd-Recommendations_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 56px;
+}
+
+.prd-Recommendations_Items {
+  display: flex;
+  margin-left: -25px;
+}
+
+.prd-Recommendations_Item {
+  flex-grow: 1;
+
+  width: calc(33.33% - 25px);
+  margin-left: 25px;
+}
+

@@ -1,0 +1,48 @@
+<div class="product-recommendations" data-base-url="{{ routes.product_recommendations_url }}" data-product-id="{{ product.id }}" data-limit="6" data-module="product-recommendations">
+  {%- if recommendations.products_count > 0 -%}
+    <section class="prd-Recommendations">
+      <div class="prd-Recommendations_Inner">
+        {%- if section.settings.title != blank -%}
+          <header class="prd-Recommendations_Header">
+            <h2 class="prd-Recommendations_Title" data-appear>{{ section.settings.title }}</h2>
+          </header>
+        {%- endif -%}
+
+        <div class="prd-Recommendations_Body">
+          <ul class="prd-Recommendations_Items" data-module-carousel>
+            {%- for product in recommendations.products -%}
+              {%- assign product = all_products[block.settings.product] -%}
+
+              <li class="prd-Recommendations_Item">
+                {%- render 'product-card',
+                  product: product,
+                  width: 600,
+                  height: 700,
+                  not_grid: true
+                -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+  {
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Recommendations",
+        "category": "Products"
+      }
+    ]
+  }
+{% endschema %}
