@@ -1,71 +1,167 @@
-{%- assign title = product.title -%}
-{%- assign current_variant = product.selected_or_first_available_variant -%}
-{%- assign featured_image = product.featured_image -%}
-{%- assign available = false -%}
-{%- capture product_status -%}
-  {%- if product.available == false -%}
-    Sold
-  {%- else -%}
-    {{ product.price | money }}
-  {%- endif -%}
-{%- endcapture -%}
+<section class="prd-Breadcrumb">
+  <div class="prd-Breadcrumb_Inner">
+    <div class="prd-Breadcrumb_Body">
+      {%- render 'breadcrumbs' -%}
+    </div>
+  </div>
+</section>
 
-<section class="Section Section--flushtopmobile {% if border_top %}Section--border-top{% endif %}">
-  <div class="Section__inner PageContainerFluid PageContainerFluid--mobilebreakout">
-    <div class="Section__body">
-      <div class="ProductSingle">
-        <div class="ProductSingle__columns">
-          <div class="ProductSingle__column ProductSingle__column--primary">
-            <div class="ProductGalleryList {% if product.images.size > 1 %}ProductGalleryList--carousel{% endif %}" data-module-targets=".ProductGalleryList__item" data-module="carousel-featured-products">
-              {%- for image in product.images -%}
-                <div class="ProductGalleryList__item">
-                  {% include 'responsive-image' with image: image %}
-                </div>
-              {%- endfor -%}
-            </div>
+<section class="prd-Product" data-section-id="{{ section.id }}" data-section-type="product">
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <div class="prd-Product_Inner">
+    <div class="prd-Product_Body">
+      <div class="prd-Product_Columns">
+        <div class="prd-Product_Column prd-Product_Column-gallery">
+          <div class="prd-Product_ImageContainer">
+            {%- for image in product.images limit:1 -%}
+              {%- capture wrapper_class -%}
+                {%- unless featured_image == image -%}
+                  util-Hide
+                {%- endunless -%}
+              {%- endcapture -%}
+
+              <div class="prd-Product_Image">
+                {%- render 'responsive-image',
+                  image: image,
+                  width: 1400,
+                  height: 1400,
+                  image_attributes: "data-product-featured-image",
+                  wrapper_class: wrapper_class,
+                  wrapper_attributes: "data-product-image-wrapper",
+                -%}
+              </div>
+            {%- endfor -%}
           </div>
+        </div>
 
-          <div class="ProductSingle__column ProductSingle__column--secondary">
-            <div class="ProductContent">
-              <header class="ProductContent__header">
-                {%- if title != blank -%}
-                  <h2 class="ProductContent__title" data-appear>{{ title }}</h2>
+        <div class="prd-Product_Column prd-Product_Column-details">
+          <div class="prd-Product_Details">
+            <h3 class="prd-Product_Subtitle">{{ product.vendor }}</h3>
+            <h1 class="prd-Product_Title">{{ product.title }}</h1>
+
+            {%- form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' -%}
+              <div class="prd-Product_Meta">
+                {%- if product.metafields.info.text != blank -%}
+                  <p class="prd-Product_Info">{{ product.metafields.info.text }}</p>
                 {%- endif -%}
 
-                <div class="ProductContent__meta">
-                  <ul class="ProductContentMetaList">
-                    {%- if current_variant.sku != blank -%}
-                      <li class="ProductContentMetaList__item" data-appear>
-                        {{ current_variant.sku }}
-                      </li>
+                <p class="prd-Product_Price" data-price-wrapper>
+                  <span data-product-price>{{ current_variant.price | money }}</span>
+
+                  {%- if product.compare_at_price_max > product.price -%}
+                    <span class="util-ScreenReaderOnly" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+
+                    <s data-compare-price>
+                      {%- if current_variant.compare_at_price > current_variant.price -%}
+                        {{ current_variant.compare_at_price | money }}
+                      {%- endif -%}
+                    </s>
+                  {%- endif -%}
+                </p>
+              </div>
+
+              {%- unless product.has_only_default_variant -%}
+                <div class="prd-Product_Variants">
+                  {%- for option in product.options_with_values -%}
+                    <div class="prd-Product_Option">
+                      <label class="prd-Product_Label" for="Option{{ option.position }}">
+                        Select {{ option.name | downcase }}
+                      </label>
+
+                      <select class="prd-Product_Select" id="Option{{ option.position }}" name="options[{{ option.name | escape }}]">
+                        {%- for value in option.values -%}
+                          <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                            {{ value }}
+                          </option>
+                        {%- endfor -%}
+                      </select>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {%- endunless -%}
+
+              <select class="util-ScreenReaderOnly" name="id">
+                {%- for variant in product.variants -%}
+                  <option {% if variant == current_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %} value="{{ variant.id }}">
+                    {{ variant.title }}
+                  </option>
+                {%- endfor -%}
+              </select>
+
+              <div class="prd-Product_Buy">
+                <div class="prd-Product_Quantity">
+                  <label class="prd-Product_Label util-ScreenReaderOnly" for="Quantity">
+                    {{ 'products.product.quantity' | t }}
+                  </label>
+
+                  <select class="prd-Product_Select" id="Quantity" name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                  </select>
+                </div>
+
+                <button class="prd-Product_Button" type="submit" name="add" data-submit-button{% unless current_variant.available %} disabled="disabled"{% endunless %}>
+                  <span data-submit-button-text>
+                    {%- if current_variant.available -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
                     {%- endif -%}
-                  </ul>
-                </div>
+                  </span>
+                </button>
+              </div>
+            {%- endform -%}
 
-                <div class="ProductContent__price" data-appear>{{ product_status }}</div>
-              </header>
+            {%- if product.metafields.excerpt.text != blank -%}
+              <p class="prd-Product_Excerpt">
+                {%- if product.metafields.excerpt.title != blank and product.metafields.excerpt.link_url != blank -%}
+                  <a href="{{ product.metafields.excerpt.link_url }}"><u>{{ product.metafields.excerpt.title }}</u></a>&nbsp;
+                {%- elsif product.metafields.excerpt.title != blank -%}
+                  <u>{{ product.metafields.excerpt.title }}</u>&nbsp;
+                {%- endif -%}
 
-              <div class="ProductContent__body">
-                <div class="ProductContent__form">
-                  <form action="/cart/add" class="Form" enctype="multipart/form-data" method="post">
-                    <div class="Form__body">
-                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"/>
-                      <input name="quantity" type="hidden" value="1"/>
-                    </div>
+                {{ product.metafields.excerpt.text }}
+              </p>
+            {%- endif -%}
 
-                    <div class="Form__footer">
-                      <button class="button button--primary button--block" {% unless current_variant.available %} disabled="disabled" {% endunless %} type="submit" data-appear>
-                        {% if current_variant.available %}
-                            {{ 'products.product.add_to_cart' | t }}
-                        {% else %}
-                            {{ 'products.product.sold_out' | t }}
-                        {% endif %}
-                      </button>
-                    </div>
-                  </form>
-                </div>
+            <div class="prd-Product_Usps">
+              <div class="prd-Usps">
+                <ul class="prd-Usps_Items">
+                  <li class="prd-Usps_Item prd-Usps_Item-rust">
+                    <h4 class="prd-Usps_Title">Single origin</h4>
+                  </li>
+
+                  <li class="prd-Usps_Item prd-Usps_Item-forestgreen">
+                    <h4 class="prd-Usps_Title">Recycled materials</h4>
+                  </li>
+
+                  <li class="prd-Usps_Item prd-Usps_Item-ochre">
+                    <h4 class="prd-Usps_Title">Hand crafted</h4>
+                  </li>
+
+                  <li class="prd-Usps_Item prd-Usps_Item-darkblush">
+                    <h4 class="prd-Usps_Title">Plant based</h4>
+                  </li>
+                </ul>
               </div>
             </div>
+
+            <a class="prd-Product_More" href="#">+ more information</a>
           </div>
         </div>
       </div>
@@ -73,25 +169,159 @@
   </div>
 </section>
 
+{%- if product.metafields.about.title != blank -%}
+  <section class="prd-About">
+    <div class="prd-About_Inner">
+      <div class="prd-About_Body">
+        <div class="prd-About_Columns">
+          <div class="prd-About_Column prd-About_Column-content">
+            <div class="prd-About_Content">
+              <h2 class="prd-About_Title">{{ product.metafields.about.title }}</h2>
+
+              {%- if product.metafields.about.text != blank -%}
+                <p class="prd-About_Text">{{ product.metafields.about.text }}</p>
+              {%- endif -%}
+
+              {%- if product.metafields.about.text_more != blank -%}
+                <p class="prd-About_Text">{{ product.metafields.about.text_more }}</p>
+              {%- endif -%}
+            </div>
+
+            {%- if product.metafields.about.image_small.first != blank -%}
+              <div class="prd-About_ImageContainer">
+                <div class="prd-About_Image">
+                  {%- render 'responsive-image-metafield',
+                    image: product.metafields.about.image_small.first,
+                    width: 850,
+                    height: 450
+                  -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if product.metafields.about.image_large.first != blank -%}
+            <div class="prd-About_Column prd-About_Column-image">
+              <div class="prd-About_ImageContainer">
+                <div class="prd-About_Image">
+                  {%- render 'responsive-image-metafield',
+                    image: product.metafields.about.image_large.first,
+                    width: 1600,
+                    height: 1200
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- if product.images.size > 1 -%}
+  <section class="prd-ExtraImages">
+    <div class="prd-ExtraImages_Inner">
+      <div class="prd-ExtraImages_Body">
+        <div class="prd-ExtraImages_Columns">
+          {%- for image in product.images limit:2 offset:1 -%}
+            <div class="prd-ExtraImages_Column">
+              <div class="prd-ExtraImages_ImageContainer">
+                <div class="prd-ExtraImages_Image">
+                  {%- render 'responsive-image',
+                    image: image,
+                    width: 1400,
+                    height: 1400
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- if product.description != blank -%}
+  <section class="prd-Tabs" data-module="product-tabs" data-targets-content="prd-Tabs_Description" data-targets-headings="prd-Tabs_Button">
+    <div class="prd-Tabs_Inner">
+      <div class="prd-Tabs_Body">
+        {%- assign description_tabs = product.description | split: '<h4>' -%}
+
+        <div class="ProductTabs">
+          <nav class="prd-Tabs_Navigation">
+            <ul class="prd-Tabs_Items">
+              <li class="prd-Tabs_Item">
+                <button class="prd-Tabs_Button prd-Tabs_Button-active">
+                  Description
+                </button>
+              </li>
+
+              {%- if product.description contains '<h4>' -%}
+                {%- for tab in description_tabs -%}
+                  {%- unless forloop.first -%}
+                    {%- assign title = tab | split: '</h4>' | first -%}
+
+                    <li class="prd-Tabs_Item">
+                      <button class="prd-Tabs_Button">
+                        {{ title }}
+                      </button>
+                    </li>
+                  {%- endunless -%}
+                {%- endfor -%}
+              {%- endif -%}
+            </ul>
+          </nav>
+
+          <div class="prd-Tabs_Content">
+            <div class="prd-Tabs_Description prd-Tabs_Description-active">
+              {{ description_tabs[0] }}
+            </div>
+
+            {%- for tab in description_tabs -%}
+              {%- unless forloop.first -%}
+                {%- assign content = tab | split: '</h4>' | last -%}
+
+                <div class="prd-Tabs_Description">{{ content }}</div>
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- if product.images.size > 3 -%}
+  <section class="prd-ExtraImages">
+    <div class="prd-ExtraImages_Inner">
+      <div class="prd-ExtraImages_Body">
+        <div class="prd-ExtraImages_Columns">
+          {%- for image in product.images limit:2 offset:3 -%}
+            <div class="prd-ExtraImages_Column">
+              <div class="prd-ExtraImages_ImageContainer">
+                <div class="prd-ExtraImages_Image">
+                  {%- render 'responsive-image',
+                    image: image,
+                    width: 1400,
+                    height: 1400
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
 {% schema %}
   {
-    "name": "Product pages",
+    "name": "Product",
     "settings": [
-      {
-        "type": "header",
-        "content": "Tabs",
-        "info": "Tabbed content"
-      },
-      {
-        "type": "page",
-        "id": "global_tab_title",
-        "label": "Title"
-      },
-      {
-        "type": "page",
-        "id": "global_tab",
-        "label": "Choose content to display under the Global Tab"
-      }
+
     ]
   }
 {% endschema %}

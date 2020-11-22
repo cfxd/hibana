@@ -1,0 +1,90 @@
+/*
+|--------------------------------------------------------------------------
+| About
+|--------------------------------------------------------------------------
+| @namespace: prd-
+|
+*/
+.prd-About {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.prd-About_Inner {
+  @include Container;
+}
+
+.prd-About_Body {
+  background-color: $color-offwhite;
+}
+
+.prd-About_Columns {
+  display: flex;
+}
+
+.prd-About_Column {
+  flex-shrink: 0;
+}
+
+.prd-About_Column-content {
+  flex-grow: 1;
+
+  width: 40%;
+}
+
+.prd-About_Column-image {
+  width: 60%;
+}
+
+.prd-About_ImageContainer {
+  .prd-About_Column-image & {
+    height: 100%;
+  }
+}
+
+.prd-About_Image {
+  .prd-About_Column-image & {
+    height: 100%;
+  }
+
+  .rsp-Image {
+    .prd-About_Column-image & {
+      height: 100%;
+    }
+  }
+
+  .rsp-Image_Image {
+    .prd-About_Column-content & {
+      border-radius: 0 0 0 60px;
+    }
+
+    .prd-About_Column-image & {
+      border-radius: 0 0 60px 0;
+    }
+  }
+}
+
+.prd-About_Content {
+  padding: 50px 50px 80px;
+}
+
+.prd-About_Title {
+  max-width: 50%;
+  min-height: 75px;
+  margin-top: -75px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.prd-About_Text {
+  margin-top: 20px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}

@@ -1,0 +1,71 @@
+/*
+|--------------------------------------------------------------------------
+| Tabs
+|--------------------------------------------------------------------------
+| @namespace: prd-
+|
+*/
+.prd-Tabs {
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.prd-Tabs_Inner {
+  @include Container;
+}
+
+.prd-Tabs_Body {
+  max-width: 820px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.prd-Tabs_Items {
+  display: flex;
+  align-items: center;
+}
+
+.prd-Tabs_Item {
+  flex: 1;
+
+  text-align: center;
+}
+
+.prd-Tabs_Button {
+  font-family: $founders-grotesk-light;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+
+  color: $color-brand;
+
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-black;
+  }
+}
+
+.prd-Tabs_Button-active {
+  font-family: $founders-grotesk-medium;
+}
+
+.prd-Tabs_Content {
+  margin-top: 2rem;
+}
+
+.prd-Tabs_Description {
+  display: none;
+
+  ul {
+    margin-top: 20px;
+    padding-left: 20px;
+
+    list-style: disc;
+  }
+}
+
+.prd-Tabs_Description-active {
+  display: block;
+}

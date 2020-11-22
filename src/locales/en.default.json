@@ -332,17 +332,16 @@
       }
   },
   "products": {
-      "product": {
-          "regular_price": "Regular price",
-          "sold_out": "Sold out",
-          "unavailable": "Unavailable",
-          "on_sale": "Sale",
-          "on_sale_from_html": "On Sale from {{ price }}",
-          "from_text_html": "From {{ price }}",
-          "quantity": "Quantity",
-          "add_to_cart": "Buy this watch",
-          "buy_now": "Buy it Now"
-      }
+    "product": {
+      "regular_price": "Regular price",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "on_sale_from_html": "On Sale from {{ price }}",
+      "from_text_html": "From {{ price }}",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to cart"
+    }
   },
   "gift_cards": {
       "issued": {

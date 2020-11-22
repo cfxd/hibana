@@ -1,0 +1,16 @@
+/*
+|--------------------------------------------------------------------------
+| Breadcrumb
+|--------------------------------------------------------------------------
+| @namespace: prd-
+|
+*/
+.prd-Breadcrumb {
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 70px;
+}
+
+.prd-Breadcrumb_Inner {
+  @include Container;
+}

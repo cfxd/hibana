@@ -1,0 +1,36 @@
+/*
+|--------------------------------------------------------------------------
+| Extra Images
+|--------------------------------------------------------------------------
+| @namespace: prd-
+|
+*/
+.prd-ExtraImages {
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.prd-Extra Images_Inner {
+  @include Container;
+}
+
+.prd-ExtraImages_Columns {
+  display: flex;
+}
+
+.prd-ExtraImages_Column {
+  flex: 1;
+}
+
+.prd-ExtraImages_Image {
+  .rsp-Image_Image {
+    .prd-ExtraImages_Column:first-child & {
+      border-radius: 0 0 0 80px;
+    }
+
+    .prd-ExtraImages_Column:last-child & {
+      border-radius: 0 0 80px 0;
+    }
+  }
+}

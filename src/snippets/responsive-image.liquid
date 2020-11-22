@@ -12,6 +12,8 @@
   - height: {Number} Max height of the image container
   - img_class: {String} class name of the <img />
   - wrapper_class: {String} class name of the <div> wrapper
+  - image_attributes: {String}  additional HTML attributes of the <img />
+  - wrapper_attributes: {String} additional HTML attributes of the <div> wrapper
 
   Usage:
   In your liquid template file, copy the following line
@@ -83,7 +85,8 @@
 
 <div class="rsp-Image {{ wrapper_class }}"
      id="ImageWrapper-{{ image.id }}-{{ width }}-{{ responsive_image_counter }}"
-     data-image-id="{{ image.id }}">
+     data-image-id="{{ image.id }}"
+     {{ wrapper_attributes }}>
   <img class="rsp-Image_Image lazyload {{ img_class }}"
        id="Image-{{ image.id }}-{{ width }}-{{ responsive_image_counter }}"
        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -92,7 +95,8 @@
        data-widths="[{{ image_widths }}]"
        data-aspectratio="{{ image.aspect_ratio }}"
        data-sizes="auto"
-       alt="{{ image.alt | escape }}" />
+       alt="{{ image.alt | escape }}"
+       {{ image_attributes }} />
 </div>
 
 <noscript>

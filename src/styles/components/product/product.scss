@@ -1,0 +1,180 @@
+/*
+|--------------------------------------------------------------------------
+| Product
+|--------------------------------------------------------------------------
+| @namespace: prd-
+|
+*/
+.prd-Product {
+  position: relative;
+  z-index: 0;
+
+  width: 100%;
+}
+
+.prd-Product_Inner {
+  @include Container;
+}
+
+.prd-Product_Columns {
+  align-items: center;
+
+  display: flex;
+}
+
+.prd-Product_Column {
+  flex: 1;
+}
+
+.prd-Product_Column-gallery {
+  &::before {
+    content: '';
+
+    position: relative;
+
+    display: block;
+    padding-top: 110%;
+  }
+}
+
+.prd-Product_ImageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+
+  width: 50%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.prd-Product_Image {
+  height: 100%;
+
+  .rsp-Image {
+    height: 100%;
+  }
+  .rsp-Image_Image {
+    border-radius: 0 0 0 80px;
+  }
+}
+
+.prd-Product_Details {
+  margin-left: 50px;
+}
+
+.prd-Product_Title {
+  margin-bottom: 25px;
+
+  font-family: $founders-grotesk-light;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 40px;
+}
+
+.prd-Product_Subtitle {
+  margin-bottom: 20px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 56px;
+}
+
+.prd-Product_Meta {
+  justify-content: space-between;
+
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.prd-Product_Info {
+  font-family: $founders-grotesk-light;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 40px;
+}
+
+.prd-Product_Price {
+  font-family: $founders-grotesk-light;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 40px;
+}
+
+.prd-Product_Variants {
+  margin-bottom: 20px;
+}
+
+.prd-Product_Option {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.prd-Product_Label {
+  font-family: $founders-grotesk-regular;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.prd-Product_Buy {
+  display: flex;
+}
+
+.prd-Product_Quantity {
+  display: flex;
+}
+
+.prd-Product_Select {
+  display: flex;
+  width: 100%;
+  margin-right: 20px;
+  padding: 10px 15px 10px 0;
+
+  font-family: $helvetica-neue;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+
+  border: 0;
+  border-bottom: 1px solid $color-brand;
+}
+
+.prd-Product_Button {
+  @include Button-brand;
+}
+
+.prd-Product_Excerpt {
+  margin-top: 60px;
+
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 16px;
+
+  u {
+    font-weight: 400;
+  }
+}
+
+.prd-Product_Usps {
+  margin-top: 30px;
+  padding-top: 30px;
+
+  border-top: 1px solid $color-brand;
+}
+
+.prd-Product_More {
+  display: inline-block;
+  margin-top: 20px;
+
+  font-family: $founders-grotesk-medium;
+  font-size: 20px;
+  line-height: 28px;
+}

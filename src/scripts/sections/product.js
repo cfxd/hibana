@@ -12,7 +12,7 @@ import {register} from '@shopify/theme-sections';
 import {forceFocus} from '@shopify/theme-a11y';
 
 const classes = {
-  hide: 'hide',
+  hide: 'util-Hide',
 };
 
 const keyboardKeys = {
@@ -33,8 +33,6 @@ const selectors = {
   thumbnail: '[data-product-single-thumbnail]',
   thumbnailById: (id) => `[data-thumbnail-id='${id}']`,
   thumbnailActive: '[data-product-single-thumbnail][aria-current]',
-  quantityMinus: '[data-quantity-minus]',
-  quantityPlus: '[data-quantity-plus]',
 };
 
 register('product', {
@@ -69,12 +67,11 @@ register('product', {
 
   onFormOptionChange(event) {
     const variant = event.dataset.variant;
-
     this.renderImages(variant);
     this.renderPrice(variant);
     this.renderComparePrice(variant);
-    this.renderSubmitButton(variant);
 
+    this.renderSubmitButton(variant);
     this.updateBrowserHistory(variant);
   },
 
@@ -205,8 +202,7 @@ register('product', {
   },
 
   updateBrowserHistory(variant) {
-    const enableHistoryState = this.productForm.element.dataset
-      .enableHistoryState;
+    const enableHistoryState = this.productForm.element.dataset.enableHistoryState;
 
     if (!variant || enableHistoryState !== 'true') {
       return;
