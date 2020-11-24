@@ -1,0 +1,53 @@
+{%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+
+<div class="clc-Sortby" data-module="collection-sort-by">
+  <h3 class="clc-Sortby_Label">{{ 'collections.sort.sort_by' | t }}</h3>
+
+  <h4 class="clc-Sortby_Title" data-sortby-title-toggle>
+    {%- if current_sort == 'created-descending' -%}
+      {{ 'collections.sort.date_descending' | t }}
+    {%- elsif current_sort == 'price-ascending' -%}
+      {{ 'collections.sort.price_ascending' | t }}
+    {%- elsif current_sort == 'price-descending' -%}
+      {{ 'collections.sort.price_descending' | t }}
+    {%- elsif current_sort == 'best-selling' -%}
+      {{ 'collections.sort.best_selling' | t }}
+    {%- elsif current_sort == 'manual' -%}
+      {{ 'collections.sort.featured' | t }}
+    {%- endif -%}
+
+    <span class="clc-Sortby_Arrow">{%- render 'arrow-down' -%}</span>
+  </h4>
+
+  <ul class="clc-Sortby_Items">
+    <li class="clc-Sortby_Item{% if current_sort == 'created-descending' %} clc-Sortby_Item-active{% endif %}">
+      <button class="clc-Sortby_Button" type="button" value="created-descending">
+        {{ 'collections.sort.date_descending' | t }}
+      </button>
+    </li>
+
+    <li class="clc-Sortby_Item{% if current_sort == 'price-ascending' %} clc-Sortby_Item-active{% endif %}">
+      <button class="clc-Sortby_Button" type="button" value="price-ascending">
+        {{ 'collections.sort.price_ascending' | t }}
+      </button>
+    </li>
+
+    <li class="clc-Sortby_Item{% if current_sort == 'price-descending' %} clc-Sortby_Item-active{% endif %}">
+      <button class="clc-Sortby_Button" type="button" value="price-descending">
+        {{ 'collections.sort.price_descending' | t }}
+      </button>
+    </li>
+
+    <li class="clc-Sortby_Item{% if current_sort == 'best-selling' %} clc-Sortby_Item-active{% endif %}">
+      <button class="clc-Sortby_Button" type="button" value="best-selling">
+        {{ 'collections.sort.best_selling' | t }}
+      </button>
+    </li>
+
+    <li class="clc-Sortby_Item{% if current_sort == 'manual' %} clc-Sortby_Item-active{% endif %}">
+      <button class="clc-Sortby_Button" type="button" value="manual">
+        {{ 'collections.sort.featured' | t }}
+      </button>
+    </li>
+  </ul>
+</div>

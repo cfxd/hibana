@@ -1,0 +1,48 @@
+/*
+|--------------------------------------------------------------------------
+| Drawers
+|--------------------------------------------------------------------------
+| @namespace: drw-
+|
+*/
+.drw-Drawers {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 900;
+
+  display: block;
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.drw-Drawers-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drw-Drawers_Mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.3s, visibility 0.3s;
+
+  .drw-Drawers-active & {
+    opacity: 1;
+    visibility: visible;
+  }
+}

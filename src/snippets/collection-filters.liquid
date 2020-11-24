@@ -1,3 +1,69 @@
 <div class="clc-Filters">
-  <p>Filters</p>
+  <div class="clc-Filters_Blocks" data-module="collection-filters" data-module-block="clc-Filters_Block" data-module-title="clc-Filters_Title">
+    {%- for block in section.blocks -%}
+      {%- assign block_tag_list = '' -%}
+      {%- capture tag_key -%}{{ block.settings.filter_key }}: {%- endcapture -%}
+      {%- for collection_tag in all_collection_tags -%}
+        {%- if collection_tag contains tag_key -%}
+          {%- assign block_tag_list = block_tag_list | append: ',' | append: collection_tag -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- assign block_tag_list = block_tag_list | remove_first: ',' | split: ',' -%}
+
+      {%- if block_tag_list.size >= 1 -%}
+        {%- assign tag_key_handle = tag_key | handleize -%}
+        {%- assign category_has_something_selected = false -%}
+        {%- if current_tag_handles_string contains tag_key_handle -%}
+          {%- assign category_has_something_selected = true -%}
+        {%- endif -%}
+
+        <div class="clc-Filters_Block">
+          <h3 class="clc-Filters_Label">{{ block.settings.title }}</h3>
+
+          <h4 class="clc-Filters_Title">
+            {{ block.settings.filter_all_text }}
+
+            <span class="clc-Filters_Arrow">{%- render 'arrow-down' -%}</span>
+          </h4>
+
+          <ul class="clc-Filters_Items{% if block_tag_list.size > 8 %} clc-Filters_Items-scroll{% endif %}">
+            {%- capture all_tags_string -%}{%- for current_tag in current_tags -%}{%- unless current_tag contains tag_key -%}+{{ current_tag | handleize }}{%- endunless -%}{%- endfor -%}{%- endcapture -%}
+            {%- assign all_tags_string = all_tags_string | remove_first: '+' -%}
+
+            <li class="clc-Filters_Item">
+              <a class="clc-Filters_Link" href="{{ collection_url }}/{{ all_tags_string }}"{% unless category_has_something_selected %} aria-current="page"{% endunless %}>
+                {{ block.settings.filter_all_text }}
+                <span class="clc-Filters_Icon">{%- include 'icon-tick' -%}</span>
+              </a>
+            </li>
+
+            {%- for block_tag in block_tag_list -%}
+              {%- assign block_tag_handle = block_tag | handleize -%}
+              {%- if block_tag_handle contains '-amp-' -%}
+                {%- assign block_tag_handle = block_tag | replace: '-amp-', '-' -%}
+              {%- endif -%}
+
+              {%- assign block_tag_is_in_current_tags = false -%}
+              {%- if current_tag_handles contains block_tag_handle -%}
+                {%- assign block_tag_is_in_current_tags = true -%}
+              {%- endif -%}
+
+              {%- capture block_tags_string -%}{{ all_tags_string }}{%- unless all_tags_string == blank -%}+{%- endunless -%}{%- unless block_tag_is_in_current_tags -%}{{ block_tag_handle }}{%- endunless -%}{%- endcapture -%}
+              {%- if block_tags_string.last == '+' -%}
+                {%- assign size_minus_one = block_tags_string.size | minus: 1 -%}
+                {%- assign block_tags_string = block_tags_string | slice: 0, size_minus_one -%}
+              {%- endif -%}
+
+              <li class="clc-Filters_Item">
+                <a class="clc-Filters_Link" href="{{ collection_url }}/{{ block_tags_string }}"{% if block_tag_is_in_current_tags %} aria-current="page"{% endif %}>
+                  {{ block_tag | remove: tag_key }}
+                  <span class="clc-Filters_Icon">{%- include 'icon-tick' -%}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
 </div>

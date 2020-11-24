@@ -140,28 +140,17 @@
       }
   },
   "collections": {
-      "general": {
-          "view": "Shop Now",
-          "no_matches": "Sorry, no products found",
-          "link_title": "Browse our {{ title }} collection"
-      },
-      "per_page": {
-          "title": "Per page"
-      },
-      "sorting": {
-          "title": "Sort by",
-          "featured": "Featured",
-          "best_selling": "Best Selling",
-          "az": "Alphabetically, A-Z",
-          "za": "Alphabetically, Z-A",
-          "price_ascending": "Price, low to high",
-          "price_descending": "Price, high to low",
-          "date_descending": "Date, new to old",
-          "date_ascending": "Date, old to new"
-      },
-      "filters": {
-          "title": "Filter by"
-      }
+    "sort": {
+      "sort_by": "Sort by",
+      "featured": "Our picks",
+      "best_selling": "Best sellers",
+      "price_ascending": "Price low - high",
+      "price_descending": "Price high - low",
+      "date_descending": "Newest"
+    },
+    "filter": {
+      "filter_by": "Filter by"
+    }
   },
   "contact": {
       "form": {

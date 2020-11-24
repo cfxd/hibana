@@ -1,0 +1,108 @@
+{%- if collection.title == 'Products' -%}
+  {%- assign collection_url = '/collections/all' -%}
+{%- else -%}
+  {%- assign collection_url = collection.url -%}
+{%- endif -%}
+
+{%- assign all_collection_tags = collection.all_tags -%}
+
+{%- assign current_tag_handles = '' -%}
+{%- for current_tag in current_tags -%}
+  {%- assign current_tag_handle = current_tag | handleize -%}
+  {%- if current_tag_handle contains '-amp-' -%}
+    {%- assign current_tag_handle = current_tag_handle | replace: '-amp-', '-' -%}
+  {%- endif -%}
+  {%- assign current_tag_handles = current_tag_handles | append: ',' | append: current_tag_handle -%}
+{%- endfor -%}
+
+{%- assign current_tag_handles = current_tag_handles | remove_first: ',' | split: ',' -%}
+{%- assign current_tag_handles_string = current_tag_handles | remove_first: ',' -%}
+
+<div class="clc-Filtering">
+  <div class="clc-Filtering_Filters">
+    {%- include 'collection-filters' -%}
+  </div>
+
+  <div class="clc-Filtering_Sort">
+    {%- render 'collection-sort-by' -%}
+  </div>
+</div>
+
+<div class="clc-Filtering_Mobile">
+  <button class="CollectionToolbar__filtersbutton" data-drawer-trigger="filters">
+    {{ 'collections.filter.filter_by' | t }}
+  </button>
+
+  <button class="CollectionToolbar__sortingbutton" data-drawer-trigger="sorting">
+    {{ 'collections.sort.sort_by' | t }}
+  </button>
+</div>
+
+<div class="drw-Drawers" data-module="drawers">
+  <div class="drw-Drawer" data-drawer-id="filters">
+    <div class="drw-Drawer_Inner">
+      <header class="drw-Drawer_Header">
+        <h3 class="drw-Drawer_Title">Filters</h3>
+
+        <button class="drw-Drawer_Close" data-drawer-close>
+          <span class="drw-Drawer_CloseText util-ScreenReaderOnly">Close</span>
+        </button>
+      </header>
+
+      <div class="drw-Drawer_Body">
+        {%- include 'collection-filters' -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="drw-Drawer" data-drawer-id="sorting">
+    <div class="drw-Drawer_Inner">
+      <header class="drw-Drawer_Header">
+        <h3 class="drw-Drawer_Title">Sort by</h3>
+
+        <button class="drw-Drawer_Close" data-drawer-close>
+          <span class="drw-Drawer_CloseText util-ScreenReaderOnly">Close</span>
+        </button>
+      </header>
+
+      <div class="drw-Drawer_Body">
+        {%- render 'collection-sort-by' -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="drw-Drawers_Mask" data-drawer-mask></div>
+</div>
+
+{% schema %}
+  {
+    "name": "Filtering",
+    "blocks": [
+      {
+        "type": "filter",
+        "name": "filter",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter by",
+            "info": "e.g. By types"
+          },
+          {
+            "type": "text",
+            "id": "filter_all_text",
+            "label": "Filter all text",
+            "info": "e.g. All types"
+          },
+          {
+            "type": "text",
+            "id": "filter_key",
+            "label": "Filter key",
+            "info": "This is the part that will appear where the \"{key}: {label}\" key part is. e.g. type"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

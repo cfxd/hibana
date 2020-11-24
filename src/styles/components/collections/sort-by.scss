@@ -1,0 +1,97 @@
+/*
+|--------------------------------------------------------------------------
+| Sort By
+|--------------------------------------------------------------------------
+| @namespace: clc-
+|
+*/
+.clc-Sortby {
+  position: relative;
+  z-index: 1;
+
+  min-width: 185px;
+}
+
+.clc-Sortby_Items {
+  position: absolute;
+  top: 100%;
+
+  width: calc(100% + 15px);
+  margin-left: -15px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+
+  background-color: $color-white;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.2s, visibility 0.2s;
+
+  .clc-Sortby-active & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.clc-Sortby_Label {
+  margin-bottom: 10px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.clc-Sortby_Title {
+  align-items: center;
+  justify-content: space-between;
+
+  display: flex;
+  padding-bottom: 10px;
+
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 17px;
+
+  border-bottom: 1px solid $color-brand;
+
+  cursor: pointer;
+}
+
+.clc-Sortby_Arrow {
+  width: 10px;
+  height: 6px;
+  margin-right: 10px;
+
+  transition: transform 0.2s;
+
+  svg {
+    width: 10px;
+    height: 6px;
+  }
+
+  .clc-Sortby-active & {
+    transform: rotate(180deg);
+  }
+}
+
+.clc-Sortby_Button {
+  display: block;
+  width: 100%;
+  padding-top: 15px;
+
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 17px;
+  text-align: left;
+
+  &:hover {
+    color: $color-black;
+  }
+
+  .clc-Sortby_Item:first-child & {
+    padding-top: 25px;
+  }
+}
