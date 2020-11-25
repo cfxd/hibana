@@ -15,16 +15,29 @@
             -%}
           </div>
         </div>
+      {%- else -%}
+        <div class="sec-Intro_Arches">
+          <div class="sec-Intro_Arch sec-Intro_Arch-rust"></div>
+          <div class="sec-Intro_Arch sec-Intro_Arch-forestgreen"></div>
+          <div class="sec-Intro_Arch sec-Intro_Arch-ochre"></div>
+        </div>
       {%- endif -%}
 
       <div class="sec-Intro_Content">
         <h1 class="sec-Intro_Title">
           {{ collection.title }}
-          <span class="sec-Intro_Count">{{ collection.products_count }} items</span>
+
+          {%- if collection.products.size > 0 -%}
+            <span class="sec-Intro_Count">{{ collection.products_count }} items</span>
+          {%- endif -%}
         </h1>
 
         {%- if collection.description != blank -%}
           <div class="sec-Intro_Text">{{ collection.description }}</div>
+        {%- endif -%}
+
+        {%- if collection.products.size == 0 -%}
+          <div class="sec-Intro_Text">Oops, your search didn’t return any results, get some inspiration from our Discover Page or browse our trending products below</div>
         {%- endif -%}
       </div>
     </div>

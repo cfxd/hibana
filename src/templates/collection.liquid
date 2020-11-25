@@ -1,31 +1,33 @@
 {%- render 'collection-intro' -%}
 
-{%- paginate collection.products by 16 -%}
-  <section class="clc-Collection">
-    <div class="clc-Collection_Inner">
-      <header class="clc-Collection_Header">
-        {%- section 'collection-filtering' -%}
-      </header>
+{%- if collection.products.size > 0 -%}
+  {%- paginate collection.products by 16 -%}
+    <section class="clc-Collection">
+      <div class="clc-Collection_Inner">
+        <header class="clc-Collection_Header">
+          {%- section 'collection-filtering' -%}
+        </header>
 
-      <div class="clc-Collection_Body">
-        <ul class="clc-Collection_Items">
-          {%- for product in collection.products -%}
-            <li class="clc-Collection_Item">
-              {%- render 'product-card',
-                product: product,
-                width: 600,
-                height: 700
-              -%}
-            </li>
-          {%- endfor -%}
-        </ul>
+        <div class="clc-Collection_Body">
+          <ul class="clc-Collection_Items">
+            {%- for product in collection.products -%}
+              <li class="clc-Collection_Item">
+                {%- render 'product-card',
+                  product: product,
+                  width: 600,
+                  height: 700
+                -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <footer class="clc-Collection_Footer">
+            {%- include 'pagination' -%}
+          </footer>
+        {%- endif -%}
       </div>
-
-      {%- if paginate.pages > 1 -%}
-        <footer class="clc-Collection_Footer">
-          {%- include 'pagination' -%}
-        </footer>
-      {%- endif -%}
-    </div>
-  </section>
-{%- endpaginate -%}
+    </section>
+  {%- endpaginate -%}
+{%- endif -%}
