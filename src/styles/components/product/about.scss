@@ -21,6 +21,10 @@
 
 .prd-About_Columns {
   display: flex;
+
+  .prd-About-flipped & {
+    flex-direction: row-reverse;
+  }
 }
 
 .prd-About_Column {
@@ -57,10 +61,18 @@
   .rsp-Image_Image {
     .prd-About_Column-content & {
       border-radius: 0 0 0 60px;
+
+      .prd-About-flipped & {
+        border-radius: 0 0 60px 0;
+      }
     }
 
     .prd-About_Column-image & {
       border-radius: 0 0 60px 0;
+
+      .prd-About-flipped & {
+        border-radius: 0 0 0 60px;
+      }
     }
   }
 }
@@ -70,7 +82,7 @@
 }
 
 .prd-About_Title {
-  max-width: 50%;
+  max-width: 60%;
   min-height: 75px;
   margin-top: -75px;
 

@@ -170,7 +170,7 @@
 </section>
 
 {%- if product.metafields.about.title != blank -%}
-  <section class="prd-About">
+  <section class="prd-About{% if product.metafields.about.flip_content != blank %} prd-About-flipped{% endif %}">
     <div class="prd-About_Inner">
       <div class="prd-About_Body">
         <div class="prd-About_Columns">
