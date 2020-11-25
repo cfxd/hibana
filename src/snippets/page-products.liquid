@@ -1,7 +1,7 @@
 {%- assign product_handles = page.metafields.products_items.product | split: '|' -%}
 
 {%- if product_handles.size > 0 -%}
-  <section class="sec-Products">
+  <section class="sec-Products sec-Products-page">
     <div class="sec-Products_Inner">
       {%- if page.metafields.products_header.title != blank -%}
         <header class="sec-Products_Header">
