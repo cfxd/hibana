@@ -1,0 +1,85 @@
+/*
+|--------------------------------------------------------------------------
+| Quote
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Quote {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.sec-Quote_Inner {
+  @include Container;
+}
+
+.sec-Quote_Body {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.sec-Quote_Arches {
+  position: relative;
+
+  display: flex;
+  margin-left: -80px;
+}
+
+.sec-Quote_Content {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 40px);
+  z-index: 1;
+
+  width: 70%;
+
+  text-align: center;
+
+  transform: translate(-50%, -50%);
+}
+
+.sec-Quote_Speechmark {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-right: auto;
+  margin-left: auto;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.sec-Quote_Text {
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.sec-Quote_Arch {
+  min-height: 500px;
+  width: calc(33.33% - 80px);
+  margin-left: 80px;
+
+  border: 3px solid $color-brand;
+  border-radius: 200px 200px 0 0;
+  opacity: 0.5;
+}
+
+.sec-Quote_Arch-rust {
+  border-color: $color-rust
+}
+
+.sec-Quote_Arch-forestgreen {
+  border-color: $color-forestgreen;
+}
+
+.sec-Quote_Arch-ochre {
+  border-color: $color-ochre;
+}

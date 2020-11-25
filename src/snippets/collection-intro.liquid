@@ -1,15 +1,13 @@
 <section class="sec-Intro">
   <div class="sec-Intro_Inner">
-    <header class="sec-Intro_Header">
-      {%- render 'breadcrumbs' -%}
-    </header>
-
     <div class="sec-Intro_Body">
-      {%- if collection.image != blank -%}
+      {%- assign image = collection.image -%}
+
+      {%- if image != blank -%}
         <div class="sec-Intro_ImageContainer">
           <div class="sec-Intro_Image">
             {%- render 'responsive-image',
-              image: collection.image,
+              image: image,
               width: 800,
               height: 600
             -%}

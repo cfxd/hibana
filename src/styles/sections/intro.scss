@@ -7,16 +7,12 @@
 */
 .sec-Intro {
   width: 100%;
-  margin-top: 25px;
-  margin-bottom: 70px;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .sec-Intro_Inner {
   @include Container;
-}
-
-.sec-Intro_Header {
-  margin-bottom: 80px;
 }
 
 .sec-Intro_Body {

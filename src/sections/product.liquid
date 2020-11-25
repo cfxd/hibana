@@ -1,10 +1,4 @@
-<section class="prd-Breadcrumb">
-  <div class="prd-Breadcrumb_Inner">
-    <div class="prd-Breadcrumb_Body">
-      {%- render 'breadcrumbs' -%}
-    </div>
-  </div>
-</section>
+{%- render 'page-breadcrumb' -%}
 
 <section class="prd-Product" data-section-id="{{ section.id }}" data-section-type="product">
   {%- assign current_variant = product.selected_or_first_available_variant -%}

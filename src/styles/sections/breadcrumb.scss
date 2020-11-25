@@ -2,15 +2,23 @@
 |--------------------------------------------------------------------------
 | Breadcrumb
 |--------------------------------------------------------------------------
-| @namespace: prd-
+| @namespace: sec-
 |
 */
-.prd-Breadcrumb {
+.sec-Breadcrumb {
   width: 100%;
   margin-top: 25px;
+  margin-bottom: -40px;
+
+  + .sec-Intro {
+    margin-top: 120px;
+  }
+}
+
+.sec-Breadcrumb-product {
   margin-bottom: 70px;
 }
 
-.prd-Breadcrumb_Inner {
+.sec-Breadcrumb_Inner {
   @include Container;
 }

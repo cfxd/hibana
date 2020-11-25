@@ -1,0 +1,21 @@
+{%- if page.metafields.quote.text != blank -%}
+  <section class="sec-Quote">
+    <div class="sec-Quote_Inner">
+      <div class="sec-Quote_Body">
+        <div class="sec-Quote_Arches">
+          <div class="sec-Quote_Content">
+            <blockquote class="sec-Quote_Blockquote">
+              <span class="sec-Quote_Speechmark">{%- render 'quote-start' -%}</span>
+              <p class="sec-Quote_Text">{{ page.metafields.quote.text }}</p>
+              <span class="sec-Quote_Speechmark">{%- render 'quote-finish' -%}</span>
+            </blockquote>
+          </div>
+
+          <div class="sec-Quote_Arch sec-Quote_Arch-rust"></div>
+          <div class="sec-Quote_Arch sec-Quote_Arch-forestgreen"></div>
+          <div class="sec-Quote_Arch sec-Quote_Arch-ochre"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}

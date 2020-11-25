@@ -47,6 +47,7 @@
 
 // Sections
 @import './sections/about';
+@import './sections/breadcrumb';
 @import './sections/blog';
 @import './sections/carousel';
 @import './sections/collections';
@@ -54,6 +55,7 @@
 @import './sections/grid';
 @import './sections/intro';
 @import './sections/products';
+@import './sections/quote';
 @import './sections/stories';
 @import './sections/text-image';
 
@@ -76,7 +78,6 @@
 @import './components/drawers/drawers';
 
 @import './components/product/about';
-@import './components/product/breadcrumb';
 @import './components/product/extra-images';
 @import './components/product/product';
 @import './components/product/recommendations';
