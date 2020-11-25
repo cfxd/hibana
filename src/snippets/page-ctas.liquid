@@ -1,0 +1,49 @@
+{%- assign cta_item_title = page.metafields.cta_item.title -%}
+
+{%- if cta_item_title.size > 0 -%}
+  <section class="sec-Ctas">
+    <div class="sec-Ctas_Inner">
+      <div class="sec-Ctas_Body">
+        <div class="sec-Ctas_Items">
+          {%- for value in cta_item_title -%}
+            {%- assign image = page.metafields.cta_item.image[forloop.index0].first -%}
+            {%- assign link_url = page.metafields.cta_item.link_url[forloop.index0] -%}
+            {%- assign colour = page.metafields.cta_item.colour[forloop.index0] | downcase | remove: ' ' -%}
+
+            <div class="sec-Ctas_Item">
+              <div class="sec-Ctas_Card sec-Ctas_Card-{{ colour }}">
+                {%- if image != blank -%}
+                  <div class="sec-Ctas_ImageContainer">
+                    <div class="sec-Ctas_Image">
+                      {%- render 'responsive-image-metafield',
+                        image: image,
+                        width: 600,
+                        height: 1000
+                      -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+
+                <h2 class="sec-Ctas_Title">{{ value }}</h2>
+
+                {%- if link_url != blank -%}
+                  <a class="util-FauxLink" href="{{ link_url }}">
+                    {%- if value != blank -%}
+                      <span class="util-ScreenReaderOnly">{{ value }}<span>
+                    {%- endif -%}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- if page.metafields.ctas_footer.link_text != blank -%}
+        <footer class="sec-Ctas_Footer">
+          <a class="sec-Ctas_All" href="{{ page.metafields.ctas_footer.link_url }}">{{ page.metafields.ctas_footer.link_text }}</a>
+        </footer>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}

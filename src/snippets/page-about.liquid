@@ -1,0 +1,49 @@
+{%- if page.metafields.about.title != blank -%}
+  <section class="sec-About{% if page.metafields.about.flip_content != blank %} sec-About-flipped{% endif %}">
+    <div class="sec-About_Inner">
+      <div class="sec-About_Body">
+        <div class="sec-About_Columns">
+          <div class="sec-About_Column sec-About_Column-content">
+            <div class="sec-About_Content">
+              <h2 class="sec-About_Title">{{ page.metafields.about.title }}</h2>
+
+              {%- if page.metafields.about.text != blank -%}
+                <p class="sec-About_Text">{{ page.metafields.about.text }}</p>
+              {%- endif -%}
+
+              {%- if page.metafields.about.text_more != blank -%}
+                <p class="sec-About_Text">{{ page.metafields.about.text_more }}</p>
+              {%- endif -%}
+            </div>
+
+            {%- if page.metafields.about.image_small.first != blank -%}
+              <div class="sec-About_ImageContainer">
+                <div class="sec-About_Image">
+                  {%- render 'responsive-image-metafield',
+                    image: page.metafields.about.image_small.first,
+                    width: 850,
+                    height: 450
+                  -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if page.metafields.about.image_large.first != blank -%}
+            <div class="sec-About_Column sec-About_Column-image">
+              <div class="sec-About_ImageContainer">
+                <div class="sec-About_Image">
+                  {%- render 'responsive-image-metafield',
+                    image: page.metafields.about.image_large.first,
+                    width: 1600,
+                    height: 1200
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}

@@ -19,6 +19,12 @@
   padding-left: 80px;
 }
 
+.sec-Ctas_Footer {
+  margin-top: 120px;
+
+  text-align: center;
+}
+
 .sec-Ctas_Items {
   display: flex;
   margin-left: -75px;
@@ -100,4 +106,8 @@
   font-size: 32px;
   font-weight: 400;
   line-height: 40px;
+}
+
+.sec-Ctas_All {
+  @include Button-rust-outline;
 }

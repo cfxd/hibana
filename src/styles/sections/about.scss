@@ -1,0 +1,102 @@
+/*
+|--------------------------------------------------------------------------
+| About
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-About {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.sec-About_Inner {
+  @include Container;
+}
+
+.sec-About_Body {
+  background-color: $color-offwhite;
+}
+
+.sec-About_Columns {
+  display: flex;
+
+  .sec-About-flipped & {
+    flex-direction: row-reverse;
+  }
+}
+
+.sec-About_Column {
+  flex-shrink: 0;
+}
+
+.sec-About_Column-content {
+  flex-grow: 1;
+
+  width: 40%;
+}
+
+.sec-About_Column-image {
+  width: 60%;
+}
+
+.sec-About_ImageContainer {
+  .sec-About_Column-image & {
+    height: 100%;
+  }
+}
+
+.sec-About_Image {
+  .sec-About_Column-image & {
+    height: 100%;
+  }
+
+  .rsp-Image {
+    .sec-About_Column-image & {
+      height: 100%;
+    }
+  }
+
+  .rsp-Image_Image {
+    .sec-About_Column-content & {
+      border-radius: 0 0 0 60px;
+
+      .sec-About-flipped & {
+        border-radius: 0 0 60px 0;
+      }
+    }
+
+    .sec-About_Column-image & {
+      border-radius: 0 0 60px 0;
+
+      .sec-About-flipped & {
+        border-radius: 0 0 0 60px;
+      }
+    }
+  }
+}
+
+.sec-About_Content {
+  padding: 50px 50px 80px;
+}
+
+.sec-About_Title {
+  max-width: 60%;
+  min-height: 75px;
+  margin-top: -75px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 48px;
+}
+
+.sec-About_Text {
+  margin-top: 20px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
