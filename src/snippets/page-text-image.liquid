@@ -1,0 +1,35 @@
+{%- if page.metafields.text_image.text != blank -%}
+  <section class="sec-TextImage{% if page.metafields.text_image.flip_content != blank %} sec-TextImage-flipped{% endif %}">
+    <div class="sec-TextImage_Inner">
+      <div class="sec-TextImage_Body">
+        <div class="sec-TextImage_Columns">
+          <div class="sec-TextImage_Column sec-TextImage_Column-content">
+            <div class="sec-TextImage_Content">
+              {%- if page.metafields.text_image.text != blank -%}
+                <p class="sec-TextImage_Text">{{ page.metafields.text_image.text }}</p>
+              {%- endif -%}
+
+              {%- if page.metafields.text_image.text_more != blank -%}
+                <p class="sec-TextImage_Text">{{ page.metafields.text_image.text_more }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- if page.metafields.text_image.image.first != blank -%}
+            <div class="sec-TextImage_Column sec-TextImage_Column-image">
+              <div class="sec-TextImage_ImageContainer">
+                <div class="sec-TextImage_Image">
+                  {%- render 'responsive-image-metafield',
+                    image: page.metafields.text_image.image.first,
+                    width: 1600,
+                    height: 1200
+                  -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}

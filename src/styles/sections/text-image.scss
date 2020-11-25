@@ -1,0 +1,94 @@
+/*
+|--------------------------------------------------------------------------
+| Text Image
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-TextImage {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.sec-TextImage_Inner {
+  @include Container;
+}
+
+.sec-TextImage_Body {
+  background-color: $color-offwhite;
+  border-radius: 0 0 0 60px;
+
+  .sec-TextImage-flipped & {
+    border-radius: 0 0 60px 0;
+  }
+}
+
+.sec-TextImage_Columns {
+  align-items: center;
+
+  display: flex;
+
+  .sec-TextImage-flipped & {
+    flex-direction: row-reverse;
+  }
+}
+
+.sec-TextImage_Column {
+  flex-shrink: 0;
+}
+
+.sec-TextImage_Column-content {
+  flex-grow: 1;
+
+  width: 40%;
+}
+
+.sec-TextImage_Column-image {
+  width: 60%;
+}
+
+.sec-TextImage_ImageContainer {
+  .sec-TextImage_Column-image & {
+    height: 100%;
+  }
+}
+
+.sec-TextImage_Image {
+  .sec-TextImage_Column-image & {
+    height: 100%;
+  }
+
+  .rsp-Image {
+    .sec-TextImage_Column-image & {
+      height: 100%;
+    }
+  }
+
+  .rsp-Image_Image {
+    .sec-TextImage_Column-image & {
+      border-radius: 0 0 60px 0;
+
+      .sec-TextImage-flipped & {
+        border-radius: 0 0 0 60px;
+      }
+    }
+  }
+}
+
+.sec-TextImage_Content {
+  padding: 50px;
+}
+
+.sec-TextImage_Text {
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
