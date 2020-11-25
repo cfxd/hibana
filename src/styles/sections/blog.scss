@@ -1,0 +1,26 @@
+/*
+|--------------------------------------------------------------------------
+| Blog
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Blog {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.sec-Blog_Inner {
+  @include Container;
+}
+
+.sec-Blog_Items {
+  column-count: 3;
+  column-gap: 25px;
+}
+
+.sec-Blog_Item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 50px;
+}

@@ -1,0 +1,19 @@
+<div class="car-Article">
+  {%- if article.image != blank -%}
+    <a class="car-Article_ImageContainer" href="{{ article.url }}">
+      <div class="car-Article_Image">
+        {%- render 'responsive-image',
+          image: article.image,
+          width: width,
+          height: height
+        -%}
+      </div>
+    </a>
+  {%- endif -%}
+
+  <div class="car-Article_Content">
+    <p class="car-Article_Date">{{ article.published_at | date: "%B %Y" }}</p>
+
+    <h3 class="car-Article_Title"><a class="car-Article_TitleLink" href="{{ article.url }}">{{ article.title }}</a></h3>
+  </div>
+</div>

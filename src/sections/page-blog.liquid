@@ -1,0 +1,53 @@
+<section class="sec-Blog">
+  <div class="sec-Blog_Inner">
+    <div class="sec-Blog_Body">
+      <ul class="sec-Blog_Items">
+        {%- assign articles = blogs[section.settings.blog] -%}
+        {%- assign limit = section.settings.limit -%}
+
+        {%- for article in articles.articles limit:limit -%}
+          <li class="sec-Blog_Item">
+            {%- include 'article-card' with
+              articles: articles,
+              width: 400,
+              height: 350
+            -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "select",
+        "id": "limit",
+        "label": "Blog limit",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          }
+        ],
+        "default": "9"
+      }
+    ]
+  }
+{% endschema %}

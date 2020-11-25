@@ -1,0 +1,42 @@
+/*
+|--------------------------------------------------------------------------
+| Card
+|--------------------------------------------------------------------------
+| @namespace: art-
+|
+*/
+.car-Article {
+  width: 100%;
+}
+
+.car-Article_ImageContainer {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.car-Article_Image {
+  .rsp-Image_Image {
+    border-radius: 0 0 30px 30px;
+  }
+}
+
+.car-Article_Content {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.car-Article_Date {
+  margin-bottom: 10px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
+
+.car-Article_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+}
