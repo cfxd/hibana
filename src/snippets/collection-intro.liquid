@@ -29,7 +29,9 @@
         <h1 class="sec-Intro_Title">
           {{ collection.title }}
 
-          <span class="sec-Intro_Count">{{ collection.products_count }} items</span>
+          <span class="sec-Intro_Count">
+            {{ collection.products_count }} {{ 'collections.general.count' | t: count: collection.products_count }}
+          </span>
         </h1>
 
         {%- if collection.products.size == 0 -%}

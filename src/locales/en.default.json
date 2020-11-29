@@ -141,6 +141,10 @@
   },
   "collections": {
     "general": {
+      "count": {
+        "one": "item",
+        "other": "items"
+      },
       "no_results": "Oops, sorry there are current no products available. Get some inspiration and browse our trending products below."
     },
     "filter": {
