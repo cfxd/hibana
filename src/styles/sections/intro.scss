@@ -28,10 +28,13 @@
 
   width: 30%;
   margin-right: 25px;
+
+  overflow: hidden;
 }
 
 .sec-Intro_Image {
-  .sec-Intro-collection & {
+  .sec-Intro-collection &,
+  .sec-Intro-page & {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +46,8 @@
 }
 
 .sec-Intro_Overlay {
-  .sec-Intro-collection & {
+  .sec-Intro-collection &,
+  .sec-Intro-page & {
     position: relative;
     z-index: 1;
 
