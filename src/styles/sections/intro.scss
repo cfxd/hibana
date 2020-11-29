@@ -22,23 +22,46 @@
 }
 
 .sec-Intro_ImageContainer {
+  position: relative;
+
   flex-shrink: 0;
 
   width: 30%;
   margin-right: 25px;
+}
+
+.sec-Intro_Image {
+  .sec-Intro-collection & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+  }
+}
+
+.sec-Intro_Overlay {
+  .sec-Intro-collection & {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+  }
 }
 
 .sec-Intro_Arches {
   flex-shrink: 0;
 
   display: flex;
-  width: 30%;
+  width: 31%;
   margin-right: 25px;
   margin-left: -15px;
 }
 
 .sec-Intro_Arch {
-  min-height: 200px;
+  min-height: 185px;
   width: calc(33.33% - 15px);
   margin-left: 15px;
 

@@ -1,4 +1,4 @@
-<section class="sec-Intro">
+<section class="sec-Intro sec-Intro-collection">
   <div class="sec-Intro_Inner">
     <div class="sec-Intro_Body">
       {%- assign image = collection.image -%}
@@ -9,8 +9,12 @@
             {%- render 'responsive-image',
               image: image,
               width: 800,
-              height: 600
+              height: 400
             -%}
+          </div>
+
+          <div class="sec-Intro_Overlay">
+            {%- render 'arches' -%}
           </div>
         </div>
       {%- else -%}
