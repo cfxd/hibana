@@ -155,7 +155,9 @@
               </div>
             </div>
 
-            <a class="prd-Product_More" href="#">+ more information</a>
+            {%- if product.description != blank -%}
+              <a class="prd-Product_More" href="#more-info">{{ 'products.product.more_information' | t }}</a>
+            {%- endif -%}
           </div>
         </div>
       </div>
@@ -238,7 +240,7 @@
 {%- endif -%}
 
 {%- if product.description != blank -%}
-  <section class="prd-Tabs" data-module="product-tabs" data-targets-content="prd-Tabs_Description" data-targets-headings="prd-Tabs_Button">
+  <section class="prd-Tabs" id="more-info" data-module="product-tabs" data-targets-content="prd-Tabs_Description" data-targets-headings="prd-Tabs_Button">
     <div class="prd-Tabs_Inner">
       <div class="prd-Tabs_Body">
         {%- assign description_tabs = product.description | split: '<h4>' -%}

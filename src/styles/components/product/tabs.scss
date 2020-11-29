@@ -7,8 +7,12 @@
 */
 .prd-Tabs {
   width: 100%;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: -80px;
+  margin-bottom: -80px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  outline: none;
 }
 
 .prd-Tabs_Inner {
