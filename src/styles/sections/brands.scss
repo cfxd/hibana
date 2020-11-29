@@ -1,0 +1,82 @@
+/*
+|--------------------------------------------------------------------------
+| Brands
+|--------------------------------------------------------------------------
+| @namespace: sec-
+|
+*/
+.sec-Brands {
+  width: 100%;
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.sec-Brands_Inner {
+  @include Container;
+}
+
+.sec-Brands_Header {
+  margin-bottom: 50px;
+}
+
+.sec-Brands_Tabs {
+  justify-content: center;
+
+  display: flex;
+  margin-left: -15px;
+}
+
+.sec-Brands_Tab {
+  margin-left: 15px;
+}
+
+.sec-Brands_Button {
+  display: block;
+  padding: 8px 20px 12px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+
+  background-color: $color-white;
+  border: 1px solid $color-brand;
+  border-radius: 0 0 15px 15px;
+
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: $color-rust;
+    border-color: $color-rust;
+    color: $color-white;
+  }
+}
+
+.sec-Brands_Button-active {
+  background-color: $color-rust;
+  border-color: $color-rust;
+  color: $color-white;
+}
+
+.sec-Brands_Cards {
+  display: none;
+}
+
+.sec-Brands_Cards-active {
+  display: block;
+}
+
+.sec-Brands_Items {
+  flex-wrap: wrap;
+
+  display: flex;
+  margin-top: -70px;
+  margin-left: -25px;
+}
+
+.sec-Brands_Item {
+  width: calc(25% - 25px);
+  margin-top: 70px;
+  margin-left: 25px;
+}

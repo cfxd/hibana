@@ -1,0 +1,56 @@
+/*
+|--------------------------------------------------------------------------
+| Brand
+|--------------------------------------------------------------------------
+| @namespace: car-
+|
+*/
+.car-Brand {
+  position: relative;
+}
+
+.car-Brand_ImageContainer {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+
+  overflow: hidden;
+}
+
+.car-Brand_Image {
+  width: 100%;
+
+  img {
+    border-radius: 0 0 30px 30px;
+  }
+}
+
+.car-Brand_Content {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.car-Brand_Brand {
+  margin-bottom: 10px;
+
+  font-family: $founders-grotesk-medium;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.car-Brand_Title {
+  margin-bottom: 15px;
+
+  font-family: $founders-grotesk-regular;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.car-Brand_Text {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+}
