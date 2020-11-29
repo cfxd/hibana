@@ -37,6 +37,15 @@
   }
 }
 
+.sec-Products-collection {
+  margin-top: 80px;
+  padding-bottom: 0;
+
+  &::after {
+    display: none;
+  }
+}
+
 .sec-Products_Inner {
   @include Container;
 }
@@ -57,6 +66,7 @@
 
   color: $color-black;
 
+  .sec-Products-collection &,
   .sec-Products-page & {
     font-size: 48px;
     line-height: 56px;
@@ -74,6 +84,12 @@
 .sec-Products_Items {
   display: flex;
   margin-left: -25px;
+
+  .sec-Products-collection & {
+    flex-wrap: wrap;
+
+    margin-top: -50px;
+  }
 }
 
 .sec-Products_Item {
@@ -81,4 +97,11 @@
 
   width: calc(33.33% - 25px);
   margin-left: 25px;
+
+  .sec-Products-collection & {
+    flex-grow: inherit;
+
+    width: calc(16.66% - 25px);
+    margin-top: 50px;
+  }
 }
