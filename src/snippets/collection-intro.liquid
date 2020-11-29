@@ -29,17 +29,15 @@
         <h1 class="sec-Intro_Title">
           {{ collection.title }}
 
-          {%- if collection.products.size > 0 -%}
-            <span class="sec-Intro_Count">{{ collection.products_count }} items</span>
-          {%- endif -%}
+          <span class="sec-Intro_Count">{{ collection.products_count }} items</span>
         </h1>
-
-        {%- if collection.description != blank -%}
-          <div class="sec-Intro_Text">{{ collection.description }}</div>
-        {%- endif -%}
 
         {%- if collection.products.size == 0 -%}
           <div class="sec-Intro_Text">{{ 'collections.general.no_results' | t }}</div>
+        {%- else -%}
+          {%- if collection.description != blank -%}
+            <div class="sec-Intro_Text">{{ collection.description }}</div>
+          {%- endif -%}
         {%- endif -%}
       </div>
     </div>

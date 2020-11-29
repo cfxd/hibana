@@ -42,7 +42,7 @@
             </li>
 
             <li class="bdc-Breadcrumb_Item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-              <span itemprop="name">{{ current_tags | join: " + " }}</span>
+              <span itemprop="name">{{ current_tags | join: " + " | remove: 'type: ' | remove: 'brand: ' | remove: 'size: ' | remove: 'price: ' }}</span>
               <meta itemprop="position" content="3" />
             </li>
           {%- else -%}
