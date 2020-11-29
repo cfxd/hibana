@@ -35,7 +35,7 @@
         {%- endif -%}
 
         {%- if collection.products.size == 0 -%}
-          <div class="sec-Intro_Text">Oops, your search didn’t return any results, get some inspiration from our Discover Page or browse our trending products below</div>
+          <div class="sec-Intro_Text">{{ 'collections.general.no_results' | t }}</div>
         {%- endif -%}
       </div>
     </div>

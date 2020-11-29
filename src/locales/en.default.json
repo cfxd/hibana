@@ -140,6 +140,12 @@
       }
   },
   "collections": {
+    "general": {
+      "no_results": "Oops, sorry there are current no products available. Get some inspiration and browse our trending products below"
+    },
+    "filter": {
+      "filter_by": "Filter by"
+    },
     "sort": {
       "sort_by": "Sort by",
       "featured": "Our picks",
@@ -147,9 +153,6 @@
       "price_ascending": "Price low - high",
       "price_descending": "Price high - low",
       "date_descending": "Newest"
-    },
-    "filter": {
-      "filter_by": "Filter by"
     }
   },
   "contact": {
