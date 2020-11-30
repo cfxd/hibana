@@ -1,0 +1,30 @@
+/*
+|--------------------------------------------------------------------------
+| Navigation
+|--------------------------------------------------------------------------
+| @namespace: pg-
+|
+*/
+.pg-Navigation {
+  width: 100%;
+}
+
+.pg-Navigation_Item {
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.pg-Navigation_Link {
+  display: block;
+
+  font-family: $founders-grotesk-light;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.pg-Navigation_Link-active {
+  font-family: $founders-grotesk-medium;
+}

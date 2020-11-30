@@ -15,6 +15,7 @@
 
 // Helpers
 @import './helpers/responsive-image';
+@import './helpers/rich-text';
 @import './helpers/utils';
 
 // Header
@@ -78,6 +79,9 @@
 
 @import './components/drawers/drawer';
 @import './components/drawers/drawers';
+
+@import './components/page/navigation';
+@import './components/page/page';
 
 @import './components/product/about';
 @import './components/product/extra-images';
