@@ -34,12 +34,17 @@
           <p class="sec-Intro_Text">{{ page.metafields.intro.text }}</p>
         {%- endif -%}
 
-        <ul class="sec-Intro_Items">
-          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop all</a></li>
-          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop Womens Clothing</a></li>
-          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop Mens Clothing</a></li>
-          <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="#">Shop Accessories</a></li>
-        </ul>
+        {%- assign intro_link_text = page.metafields.intro_link.link_text -%}
+
+        {%- if intro_link_text.size > 0 -%}
+          <ul class="sec-Intro_Items">
+            {%- for value in intro_link_text -%}
+              {%- assign link_url = page.metafields.intro_link.link_url[forloop.index0] -%}
+
+              <li class="sec-Intro_Item"><a class="sec-Intro_Link" href="{{ link_url }}">{{ value }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
       </div>
     </div>
   </div>
