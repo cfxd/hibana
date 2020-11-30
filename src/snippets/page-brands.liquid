@@ -1,411 +1,89 @@
-{%- assign brand_item_title = page.metafields.brand_item.title -%}
+{%- assign titles = page.metafields.brand_item.title -%}
+{%- assign categories = page.metafields.brand_item.category -%}
 
-{%- if brand_item_title.size > 0 -%}
+{%- if titles.size > 0 -%}
   <section class="sec-Brands" data-module="brands-tabs" data-targets-content="sec-Brands_Cards" data-targets-headings="sec-Brands_Button">
     <div class="sec-Brands_Inner">
       <header class="sec-Brands_Header">
         <ul class="sec-Brands_Tabs">
           <li class="sec-Brands_Tab">
-            <button class="sec-Brands_Button sec-Brands_Button-active">View all</button>
+            <button class="sec-Brands_Button sec-Brands_Button-active" type="button">View all</button>
           </li>
 
-          <li class="sec-Brands_Tab">
-            <button class="sec-Brands_Button">Womens</button>
-          </li>
-
-          <li class="sec-Brands_Tab">
-            <button class="sec-Brands_Button">Mens</button>
-          </li>
-
-          <li class="sec-Brands_Tab">
-            <button class="sec-Brands_Button">Lifestyle</button>
-          </li>
-
-          <li class="sec-Brands_Tab">
-            <button class="sec-Brands_Button">Homeware</button>
-          </li>
-
-          <li class="sec-Brands_Tab">
-            <button class="sec-Brands_Button">Food &amp; Drink</button>
-          </li>
+          {%- for category in categories -%}
+            <li class="sec-Brands_Tab">
+              <button class="sec-Brands_Button" type="button">{{ category }}</button>
+            </li>
+          {%- endfor -%}
         </ul>
       </header>
 
       <div class="sec-Brands_Body">
         <div class="sec-Brands_Cards sec-Brands_Cards-active">
           <ul class="sec-Brands_Items">
-            {%- for value in brand_item_title -%}
+            {%- for value in titles -%}
               {%- assign image = page.metafields.brand_item.image[forloop.index0].first -%}
+              {%- assign title = page.metafields.brand_item.title[forloop.index0] -%}
               {%- assign text = page.metafields.brand_item.text[forloop.index0] -%}
               {%- assign link_url = page.metafields.brand_item.link_url[forloop.index0] -%}
+              {%- assign category = page.metafields.brand_item.category[forloop.index0] -%}
 
               <li class="sec-Brands_Item">
-                <div class="car-Brand">
-                  {%- if image != blank -%}
-                    <a class="car-Brand_ImageContainer" href="#">
-                      <div class="car-Brand_Image">
-                        {%- render 'responsive-image-metafield',
-                          image: image,
-                          width: 600,
-                          height: 700
-                        -%}
-                      </div>
-                    </a>
-                  {%- endif -%}
-
-                  <div class="car-Brand_Content">
-                    <h3 class="car-Brand_Title">{{ value }}</h2>
-
-                    {%- if text != blank -%}
-                      <p class="car-Brand_Text">{{ text }}</p>
-                    {%- endif -%}
-                  </div>
-
-                  {%- if link_url != blank -%}
-                    <a class="util-FauxLink" href="{{ link_url }}">
-                      {%- if value != blank -%}
-                        <span class="util-ScreenReaderOnly">{{ value }}<span>
-                      {%- endif -%}
-                    </a>
-                  {%- endif -%}
-                </div>
+                {%- render 'brand-card',
+                  image: image,
+                  title: title,
+                  text: text,
+                  link_url: link_url
+                -%}
               </li>
             {%- endfor -%}
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">A Brand name A Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">AAA Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">Brand name has two lines</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">A Brand name A Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">AAA Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">Brand name has two lines</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">A Brand name A Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
           </ul>
         </div>
 
         <div class="sec-Brands_Cards">
           <ul class="sec-Brands_Items">
-            {%- for value in brand_item_title -%}
+            {%- for value in titles -%}
               {%- assign image = page.metafields.brand_item.image[forloop.index0].first -%}
+              {%- assign title = page.metafields.brand_item.title[forloop.index0] -%}
               {%- assign text = page.metafields.brand_item.text[forloop.index0] -%}
               {%- assign link_url = page.metafields.brand_item.link_url[forloop.index0] -%}
+              {%- assign category = page.metafields.brand_item.category[forloop.index0] -%}
 
-              <li class="sec-Brands_Item">
-                <div class="car-Brand">
-                  {%- if image != blank -%}
-                    <a class="car-Brand_ImageContainer" href="#">
-                      <div class="car-Brand_Image">
-                        {%- render 'responsive-image-metafield',
-                          image: image,
-                          width: 600,
-                          height: 700
-                        -%}
-                      </div>
-                    </a>
-                  {%- endif -%}
-
-                  <div class="car-Brand_Content">
-                    <h3 class="car-Brand_Title">{{ value }}</h2>
-
-                    {%- if text != blank -%}
-                      <p class="car-Brand_Text">{{ text }}</p>
-                    {%- endif -%}
-                  </div>
-
-                  {%- if link_url != blank -%}
-                    <a class="util-FauxLink" href="{{ link_url }}">
-                      {%- if value != blank -%}
-                        <span class="util-ScreenReaderOnly">{{ value }}<span>
-                      {%- endif -%}
-                    </a>
-                  {%- endif -%}
-                </div>
-              </li>
+              {%- if category == 'Womens' -%}
+                <li class="sec-Brands_Item">
+                  {%- render 'brand-card',
+                    image: image,
+                    title: title,
+                    text: text,
+                    link_url: link_url
+                  -%}
+                </li>
+              {%- endif -%}
             {%- endfor -%}
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">A Brand name A Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">AAA Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
           </ul>
         </div>
 
         <div class="sec-Brands_Cards">
           <ul class="sec-Brands_Items">
-            {%- for value in brand_item_title -%}
+            {%- for value in titles -%}
               {%- assign image = page.metafields.brand_item.image[forloop.index0].first -%}
+              {%- assign title = page.metafields.brand_item.title[forloop.index0] -%}
               {%- assign text = page.metafields.brand_item.text[forloop.index0] -%}
               {%- assign link_url = page.metafields.brand_item.link_url[forloop.index0] -%}
+              {%- assign category = page.metafields.brand_item.category[forloop.index0] -%}
 
-              <li class="sec-Brands_Item">
-                <div class="car-Brand">
-                  {%- if image != blank -%}
-                    <a class="car-Brand_ImageContainer" href="#">
-                      <div class="car-Brand_Image">
-                        {%- render 'responsive-image-metafield',
-                          image: image,
-                          width: 600,
-                          height: 700
-                        -%}
-                      </div>
-                    </a>
-                  {%- endif -%}
-
-                  <div class="car-Brand_Content">
-                    <h3 class="car-Brand_Title">{{ value }}</h2>
-
-                    {%- if text != blank -%}
-                      <p class="car-Brand_Text">{{ text }}</p>
-                    {%- endif -%}
-                  </div>
-
-                  {%- if link_url != blank -%}
-                    <a class="util-FauxLink" href="{{ link_url }}">
-                      {%- if value != blank -%}
-                        <span class="util-ScreenReaderOnly">{{ value }}<span>
-                      {%- endif -%}
-                    </a>
-                  {%- endif -%}
-                </div>
-              </li>
-            {%- endfor -%}
-
-            <li class="sec-Brands_Item">
-              <div class="car-Brand">
-                <a class="car-Brand_ImageContainer" href="#">
-                  <div class="car-Brand_Image">
-                    <img src="https://cdn.shopify.com/s/files/1/0507/9973/9041/files/page-brand-card.jpg" />
-                  </div>
-                </a>
-
-                <div class="car-Brand_Content">
-                  <h3 class="car-Brand_Title">
-                    <a class="car-Brand_TitleLink" href="#">A Brand name A Brand name</a>
-                  </h3>
-
-                  <p class="car-Brand_Text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="sec-Brands_Cards">
-          <ul class="sec-Brands_Items">
-            {%- for value in brand_item_title -%}
-              {%- assign image = page.metafields.brand_item.image[forloop.index0].first -%}
-              {%- assign text = page.metafields.brand_item.text[forloop.index0] -%}
-              {%- assign link_url = page.metafields.brand_item.link_url[forloop.index0] -%}
-
-              <li class="sec-Brands_Item">
-                <div class="car-Brand">
-                  {%- if image != blank -%}
-                    <a class="car-Brand_ImageContainer" href="#">
-                      <div class="car-Brand_Image">
-                        {%- render 'responsive-image-metafield',
-                          image: image,
-                          width: 600,
-                          height: 700
-                        -%}
-                      </div>
-                    </a>
-                  {%- endif -%}
-
-                  <div class="car-Brand_Content">
-                    <h3 class="car-Brand_Title">{{ value }}</h2>
-
-                    {%- if text != blank -%}
-                      <p class="car-Brand_Text">{{ text }}</p>
-                    {%- endif -%}
-                  </div>
-
-                  {%- if link_url != blank -%}
-                    <a class="util-FauxLink" href="{{ link_url }}">
-                      {%- if value != blank -%}
-                        <span class="util-ScreenReaderOnly">{{ value }}<span>
-                      {%- endif -%}
-                    </a>
-                  {%- endif -%}
-                </div>
-              </li>
+              {%- if category == 'Mens' -%}
+                <li class="sec-Brands_Item">
+                  {%- render 'brand-card',
+                    image: image,
+                    title: title,
+                    text: text,
+                    link_url: link_url
+                  -%}
+                </li>
+              {%- endif -%}
             {%- endfor -%}
           </ul>
-        </div>
-
-        <div class="sec-Brands_Cards">
-          Homeware cards
-        </div>
-
-        <div class="sec-Brands_Cards">
-          Food &amp; Drink
         </div>
       </div>
     </div>

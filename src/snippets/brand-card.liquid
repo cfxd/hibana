@@ -1,0 +1,29 @@
+<div class="car-Brand">
+  {%- if image != blank -%}
+    <div class="car-Brand_ImageContainer">
+      <div class="car-Brand_Image">
+        {%- render 'responsive-image-metafield',
+          image: image,
+          width: 600,
+          height: 700
+        -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="car-Brand_Content">
+    <h3 class="car-Brand_Title">{{ title }}</h3>
+
+    {%- if text != blank -%}
+      <p class="car-Brand_Text">{{ text }}</p>
+    {%- endif -%}
+  </div>
+
+  {%- if link_url != blank -%}
+    <a class="util-FauxLink" href="{{ link_url }}">
+      {%- if value != blank -%}
+        <span class="util-ScreenReaderOnly">{{ value }}<span>
+      {%- endif -%}
+    </a>
+  {%- endif -%}
+</div>
