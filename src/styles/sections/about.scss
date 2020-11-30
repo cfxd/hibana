@@ -17,6 +17,7 @@
 
 .sec-About_Body {
   background-color: $color-offwhite;
+  border-radius: 0 0 60px 60px;
 }
 
 .sec-About_Columns {
@@ -32,8 +33,10 @@
 }
 
 .sec-About_Column-content {
+  flex-direction: column;
   flex-grow: 1;
 
+  display: flex;
   width: 40%;
 }
 
@@ -42,6 +45,8 @@
 }
 
 .sec-About_ImageContainer {
+  margin-top: auto;
+
   .sec-About_Column-image & {
     height: 100%;
   }
@@ -82,7 +87,7 @@
 }
 
 .sec-About_Title {
-  max-width: 60%;
+  max-width: 70%;
   min-height: 75px;
   margin-top: -75px;
 
