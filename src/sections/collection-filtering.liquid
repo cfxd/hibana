@@ -18,7 +18,7 @@
 {%- assign current_tag_handles = current_tag_handles | remove_first: ',' | split: ',' -%}
 {%- assign current_tag_handles_string = current_tag_handles | remove_first: ',' -%}
 
-<div class="clc-Filtering">
+<div class="clc-Filtering" data-section-id="{{ section.id }}" data-section-type="collection-filtering">
   <div class="clc-Filtering_Filters">
     {%- include 'collection-filters' -%}
   </div>
