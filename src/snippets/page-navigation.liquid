@@ -1,0 +1,11 @@
+<nav class="pg-Navigation" role="navigation">
+  <ul class="pg-Navigation_Items">
+    {%- for link in linklists.page-menu.links -%}
+      <li class="pg-Navigation_Item">
+        <a class="pg-Navigation_Link{% if link.active %} pg-Navigation_Link-active{% endif %}" href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
