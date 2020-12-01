@@ -96,6 +96,9 @@
     }
   },
   "article": {
+    "card": {
+      "read_more": "read more"
+    },
     "social": {
       "share_this_article": "Share this article"
     },

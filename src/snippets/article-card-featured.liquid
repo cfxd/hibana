@@ -31,7 +31,7 @@
         {{ article.excerpt | strip_html }}
 
         <a class="art-CardFeatured_Link" href="{{ article.url }}">
-          read more
+          {{ 'article.card.read_more' | t }}
         </a>
       </p>
     {%- endif -%}
