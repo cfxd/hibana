@@ -1,10 +1,8 @@
-{%- assign pagination_amount = 9 -%}
-
 {%- render 'page-breadcrumb' -%}
 
 <h1 class="sec-Blog_Title util-ScreenReaderOnly">{{ blog.title }}</h1>
 
-{%- paginate blog.articles by pagination_amount -%}
+{%- paginate blog.articles by 9 -%}
   <section class="sec-Blog">
     <div class="sec-Blog_Inner">
       {%- if blog.tags.size > 0 -%}
