@@ -1,57 +1,63 @@
 {%- render 'page-breadcrumb' -%}
 
-<h1 class="sec-Blog_Title util-ScreenReaderOnly">{{ blog.title }}</h1>
-
-{%- paginate blog.articles by 9 -%}
-  <section class="sec-Blog">
-    <div class="sec-Blog_Inner">
+{%- paginate blog.articles by 7 -%}
+  <section class="blg-Blog">
+    <div class="blg-Blog_Inner">
       {%- if blog.tags.size > 0 -%}
         {%- unless paginate.previous -%}
           {%- for tag in blog.all_tags -%}
             {%- if tag == 'Featured: Article' -%}
-              {%- if blog.articles.size > 0 -%}
-                <header class="sec-Blog_Header">
-                  {%- for article in blog.articles limit:1 -%}
-                    {%- render 'article-card-featured',
-                      article: article,
-                      width: 1500,
-                      height: 850
-                    -%}
+              <header class="blg-Blog_Header">
+                {%- for article in blog.articles limit:1 -%}
+                  {%- render 'article-card-featured',
+                    article: article,
+                    width: 1500,
+                    height: 850
+                  -%}
 
-                    {%- break -%}
-                  {%- endfor -%}
-                </header>
-              {%- endif -%}
+                  {%- break -%}
+                {%- endfor -%}
+              </header>
             {%- endif -%}
           {%- endfor -%}
         {%- endunless -%}
       {%- endif -%}
 
-      <div class="sec-Blog_Body">
+      <div class="blg-Blog_Body">
+        <h1 class="blg-Blog_Title util-ScreenReaderOnly">{{ blog.title }}</h1>
+
         {%- if blog.articles.size > 0 -%}
-          <ul class="sec-Blog_Items">
+          <ul class="blg-Blog_Items">
             {%- for article in blog.articles -%}
               {%- capture hide_featured -%}
                 {%- if article.tags.size > 0 -%}
                   {%- for tag in article.tags -%}
-                    {%- if tag == 'Featured: Article' -%}sec-Blog_Item-featured{%- endif -%}
+                    {%- if tag == 'Featured: Article' -%}featured{%- endif -%}
                   {%- endfor -%}
                 {%- endif -%}
               {%- endcapture -%}
 
-              <li class="sec-Blog_Item {{ hide_featured }}">
-                {%- include 'article-card' with
-                  articles: articles,
-                  width: 400,
-                  height: 300
-                -%}
-              </li>
+              {%- unless hide_featured == 'featured' -%}
+                <li class="blg-Blog_Item">
+                  {%- include 'article-card' with
+                    articles: articles,
+                    width: 400,
+                    height: 300
+                  -%}
+                </li>
+              {%- endunless -%}
             {%- endfor -%}
           </ul>
         {%- else -%}
-          <p class="sec-Blog_Text">{{ 'blog.blog.empty' | t }}</p>
+          <p class="blg-Blog_Text">{{ 'blog.blog.empty' | t }}</p>
         {%- endif -%}
       </div>
+
+      {%- if paginate.pages > 1 -%}
+        <footer class="blg-Blog_Footer">
+          {%- include 'pagination' -%}
+        </footer>
+      {%- endif -%}
     </div>
   </section>
 {%- endpaginate -%}
