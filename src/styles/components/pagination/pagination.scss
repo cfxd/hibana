@@ -1,0 +1,53 @@
+/*
+|--------------------------------------------------------------------------
+| Pagination
+|--------------------------------------------------------------------------
+| @namespace: pgn-
+|
+*/
+.pgn-Pagination {
+  width: 100%;
+}
+
+.pgn-Pagination_Items {
+  justify-content: center;
+
+  display: flex;
+}
+
+.pgn-Pagination_Item {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.pgn-Pagination_Link {
+  align-items: center;
+  justify-content: center;
+
+  display: flex;
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid transparent;
+  border-radius: 50%;
+
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $color-border;
+  }
+}
+
+.pgn-Pagination_Link-active {
+  border-color: $color-border;
+}
+
+.pgn-Pagination_Icon {
+  width: 29px;
+  height: 9px;
+
+  svg {
+    width: 29px;
+    height: 9px;
+  }
+}
