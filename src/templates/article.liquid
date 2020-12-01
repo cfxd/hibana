@@ -1,219 +1,124 @@
-{%- comment -%}
-  In order to avoid showing "success" message when we post comments
-  with invalid format (eg. blank fields), we added logic to make sure it doesn't show.
+{%- render 'page-breadcrumb' -%}
 
-  Comment help page:
-  http://docs.shopify.com/themes/liquid-variables/comment
-{%- endcomment -%}
+<article class="art-Article" role="article">
+  <div class="art-Article_Inner">
+    <header class="art-Article_Header">
+      <h1 class="art-Article_Title">{{ article.title }}</h1>
+      <p class="art-Article_Date">{{ article.published_at | date: "%B %Y" }}</p>
+    </header>
 
-{%- assign new_comment = false -%}
-{%- assign number_of_comments = article.comments_count -%}
+    <div class="art-Article_Body">
+      {%- if article.image != blank -%}
+        <div class="art-Article_ImageContainer">
+          <div class="art-Article_Image">
+            {%- render 'responsive-image',
+              image: article.image,
+              width: 1500,
+              height: 850
+            -%}
+          </div>
+        </div>
+      {%- endif -%}
 
-{%- if comment and comment.created_at -%}
-  {%- assign new_comment = true -%}
-  {%- assign new_comment_id = comment.id -%}
-{%- endif -%}
-
-{%- if new_comment -%}
-  {%- comment -%}
-    When you refresh the page with submitted comment, the comment is duplicated
-    so we added a flag to avoid this situation.
-  {%- endcomment -%}
-  {%- assign duplicate_comment = false -%}
-  {%- for comment in article.comments -%}
-    {%- if comment.id == new_comment_id -%}
-      {%- assign duplicate_comment = true -%}
-      {%- break -%}
-    {%- endif -%}
-  {%- endfor -%}
-
-  {%- unless duplicate_comment -%}
-    {%- assign number_of_comments = article.comments_count | plus: 1 -%}
-  {%- endunless -%}
-{%- endif -%}
-
-<article role="article">
-
-  {% if article.image %}
-    <div class="hero-banner hero-banner--article lazyload" data-bgset="{% include 'responsive-image-bg', image: article.image %}"></div>
-
-    <noscript>
-      {%- assign image_size = article.image.width | append: 'x' -%}
-      <div class="hero-banner hero-banner--article" style="background-image: {{ article.image | img_url: image_size }}"></div>
-    </noscript>
-  {% endif %}
-
-  <header role="banner">
-    <h1>{{ article.title }}</h1>
-    {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-    <p>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
-  </header>
-
-  <div class="rte">
-    {{ article.content }}
-  </div>
-
-  {% if article.tags.size > 0 %}
-    <ul>
-      {% for tag in article.tags %}
-        <li>
-          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  {% if settings.social_sharing_blog %}
-    {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
-  {% endif %}
-
-  {% if blog.comments_enabled? %}
-    <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
-
-    {% paginate article.comments by 5 %}
-
-    <div id="comments">
-      {% if comment and comment.status and comment.id != blank and paginate.current_page == 1 %}
-        <p class="form-success">
-          {% if blog.moderated? and comment.status != 'published' %}
-            {{ 'blogs.comments.success_moderated' | t }}
-          {% else %}
-            {{ 'blogs.comments.success' | t }}
-          {% endif %}
-        </p>
-      {% endif %}
-
-      {% if number_of_comments > 0 %}
-        <ul>
-          {% comment %}
-            Display comment from URL parameters if it is waiting moderation
-            We added "comment.id" check to make sure we don't display markup if there are form errors
-          {% endcomment %}
-          {% if comment and comment.status != 'published' and comment.id != blank %}
-            <li id="{{ comment.id }}">
-              <div class="rte">
-                {{ comment.content }}
-              </div>
-              {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-              <p>{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
-            </li>
-          {% endif %}
-
-          {% for comment in article.comments %}
-            <li id="{{ comment.id }}">
-              <div class="rte">
-                {{ comment.content }}
-              </div>
-              {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-              <p>{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
-            </li>
-          {% endfor %}
-        </ul>
-
-        {% if paginate.pages > 1 %}
-          {% include 'pagination' %}
-        {% endif %}
-      {% endif %}
+      <div class="art-Article_RichText rte-RichText">
+        {{ article.content | replace: '<meta charset="utf-8" />', '' }}
+      </div>
     </div>
 
-    {% endpaginate %}
+    <footer class="art-Article_Footer">
+      <div class="art-Article_Sharing">
+        <div class="art-Sharing">
+          <h3 class="art-Sharing_Title">{{ 'article.social.share_this_article' | t }}</h3>
 
-    {% form 'new_comment', article %}
-      <h3>{{ 'blogs.comments.title' | t }}</h3>
+          <ul class="art-Sharing_Items">
+            {%- if settings.share_facebook != blank -%}
+              <li class="art-Sharing_Item">
+                <a class="art-Sharing_Link" href="//www.facebook.com/sharer.php?u={{ shop.url | append: article.url }}" target="_blank">
+                  <span class="util-ScreenReaderOnly">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+                  <span class="art-Sharing_Text util-ScreenReaderOnly" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
+                  <span class="art-Sharing_Icon">{%- render 'icon-facebook' -%}</span>
+                </a>
+              </li>
+            {%- endif -%}
 
-      {{ form.errors | default_errors }}
+            {%- if settings.share_twitter != blank -%}
+              <li class="art-Sharing_Item">
+                <a class="art-Sharing_Link" href="//twitter.com/share?text={{ article.title | url_param_escape }}&amp;url={{ shop.url | append: article.url }}" target="_blank">
+                  <span class="util-ScreenReaderOnly">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+                  <span class="art-Sharing_Text util-ScreenReaderOnly" aria-hidden="true">{{ 'general.social.share_on_twitter' | t }}</span>
+                  <span class="art-Sharing_Icon">{%- render 'icon-twitter' -%}</span>
+                </a>
+              </li>
+            {%- endif -%}
 
-      <label for="CommentAuthor" class="label-hidden">
-        {{ 'blogs.comments.name' | t }}
-      </label>
-      <input type="text"
-             name="comment[author]"
-             id="CommentAuthor"
-             class="{% if form.errors contains 'author' %}input-error{% endif %}"
-             placeholder="{{ 'blogs.comments.name' | t }}"
-             value="{{ form.author }}"
-             autocapitalize="words">
+            {%- if settings.share_pinterest != blank -%}
+              <li class="art-Sharing_Item">
+                <a class="art-Sharing_Link" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: article.url }}&amp;media={{ article.image | img_url: '1024x1024' }}&amp;description={{ article.title | url_param_escape }}" target="_blank">
+                  <span class="util-ScreenReaderOnly">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
+                  <span class="art-Sharing_Text util-ScreenReaderOnly" aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
+                  <span class="art-Sharing_Icon">{%- render 'icon-pinterest' -%}</span>
+                </a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </div>
+      </div>
 
-      <label for="CommentEmail" class="label-hidden">
-        {{ 'blogs.comments.email' | t }}
-      </label>
-      <input type="email"
-             name="comment[email]"
-             id="CommentEmail"
-             class="{% if form.errors contains 'email' %}input-error{% endif %}"
-             placeholder="{{ 'blogs.comments.email' | t }}"
-             value="{{ form.email }}"
-             spellcheck="false"
-             autocomplete="off"
-             autocapitalize="off">
-
-      <label for="CommentBody" class="label-hidden">
-        {{ 'blogs.comments.message' | t }}
-      </label>
-      <textarea
-        name="comment[body]"
-        id="CommentBody"
-        class="{% if form.errors contains 'body' %}input-error{% endif %}"
-        placeholder="{{ 'blogs.comments.message' | t }}">
-        {{- form.body -}}
-      </textarea>
-
-      {% if blog.moderated? %}
-        <p>{{ 'blogs.comments.moderated' | t }}</p>
-      {% endif %}
-
-      <input type="submit" class="button" value="{{ 'blogs.comments.post' | t }}">
-    {% endform %}
-
-  {% endif %}
-
+      {%- if blog.comments_enabled? -%}
+        <div class="art-Article_Comments" id="comments">
+          {%- render 'article-comments' -%}
+        </div>
+      {%- endif -%}
+    </footer>
+  </div>
 </article>
 
 <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "articleBody": "{{ article.content | strip_html }}",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ shop.url }}{{ page.url }}"
-  },
-  "headline": "{{ article.title }}",
-  {% if article.excerpt != blank %}
-    "description": "{{ article.excerpt | strip_html }}",
-  {% endif %}
-  {% if article.image %}
-    {% assign image_size = article.image.width | append: 'x' %}
-    "image": [
-      "https:{{ article | img_url: image_size }}"
-    ],
-  {% endif %}
-  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
-  "dateCreated": "{{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
-  "author": {
-    "@type": "Person",
-    "name": "{{ article.author }}"
-  },
-  "publisher": {
-    "@type": "Organization",
-    {% if settings.share_image %}
-      {% assign image_size = settings.share_image.width | append: 'x' %}
-      "logo": {
-        "@type": "ImageObject",
-        "height": "{{ settings.share_image.height }}",
-        "url": "https:{{ settings.share_image | img_url: image_size }}",
-        "width": "{{ settings.share_image.width }}"
-      },
-    {% elsif article.image %}
-      {% assign image_size = article.image.width | append: 'x' %}
-      "logo": {
-        "@type": "ImageObject",
-        "height": "{{ article.image.height }}",
-        "url": "https:{{ article.image | img_url: image_size }}",
-        "width": "{{ article.image.width }}"
-      },
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": "{{ article.content | strip_html }}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}{{ page.url }}"
+    },
+    "headline": "{{ article.title }}",
+    {% if article.excerpt != blank %}
+      "description": "{{ article.excerpt | strip_html }}",
     {% endif %}
-    "name": "{{ shop.name }}"
+
+    {% if article.image %}
+      {% assign image_size = article.image.width | append: 'x' %}
+      "image": [
+        "https:{{ article | img_url: image_size }}"
+      ],
+    {% endif %}
+    "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+    "dateCreated": "{{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ article.author }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.share_image %}
+        {% assign image_size = settings.share_image.width | append: 'x' %}
+        "logo": {
+          "@type": "ImageObject",
+          "height": "{{ settings.share_image.height }}",
+          "url": "https:{{ settings.share_image | img_url: image_size }}",
+          "width": "{{ settings.share_image.width }}"
+        },
+      {% elsif article.image %}
+        {% assign image_size = article.image.width | append: 'x' %}
+        "logo": {
+          "@type": "ImageObject",
+          "height": "{{ article.image.height }}",
+          "url": "https:{{ article.image | img_url: image_size }}",
+          "width": "{{ article.image.width }}"
+        },
+      {% endif %}
+      "name": "{{ shop.name }}"
+    }
   }
-}
 </script>

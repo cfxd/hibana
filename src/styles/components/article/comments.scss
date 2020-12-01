@@ -1,0 +1,26 @@
+/*
+|--------------------------------------------------------------------------
+| Comments
+|--------------------------------------------------------------------------
+| @namespace: art-
+|
+*/
+.art-Comments_Item {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.art-Comments_Title {
+  margin-bottom: 25px;
+}
+
+.art-Comments_Text {
+  margin-bottom: 10px;
+}

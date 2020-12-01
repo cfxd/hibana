@@ -68,7 +68,10 @@
 @import './cards/product';
 
 // Components
+@import './components/article/article';
 @import './components/article/card-featured';
+@import './components/article/comments';
+@import './components/article/sharing';
 
 @import './components/breadcrumbs/breadcrumb';
 

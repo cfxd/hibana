@@ -1,0 +1,46 @@
+/*
+|--------------------------------------------------------------------------
+| Sharing
+|--------------------------------------------------------------------------
+| @namespace: art-
+|
+*/
+.art-Sharing {
+  align-items: center;
+  flex-direction: column;
+
+  display: flex;
+}
+
+.art-Sharing_Title {
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
+
+.art-Sharing_Items {
+  display: flex;
+}
+
+.art-Sharing_Item {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.art-Sharing_Link {
+  display: block;
+}
+
+.art-Sharing_Icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}

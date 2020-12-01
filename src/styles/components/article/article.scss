@@ -1,0 +1,73 @@
+/*
+|--------------------------------------------------------------------------
+| Article
+|--------------------------------------------------------------------------
+| @namespace: art-
+|
+*/
+.art-Article {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.art-Article_Inner {
+  @include Container;
+}
+
+.art-Article_Header {
+  position: relative;
+
+  margin-bottom: 60px;
+
+  text-align: center;
+}
+
+.art-Article_Body {
+  position: relative;
+}
+
+.art-Article_Footer {
+  margin-top: 80px;
+}
+
+.art-Article_Title {
+  font-family: $founders-grotesk-regular;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 56px;
+}
+
+.art-Article_Date {
+  margin-top: 20px;
+
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  line-height: 24px;
+}
+
+.art-Article_ImageContainer {
+  display: block;
+  margin-bottom: 80px;
+}
+
+.art-Article_Image {
+  .rsp-Image_Image {
+    border-radius: 0 0 60px 60px;
+  }
+}
+
+.art-Article_RichText {
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.art-Article_Sharing {
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 40px;
+
+  border-top: 1px solid $color-border;
+}
