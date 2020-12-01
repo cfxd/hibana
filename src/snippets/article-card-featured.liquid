@@ -1,4 +1,4 @@
-<div class="art-CardFeatured">
+<div class="art-CardFeatured{% if template == 'blog' %} art-CardFeatured-blog{% endif %}">
   {%- if article.image != blank -%}
     <a class="art-CardFeatured_ImageContainer" href="{{ article.url }}">
       <div class="art-CardFeatured_Image">
