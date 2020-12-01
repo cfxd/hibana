@@ -21,10 +21,12 @@
 .sec-Blog_Items {
   column-count: 3;
   column-gap: 25px;
+
+  margin-top: -50px;
 }
 
 .sec-Blog_Item {
   display: inline-block;
   width: 100%;
-  margin-bottom: 50px;
+  margin-top: 50px;
 }
