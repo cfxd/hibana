@@ -1,6 +1,6 @@
-{%- assign product_handles = page.metafields.products_items.product | split: '|' -%}
+{%- assign product_collection = page.metafields.products_collection.collection -%}
 
-{%- if product_handles.size > 0 -%}
+{%- if product_collection.size > 0 -%}
   <section class="sec-Products sec-Products-page">
     <div class="sec-Products_Inner">
       {%- if page.metafields.products_header.title != blank -%}
@@ -17,19 +17,15 @@
 
       <div class="sec-Products_Body">
         <ul class="sec-Products_Items">
-          {%- for product_handle in product_handles -%}
-            {%- assign products = all_products[product_handle] -%}
-
-            {%- unless products == empty -%}
-              <li class="sec-Products_Item">
-                {%- render 'product-card',
-                  product: products,
-                  width: 600,
-                  height: 700,
-                  not_grid: true
-                -%}
-              </li>
-            {%- endunless -%}
+          {%- for product in collections[product_collection].products limit:6 -%}
+            <li class="sec-Products_Item">
+              {%- render 'product-card',
+                product: product,
+                width: 600,
+                height: 700,
+                not_grid: true
+              -%}
+            </li>
           {%- endfor -%}
         </ul>
       </div>
