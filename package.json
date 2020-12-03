@@ -27,6 +27,7 @@
     "stylelint-order": "^4.0.0"
   },
   "dependencies": {
+    "@bornfight/gocart": "^1.0.9",
     "@glidejs/glide": "^3.4.1",
     "@shopify/theme-a11y": "^2.0.1",
     "@shopify/theme-addresses": "^3.0.0",
@@ -41,8 +42,8 @@
     "@ungap/url-search-params": "^0.2.2",
     "js-cookie": "^2.2.1",
     "lazysizes": "^5.2.0",
-    "viewprt": "^4.0.0",
-    "sanitize.css": "^11.0.0"
+    "sanitize.css": "^11.0.0",
+    "viewprt": "^4.0.0"
   },
   "scripts": {
     "start": "slate-tools start",
