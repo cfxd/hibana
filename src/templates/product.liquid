@@ -32,27 +32,27 @@
             "url" : "{{ shop.url }}{{ variant.url }}",
             "itemOffered" :
             {
-                "@type" : "Product",
-                {% if variant.image %}
-                  {% assign variant_image_size = variant.image.width | append: 'x' %}
-                  "image": "http:{{ variant.image.src | img_url: variant_image_size }}",
-                {% endif %}
-                {% if variant.title != blank %}
-                  "name" : "{{ variant.title | escape }}",
-                {% endif %}
-                {% if variant.sku != blank %}
-                  "sku": "{{ variant.sku }}",
-                {% endif %}
-                {% if variant.weight != blank %}
-                  "weight": {
-                    "@type": "QuantitativeValue",
-                    {% if variant.weight_unit != blank %}
-                      "unitCode": "{{ variant.weight_unit }}",
-                    {% endif %}
-                    "value": "{{ variant.weight | weight_with_unit: variant.weight_unit }}"
-                  },
-                {% endif %}
-                "url": "{{ shop.url }}{{ variant.url }}"
+              "@type" : "Product",
+              {% if variant.image %}
+                {% assign variant_image_size = variant.image.width | append: 'x' %}
+                "image": "http:{{ variant.image.src | img_url: variant_image_size }}",
+              {% endif %}
+              {% if variant.title != blank %}
+                "name" : "{{ variant.title | escape }}",
+              {% endif %}
+              {% if variant.sku != blank %}
+                "sku": "{{ variant.sku }}",
+              {% endif %}
+              {% if variant.weight != blank %}
+                "weight": {
+                  "@type": "QuantitativeValue",
+                  {% if variant.weight_unit != blank %}
+                    "unitCode": "{{ variant.weight_unit }}",
+                  {% endif %}
+                  "value": "{{ variant.weight | weight_with_unit: variant.weight_unit }}"
+                },
+              {% endif %}
+              "url": "{{ shop.url }}{{ variant.url }}"
             }
           }{% unless forloop.last %},{% endunless %}
         {% endfor %}
