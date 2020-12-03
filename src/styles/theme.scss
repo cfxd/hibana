@@ -5,6 +5,9 @@
 @import '~@glidejs/glide/dist/css/glide.core.min.css';
 @import '~@glidejs/glide/dist/css/glide.theme.min.css';
 
+// goCart
+@import '~@bornfight/gocart/src/lib/scss/go-cart';
+
 // Tools
 @import './tools/variables';
 @import './tools/fonts';
@@ -98,3 +101,15 @@
 @import './components/product/recommendations';
 @import './components/product/tabs';
 @import './components/product/usps';
+
+
+.go-cart__modal {
+  display: none;
+}
+
+.go-cart__mini-cart {
+  right: 0;
+  left: auto;
+
+  display: none;
+}

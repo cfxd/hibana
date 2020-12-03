@@ -50,7 +50,7 @@
   {{ content_for_header }}
 </head>
 
-<body class="lyt-Site template-{{ template.name | handle }}" id="{{ page_title | handle }}">
+<body class="lyt-Site template-{{ template.name | handle }}" id="{{ page_title | handle }}" data-module="go-cart">
   <a class="util-ScreenReaderOnly" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   {%- section 'header' -%}
@@ -60,5 +60,6 @@
   </main>
 
   {%- section 'footer' -%}
+  {%- section 'go-cart' -%}
 </body>
 </html>

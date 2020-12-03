@@ -229,11 +229,67 @@
                   </li>
 
                   <li class="hd-Tools_Item hd-Tools_Item-cart">
-                    <a class="hd-Tools_Link" href="/cart">
+                    <div class="hd-Tools_Link js-go-cart-trigger">
                       <span class="hd-Tools_Title util-ScreenReaderOnly">{{ 'general.header.cart' | t }}</span>
                       <span class="hd-Tools_Icon">{%- render 'icon-bag' -%}</span>
-                      <span class="hd-Tools_Count">{{ cart.item_count }}</span>
-                    </a>
+
+                      {%- if cart.item_count > -1 -%}
+                        <span class="hd-Tools_Count js-go-cart-counter">{{- cart.item_count -}}</span>
+                      {%- endif -%}
+
+                      <div class="go-cart__mini-cart js-go-cart-mini-cart">
+
+                          <div class="go-cart-mini-cart">
+
+                              <!--go cart mini cart content-->
+                              <div class="go-cart-mini-cart__content js-go-cart-mini-cart-content">
+                              </div>
+                              <!--end go cart mini cart content-->
+
+                              <!--go cart mini cart subtotal-->
+                              <div class="go-cart-mini-cart__subtotal">
+                                  <span>Subtotal: </span>
+                                  <span class="go-cart-mini-cart__subtotal-price js-go-cart-mini-cart-subtotal"></span>
+                              </div>
+                              <!--end go cart mini cart subtotal-->
+
+                              <!--go cart mini cart buttons-->
+                              <div class="go-cart-mini-cart__footer js-go-cart-mini-cart-footer">
+
+                                  <a href="/checkout/" class="go-cart__button">
+                                      Proceed to checkout
+                                  </a>
+
+                                  <a href="/cart/" class="go-cart__button">
+                                      View cart
+                                  </a>
+
+                              </div>
+                              <!--end go cart mini cart buttons-->
+
+                          </div>
+
+                      </div>
+                    </div>
+
+
+
+                    {% comment %} <a class="hd-Tools_Link js-ajax-cart-drawer-trigger" href="/cart">
+                      <span class="hd-Tools_Title util-ScreenReaderOnly">{{ 'general.header.cart' | t }}</span>
+                      <span class="hd-Tools_Icon">{%- render 'icon-bag' -%}</span>
+
+                      {%- if cart.item_count > -1 -%}
+                        <span class="hd-Tools_Count js-ajax-cart-counter" id="CartCount">{{ cart.item_count }}</span>
+                      {%- endif -%}
+                    </a> {% endcomment %}
+
+                    {% comment %} <a class="hd-Tools_Link" href="/cart">
+                      <span class="hd-Tools_Title util-ScreenReaderOnly">{{ 'general.header.cart' | t }}</span>
+                      <span class="hd-Tools_Icon">{%- render 'icon-bag' -%}</span>
+                      {%- if cart.item_count > -1 -%}
+                        <span class="hd-Tools_Count" id="CartCount">{{ cart.item_count }}</span>
+                      {%- endif -%}
+                    </a> {% endcomment %}
                   </li>
                 </ul>
               </nav>

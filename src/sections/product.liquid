@@ -35,7 +35,8 @@
             <h3 class="prd-Product_Subtitle">{{ product.vendor }}</h3>
             <h1 class="prd-Product_Title">{{ product.title }}</h1>
 
-            {%- form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' -%}
+            {%- capture product_form_id -%}add-to-cart-{{ product.handle }}-{{ collection.handle }}-{{ section.id }}{%- endcapture -%}
+            {%- form 'product', product, id: product_form_id, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' -%}
               <div class="prd-Product_Meta">
                 {%- if product.metafields.info.text != blank -%}
                   <p class="prd-Product_Info">{{ product.metafields.info.text }}</p>
@@ -56,7 +57,13 @@
                 </p>
               </div>
 
-              {%- unless product.has_only_default_variant -%}
+              <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+              {% if product.has_only_default_variant %}
+                {% assign option = product.options_with_values[0] %}
+                {% assign value = option.values[0] %}
+                <input type="hidden" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+              {% else %}
                 <div class="prd-Product_Variants">
                   {%- for option in product.options_with_values -%}
                     <div class="prd-Product_Option">
@@ -74,7 +81,7 @@
                     </div>
                   {%- endfor -%}
                 </div>
-              {%- endunless -%}
+              {% endif %}
 
               <select class="util-ScreenReaderOnly" name="id">
                 {%- for variant in product.variants -%}
@@ -84,7 +91,7 @@
                 {%- endfor -%}
               </select>
 
-              <div class="prd-Product_Buy">
+              {% comment %} <div class="prd-Product_Buy"> {% endcomment %}
                 <div class="prd-Product_Quantity">
                   <label class="prd-Product_Label util-ScreenReaderOnly" for="Quantity">
                     {{ 'products.product.quantity' | t }}
@@ -109,8 +116,8 @@
                   </select>
                 </div>
 
-                <button class="prd-Product_Button" type="submit" name="add" data-submit-button{% unless current_variant.available %} disabled="disabled"{% endunless %}>
-                  <span data-submit-button-text>
+                <button class="prd-Product_Button js-go-cart-add-to-cart" type="submit" name="add" data-add-to-cart data-submit-button{% unless current_variant.available %} disabled="disabled"{% endunless %}>
+                  <span data-add-to-cart-text data-submit-button-text>
                     {%- if current_variant.available -%}
                       {{ 'products.product.add_to_cart' | t }}
                     {%- else -%}
@@ -118,7 +125,7 @@
                     {%- endif -%}
                   </span>
                 </button>
-              </div>
+              {% comment %} </div> {% endcomment %}
             {%- endform -%}
 
             {%- if product.metafields.excerpt.text != blank -%}
@@ -312,6 +319,12 @@
     </div>
   </section>
 {%- endif -%}
+
+{%- unless product == empty -%}
+  <script type="application/json" data-product-json>
+    {{ product | json }}
+  </script>
+{%- endunless -%}
 
 {% schema %}
   {
