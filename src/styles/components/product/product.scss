@@ -104,7 +104,9 @@
 }
 
 .prd-Product_Variants {
-  margin-bottom: 20px;
+  flex-grow: 1;
+
+  margin-right: 30px;
 }
 
 .prd-Product_Option {
@@ -122,6 +124,8 @@
 }
 
 .prd-Product_Buy {
+  align-items: flex-end;
+
   display: flex;
 }
 

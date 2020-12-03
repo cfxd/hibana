@@ -37,6 +37,8 @@
 
             {%- capture product_form_id -%}add-to-cart-{{ product.handle }}-{{ collection.handle }}-{{ section.id }}{%- endcapture -%}
             {%- form 'product', product, id: product_form_id, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' -%}
+              <input type="hidden" name="id" value="{{ current_variant.id }}" />
+
               <div class="prd-Product_Meta">
                 {%- if product.metafields.info.text != blank -%}
                   <p class="prd-Product_Info">{{ product.metafields.info.text }}</p>
@@ -57,42 +59,33 @@
                 </p>
               </div>
 
-              <input type="hidden" name="id" value="{{ current_variant.id }}">
+              <div class="prd-Product_Buy">
+                {%- if product.has_only_default_variant -%}
+                  {%- assign option = product.options_with_values[0] -%}
+                  {%- assign value = option.values[0] -%}
 
-              {% if product.has_only_default_variant %}
-                {% assign option = product.options_with_values[0] %}
-                {% assign value = option.values[0] %}
-                <input type="hidden" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
-              {% else %}
-                <div class="prd-Product_Variants">
-                  {%- for option in product.options_with_values -%}
-                    <div class="prd-Product_Option">
-                      <label class="prd-Product_Label" for="Option{{ option.position }}">
-                        Select {{ option.name | downcase }}
-                      </label>
+                  <input type="hidden" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %} />
+                {%- else -%}
+                  <div class="prd-Product_Variants">
+                    {%- for option in product.options_with_values -%}
+                      <div class="prd-Product_Option">
+                        <label class="prd-Product_Label" for="Option{{ option.position }}">
+                          Select {{ option.name | downcase }}
+                        </label>
 
-                      <select class="prd-Product_Select" id="Option{{ option.position }}" name="options[{{ option.name | escape }}]">
-                        {%- for value in option.values -%}
-                          <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                            {{ value }}
-                          </option>
-                        {%- endfor -%}
-                      </select>
-                    </div>
-                  {%- endfor -%}
-                </div>
-              {% endif %}
+                        <select class="prd-Product_Select" id="Option{{ option.position }}" name="options[{{ option.name | escape }}]">
+                          {%- for value in option.values -%}
+                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                              {{ value }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                      </div>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
 
-              <select class="util-ScreenReaderOnly" name="id">
-                {%- for variant in product.variants -%}
-                  <option {% if variant == current_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %} value="{{ variant.id }}">
-                    {{ variant.title }}
-                  </option>
-                {%- endfor -%}
-              </select>
-
-              {% comment %} <div class="prd-Product_Buy"> {% endcomment %}
-                <div class="prd-Product_Quantity">
+                <div class="prd-Product_Quantity util-ScreenReaderOnly">
                   <label class="prd-Product_Label util-ScreenReaderOnly" for="Quantity">
                     {{ 'products.product.quantity' | t }}
                   </label>
@@ -125,7 +118,7 @@
                     {%- endif -%}
                   </span>
                 </button>
-              {% comment %} </div> {% endcomment %}
+              </div>
             {%- endform -%}
 
             {%- if product.metafields.excerpt.text != blank -%}
